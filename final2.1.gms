@@ -10,3 +10,4 @@ option limcol=100;            // limit number of columns in .lst file
 //--------------------------------------------------------------------
 
 Set miljons;
+Set cyke!;
