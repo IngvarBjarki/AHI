@@ -24,3 +24,4 @@ ALIAS(timber, i);
 ALIAS(products, j);
 ALIAS(destinations, k);
 
+fokkjú
