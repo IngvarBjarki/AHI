@@ -8,3 +8,5 @@ option solprint=ON;           // include solution print in .lst file
 option limrow=100;            // limit number of rows in .lst file
 option limcol=100;            // limit number of columns in .lst file
 //--------------------------------------------------------------------
+
+Set miljons;
