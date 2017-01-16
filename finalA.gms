@@ -97,7 +97,7 @@ TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
         PAP     4       10      12      15;
 
 TABLE AMOUNT(n,i) 'Options of amount n to be bought of material i'
-    Mat     KUT     KOT     MAK     KUK     KOK   
+    Mat     KUT     KOT     MAK     KUK     KOK
 1   10000   10000   10000   10000   10000   10000
 2   20000   20000   20000   20000   20000   20000
 3   30000   30000   30000   30000   30000   30000
@@ -223,14 +223,16 @@ SCALAR Pap_mill 'the capcity of the paper mill, ton/year'
 
 VARIABLES
 z 'the objective'
-h(i) 'Cubic meters of timber i'
+h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
 y(j) 'Cubic meters produced of product j'
-q(j, k) 'Cubic meters of product j sold to destination k'
-s(i)'Cubic meters of timber i in stock'
+q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
+s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
+u(n,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
 INTEGER VARIABLES h, y;
-
+BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
 
 EQUATIONS
@@ -241,4 +243,5 @@ PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
+
 ;
