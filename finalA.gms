@@ -31,21 +31,7 @@ ALIAS(products, j);
 ALIAS(destinations, k);
 
 PARAMETERS
-afla_wood(timber) 'the alfa value for the timber'
-/   Mat  190
-    Kut   150
-    Kot   120
-    Mak  180
-    Kuk  150
-    Kok  150    /
 
-beta_wood(timber) 'the beta value for the timber'
-    /   Mat   1.0
-        Kut    0.5
-        Kot    3.0
-        Mak  0.2
-        Kuk  0.3
-        Kok  0.2    /
 
 c(products) 'the cost of producing each product, mesured in erous/1000m^3'
     /   Mas   550
