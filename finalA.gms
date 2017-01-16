@@ -54,11 +54,6 @@ afla_wood(timber) 'the alfa value for the timber'
         Pap  1700   /
         ;
 
-        table table3(p2, p3) 'timber p3 needed for production of product p2'
-                     Mak    Kuk     Kok   Hsel    Lsel
-        Hsel      4.8      0.0      0.0      0.0      0.0
-        Lsel       0.0      0.0      4.2      0.0      0.0
-        Pap       0.0      1.0       0.0     0.2      0.2;
 
 
         TABLE table2(p1,i) 'Cubic-meters of material p1 used in one cubic-meter of product i'
@@ -68,6 +63,12 @@ afla_wood(timber) 'the alfa value for the timber'
         KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
         KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
         KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2;
+
+          TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+                     Mak    Kuk     Kok   Hsel    Lsel
+        Hsel      4.8      0.0      0.0      0.0      0.0
+        Lsel       0.0      0.0      4.2      0.0      0.0
+        Pap       0.0      1.0       0.0     0.2      0.2;
 
 scalar saw_mill 'the capacity of the saw mill, m^3/year' /200000/;
 scalar playwood_mill 'the capacity of the playwood mill, m^3/year' /90000/;
