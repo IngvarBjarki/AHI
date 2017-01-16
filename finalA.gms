@@ -41,7 +41,18 @@ afla_wood(timber) 'the alfa value for the timber'
         Kot    3.0
         Mak  0.2
         Kuk  0.3
-        Kok  0.2    /;
+        Kok  0.2    /
+
+    c(timber) 'the cost of each timber, mesured in erous/1000m^3'
+    /   Mas   550
+        Kus   500
+        Kos   450
+        Kuv   2500
+        Kov  2600
+        Hsel  820
+        Lsel  800
+        Pap  1700   /;
+        ;
 
         table table3(p2, p3) 'timber p3 needed for production of product p2'
                      Mak    Kuk     Kok   Hsel    Lsel
