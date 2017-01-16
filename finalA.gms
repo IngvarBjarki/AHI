@@ -272,7 +272,8 @@ obj .. 'Maximum gross profit'
 Balance(i) .. 'to keep track of our inventory, what we own'
  Sold_Prod(j) ..  'we cant sell more than we produce'
 
-Barges(i) .. 'ensure we only pick one value n for barges for each timber i'
+Barges_buy(i) .. 'ensure we only pick one value n for barges for each timber i'
+Barges_sell(j, k) .. 'ensure we only pick one value  n for barges for each product to each city'
 
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
@@ -288,7 +289,8 @@ Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
 Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
-Barges(i) ..  sum( n,r(n,i)) =l= 1;
+Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
+Barges_sell(j, k) .. sum(n, u(n, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
