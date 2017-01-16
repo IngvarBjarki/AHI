@@ -290,10 +290,16 @@ second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when
 
 
 obj ..
+<<<<<<< HEAD
           sum((k,j), GAMMA(j,k) * sum(n, q(n,j)*u(n,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+=======
+          sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+>>>>>>> a923a6a80c61b490c78146134f6bd75a42291eef
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
+        - sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
+        ;
 
 
 
@@ -304,16 +310,15 @@ obj ..
 Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
                       - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
 
+
 second_hand_pro(j) ..   =g= y(p2)*table3();
 
+Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
 
-
-
-Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
- Barges_sell(j, k) .. sum(n, u(n, j, k)) =l= 1;
+ Barges_sell(j, k) .. sum(n, u(l, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
