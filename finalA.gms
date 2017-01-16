@@ -269,6 +269,9 @@ POSITIVE VARIABLES s;
 EQUATIONS
 obj .. 'Maximum gross profit'
 
+Balance(i) .. 'to keep track of our inventory, what we own'
+ Sold_Prod(j) ..  'we cant sell more than we produce'
+
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
