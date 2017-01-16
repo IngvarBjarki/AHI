@@ -25,8 +25,17 @@ ALIAS(products, j);
 ALIAS(destinations, k);
 
 Variables
+z 'the objective'
 h(i) 'Cubic meters of timber i'
 y(j) 'Cubic meters produced of product j'
 q(j, k) 'Cubic meters of product j sold to destination k'
 s(i)'Cubic meters of timber i in stock'
+;
+
+Integer Variables h, y;
+
+Positive Variables s;
+
+Equations
+obj .. 'Maximum gross profit'
 ;
