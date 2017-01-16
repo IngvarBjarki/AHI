@@ -40,7 +40,7 @@ pi(s) 'the probability for each scenario'
     9    28
     10   30     /;
 
-    scalar h 'the scarp value of recycling news paper' /10/;
+    scalar h 'the scarp value of  recycling news papaer' /10/;
     scalar p 'the profit for selling news paper' /70/;
     scalar c 'the puchasing cost for each news paper'  /20/;
 
