@@ -271,12 +271,12 @@ SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
 
 VARIABLES
 z 'the objective'
-h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
+*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
 y(j) 'Cubic meters produced of product j'
-q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
+*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
 r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
-u(n,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
+u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
 INTEGER VARIABLES h, y;
@@ -299,8 +299,11 @@ PAPCap..     'Maximum capacity of PAP production'
 ;
 
 
-obj .. sum((k,j), 
-
+obj .. 
+          sum((k,j), GAMMA(j,k) * sum(n, q(n,j)*u(n,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+        - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
+        + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
 
 
 //�URFUM A� LAGA EININGAR � BALANCE!!!!!
