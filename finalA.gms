@@ -100,7 +100,7 @@ TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
 
 SCALAR saw_mill 'the capacity of the saw mill, m^3/year'
     /200000/;
-SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year'
+SCALAR plywood_mill 'the capacity of the playwood mill, m^3/year'
     /90000/;
 SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year'
     /220000/;
@@ -116,7 +116,7 @@ z 'the objective'
 h(i) 'Cubic meters of timber i'
 y(j) 'Cubic meters produced of product j'
 q(j, k) 'Cubic meters of product j sold to destination k'
-s(i)'Cubic meters of timber i in stock'
+s(i)'Cubic meters of timber i in stock, BALANCE'
 ;
 
 INTEGER VARIABLES h, y;
@@ -126,9 +126,25 @@ POSITIVE VARIABLES s;
 EQUATIONS
 obj .. 'Maximum gross profit'
 
+Balance(i) .. 'to keep track of our inventory, what we own'
+Sold_Prod(j) ..  'we cant sell more than we produce'
+
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
 ;
+
+//ÞURFUM AÐ LAGA EININGAR Í BALANCE!!!!!
+Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
+                      - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
+
+Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
+
+//=================CAPACITYS FOR PRODUCTION===========
+SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
+PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
+HSELCap ..   y("Hsel") =l= Hsel_line;
+LSELCap ..  y("Lsel") =l= Lsel_line;
+PAPCap ..   y("Pap") =l= Pap_mill;
