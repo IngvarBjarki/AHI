@@ -283,11 +283,13 @@ PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
+
+second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
 ;
 
 
 
-obj .. 
+obj ..
           sum((k,j), GAMMA(j,k) * sum(n, q(n,j)*u(n,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
@@ -302,6 +304,11 @@ obj ..
 Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
                       - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
 
+second_hand_pro(j) ..   =g= y(p2)*table3();
+
+
+
+
 Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
@@ -314,3 +321,5 @@ PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
 LSELCap ..  y("Lsel") =l= Lsel_line;
 PAPCap ..   y("Pap") =l= Pap_mill;
+
+
