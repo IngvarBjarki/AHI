@@ -56,7 +56,7 @@ c(products) 'the cost of producing each product, mesured in erous/1000m^3'
         Hsel  820
         Lsel  800
         Pap  1700   /
- 
+
 alpha(timber) 'alpha cost parameters by timber assortments'
     /   MAT     190
         KUT     150
@@ -289,7 +289,8 @@ obj .. 'Maximum gross profit'
 Balance(i) .. 'to keep track of our inventory, what we own'
  Sold_Prod(j) ..  'we cant sell more than we produce'
 
-Barges(i) .. 'ensure we only pick one value n for barges for each timber i'
+Barges_buy(i) .. 'ensure we only pick one value n for barges for each timber i'
+Barges_sell(j, k) .. 'ensure we only pick one value  n for barges for each product to each city'
 
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
@@ -299,11 +300,16 @@ PAPCap..     'Maximum capacity of PAP production'
 ;
 
 
+
 obj .. 
           sum((k,j), GAMMA(j,k) * sum(n, q(n,j)*u(n,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
+
+
+
+
 
 
 //ÞURFUM AÐ LAGA EININGAR Í BALANCE!!!!!
@@ -313,7 +319,8 @@ Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
 Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
-Barges(i) ..  sum( n,r(n,i)) =l= 1;
+Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
+ Barges_sell(j, k) .. sum(n, u(n, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
