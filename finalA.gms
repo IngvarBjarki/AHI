@@ -26,7 +26,7 @@ ALIAS(timber, i);
 ALIAS(products, j);
 ALIAS(destinations, k);
 
-Parameters
+PARAMETERS
 afla_wood(timber) 'the alfa value for the timber'
 /   Mat  190
     Kut   150
@@ -85,7 +85,7 @@ scalar Pap_mill 'the capcity of the paper mill, ton/year'
 
 
 
-Variables
+VARIABLES
 z 'the objective'
 h(i) 'Cubic meters of timber i'
 y(j) 'Cubic meters produced of product j'
@@ -93,16 +93,16 @@ q(j, k) 'Cubic meters of product j sold to destination k'
 s(i)'Cubic meters of timber i in stock'
 ;
 
-Integer Variables h, y;
+INTEGER VARIABLES h, y;
 
-Positive Variables s;
+POSITIVE VARIABLES s;
 
-Equations
+EQUATIONS
 obj .. 'Maximum gross profit'
 
-SawmillCap.. 'Capacity of the saw mill'
-PlywoodCap.. 'Capacity of plywood mill'
-HSELCap..    'Capacity of HSEL production'
-LSELCap..    'Capacity of LSEL production'
-PAPCap..     'Capacity of PAP production'
+SawmillCap.. 'Maximum capacity of the saw mill'
+PlywoodCap.. 'Maximum capacity of plywood mill'
+HSELCap..    'Maximum capacity of HSEL production'
+LSELCap..    'Maximum capacity of LSEL production'
+PAPCap..     'Maximum capacity of PAP production'
 ;
