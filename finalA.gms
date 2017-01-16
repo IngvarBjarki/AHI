@@ -90,7 +90,7 @@ TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
         Pap       0.0      1.0       0.0     0.2      0.2;
 
 
-TABLE table4GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
+TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
                 EU      IE      PA      KI
         MAS     1600    1300    1400    1500
         KUS     1400    1200    1300    1400
@@ -101,7 +101,7 @@ TABLE table4GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
         LSEL    2500    2800    2300    2500
         PAP     4500    4700    4300    4800 ;
 
-TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
+TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
                 EU      IE      PA      KI
         MAS     4       10      12      15
         KUS     4       10      12      15
