@@ -51,8 +51,9 @@ afla_wood(timber) 'the alfa value for the timber'
         Kov  2600
         Hsel  820
         Lsel  800
-        Pap  1700   /;
+        Pap  1700   /
         ;
+        
 
         table table3(p2, p3) 'timber p3 needed for production of product p2'
                      Mak    Kuk     Kok   Hsel    Lsel
@@ -67,7 +68,33 @@ afla_wood(timber) 'the alfa value for the timber'
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
         KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
         KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
-        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2 ;
+
+        TABLE table4GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
+                EU      IE      PA      KI
+        MAS     1600    1300    1400    1500    
+        KUS     1400    1200    1300    1400
+        KOS     1300    1400    1500    1600
+        KUV     4400    3800    3600    3500
+        KOV     4300    4100    3900    3800
+        HSEL    2300    2500    2300    2600
+        LSEL    2500    2800    2300    2500
+        PAP     4500    4700    4300    4800 ;
+
+        TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
+                EU      IE      PA      KI
+        MAS     4       10      12      15
+        KUS     4       10      12      15
+        KOS     14      20      22      25
+        KUV     4       10      12      15
+        KOV     4       10      12      15
+        HSEL    2       4       5       6
+        LSEL    3       2       5       7
+        PAP     4       10      12      15;
+
+
+
+
 
 
 
