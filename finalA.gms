@@ -26,7 +26,7 @@ ALIAS(timber, i);
 ALIAS(products, j);
 ALIAS(destinations, k);
 
-Parameters
+PARAMETERS
 afla_wood(timber) 'the alfa value for the timber'
 /   Mat  190
     Kut   150
@@ -70,15 +70,15 @@ afla_wood(timber) 'the alfa value for the timber'
         Lsel       0.0      0.0      4.2      0.0      0.0
         Pap       0.0      1.0       0.0     0.2      0.2;
 
-scalar saw_mill 'the capacity of the saw mill, m^3/year' /200000/;
-scalar playwood_mill 'the capacity of the playwood mill, m^3/year' /90000/;
-scalar Hsel_line 'the capacity of the first line, production hsel ton/year' /220000/;
-scalar Lsel_line 'the capacity of the second line, producinng lsel ton/year' /180000/;
-scalar Pap_mill 'the capcity of the paper mill, ton/year' /8000/;
+SCALAR saw_mill 'the capacity of the saw mill, m^3/year' /200000/;
+SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year' /90000/;
+SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year' /220000/;
+SCALAR Lsel_line 'the capacity of the second line, producinng lsel ton/year' /180000/;
+SCALAR Pap_mill 'the capcity of the paper mill, ton/year' /8000/;
 
 
 
-Variables
+VARIABLES
 z 'the objective'
 h(i) 'Cubic meters of timber i'
 y(j) 'Cubic meters produced of product j'
@@ -86,16 +86,16 @@ q(j, k) 'Cubic meters of product j sold to destination k'
 s(i)'Cubic meters of timber i in stock'
 ;
 
-Integer Variables h, y;
+INTEGER VARIABLES h, y;
 
-Positive Variables s;
+POSITIVE VARIABLES s;
 
-Equations
+EQUATIONS
 obj .. 'Maximum gross profit'
 
-SawmillCap.. 'Capacity of the saw mill'
-PlywoodCap.. 'Capacity of plywood mill'
-HSELCap..    'Capacity of HSEL production'
-LSELCap..    'Capacity of LSEL production'
-PAPCap..     'Capacity of PAP production'
+SawmillCap.. 'Maximum capacity of the saw mill'
+PlywoodCap.. 'Maximum capacity of plywood mill'
+HSELCap..    'Maximum capacity of HSEL production'
+LSELCap..    'Maximum capacity of LSEL production'
+PAPCap..     'Maximum capacity of PAP production'
 ;
