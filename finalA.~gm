@@ -53,16 +53,21 @@ afla_wood(timber) 'the alfa value for the timber'
         Lsel  800
         Pap  1700   /
         ;
+        
 
 
+<<<<<<< HEAD
 
 TABLE table2(p1,i)'Cubic-meters of material p1 used in cubic-meter of product i'
+=======
+TABLE table2(p1,i) 'Cubic-meters of material p1 used in one cubic-meter of product i'
+>>>>>>> 9e8894ed71f0a621e69d57742d481c3a215d4e94
                 MAT     KUT     KOT     MAK     KUK     KOK     FUEL
         MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
         KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
         KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
-        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2;
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2 ;
 
 TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
                      Mak    Kuk     Kok   Hsel    Lsel
@@ -70,8 +75,8 @@ TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
         Lsel       0.0      0.0      4.2      0.0      0.0
         Pap       0.0      1.0       0.0     0.2      0.2;
 
-<<<<<<< HEAD
 
+<<<<<<< HEAD
 scalar saw_mill 'the capacity of the saw mill, m^3/year'
          /200000/;
 scalar playwood_mill 'the capacity of the playwood mill, m^3/year'
@@ -82,14 +87,55 @@ scalar Lsel_line 'the capacity of the second line, producinng lsel ton/year'
          /180000/;
 scalar Pap_mill 'the capcity of the paper mill, ton/year'
          /8000/;
-
 =======
-SCALAR saw_mill 'the capacity of the saw mill, m^3/year' /200000/;
-SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year' /90000/;
-SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year' /220000/;
-SCALAR Lsel_line 'the capacity of the second line, producinng lsel ton/year' /180000/;
-SCALAR Pap_mill 'the capcity of the paper mill, ton/year' /8000/;
->>>>>>> 19aa85a399b5870ca2b600d68e63624842aafd19
+TABLE table4GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
+                EU      IE      PA      KI
+        MAS     1600    1300    1400    1500    
+        KUS     1400    1200    1300    1400
+        KOS     1300    1400    1500    1600
+        KUV     4400    3800    3600    3500
+        KOV     4300    4100    3900    3800
+        HSEL    2300    2500    2300    2600
+        LSEL    2500    2800    2300    2500
+        PAP     4500    4700    4300    4800 ;
+
+TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
+                EU      IE      PA      KI
+        MAS     4       10      12      15
+        KUS     4       10      12      15
+        KOS     14      20      22      25
+        KUV     4       10      12      15
+        KOV     4       10      12      15
+        HSEL    2       4       5       6
+        LSEL    3       2       5       7
+        PAP     4       10      12      15;
+
+
+
+
+scalar saw_mill 'the capacity of the saw mill, m^3/year'
+     /200000/;
+scalar playwood_mill 'the capacity of the playwood mill, m^3/year' 
+    /90000/;
+scalar Hsel_line 'the capacity of the first line, production hsel ton/year' 
+    /220000/;
+scalar Lsel_line 'the capacity of the second line, producinng lsel ton/year' 
+    /180000/;
+scalar Pap_mill 'the capcity of the paper mill, ton/year' 
+    /8000/;
+
+SCALAR saw_mill 'the capacity of the saw mill, m^3/year' 
+    /200000/;
+SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year' 
+    /90000/;
+SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year' 
+    /220000/;
+SCALAR Lsel_line 'the capacity of the second line, producinng lsel ton/year' 
+    /180000/;
+SCALAR Pap_mill 'the capcity of the paper mill, ton/year' 
+    /8000/;
+>>>>>>> 9e8894ed71f0a621e69d57742d481c3a215d4e94
+
 
 
 
