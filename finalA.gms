@@ -240,16 +240,17 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 
 SCALAR saw_mill 'the capacity of the saw mill, m^3/year'
-    /200000/;
+         /200000/;
 SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year'
-    /90000/;
+         /90000/;
 SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year'
-    /220000/;
+         /220000/;
 SCALAR Lsel_line 'the capacity of the second line, producinng lsel ton/year'
-    /180000/;
+         /180000/;
 SCALAR Pap_mill 'the capcity of the paper mill, ton/year'
-    /8000/;
-
+         /80000/;
+SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
+         /40/;
 
 
 VARIABLES
