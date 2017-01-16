@@ -51,7 +51,7 @@ afla_wood(timber) 'the alfa value for the timber'
         Kov  2600
         Hsel  820
         Lsel  800
-        Pap  1700   /;
+        Pap  1700   /
         ;
 
         table table3(p2, p3) 'timber p3 needed for production of product p2'
@@ -59,6 +59,23 @@ afla_wood(timber) 'the alfa value for the timber'
         Hsel      4.8      0.0      0.0      0.0      0.0
         Lsel       0.0      0.0      4.2      0.0      0.0
         Pap       0.0      1.0       0.0     0.2      0.2;
+
+
+        TABLE table2(p1,i) 'Cubic-meters of material p1 used in one cubic-meter of product i'
+                MAT     KUT     KOT     MAK     KUK     KOK     FUEL
+        MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
+        KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
+        KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
+        KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2;
+
+scalar saw_mill 'the capacity of the saw mill, m^3/year' /200000/;
+scalar playwood_mill 'the capacity of the playwood mill, m^3/year' /90000/;
+scalar Hsel_line 'the capacity of the first line, production hsel ton/year' /220000/;
+scalar Lsel_line 'the capacity of the second line, producinng lsel ton/year' /180000/;
+scalar Pap_mill 'the capcity of the paper mill, ton/year' /8000/;
+
+
 
 Variables
 z 'the objective'
