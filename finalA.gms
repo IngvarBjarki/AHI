@@ -60,6 +60,17 @@ afla_wood(timber) 'the alfa value for the timber'
         Lsel       0.0      0.0      4.2      0.0      0.0
         Pap       0.0      1.0       0.0     0.2      0.2;
 
+
+        TABLE table2(p1,i) 'Cubic-meters of material p1 used in one cubic-meter of product i'
+                MAT     KUT     KOT     MAK     KUK     KOK     FUEL
+        MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
+        KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
+        KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
+        KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2
+
+
+
 Variables
 z 'the objective'
 h(i) 'Cubic meters of timber i'
