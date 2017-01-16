@@ -19,6 +19,8 @@ SET p1(products) 'normal products'
 / Mas, Kus, Kos, Kuv, Kov  /;
 SET p2(products) 'products possible to make from leftovers'
 /   Hsel, Lsel, Pap     /;
+SET p3(products)'subset made for table3'
+/   Mak, Kuk, Kok, Hsel, Lsel   /;
 
 ALIAS(timber, i);
 ALIAS(products, j);
@@ -40,6 +42,12 @@ afla_wood(timber) 'the alfa value for the timber'
         Mak  0.2
         Kuk  0.3
         Kok  0.2    /;
+
+        table table3(p2, p3) 'timber p3 needed for production of product p2'
+                     Mak    Kuk     Kok   Hsel    Lsel
+        Hsel      4.8      0.0      0.0      0.0      0.0
+        Lsel       0.0      0.0      4.2      0.0      0.0
+        Pap       0.0      1.0       0.0     0.2      0.2;
 
 Variables
 z 'the objective'
