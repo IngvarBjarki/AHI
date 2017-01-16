@@ -39,7 +39,7 @@ afla_wood(timber) 'the alfa value for the timber'
     Kuk  150
     Kok  150    /
 
-    beta_wood(timber) 'the beta value for the timber'
+beta_wood(timber) 'the beta value for the timber'
     /   Mat   1.0
         Kut    0.5
         Kot    3.0
@@ -47,7 +47,7 @@ afla_wood(timber) 'the alfa value for the timber'
         Kuk  0.3
         Kok  0.2    /
 
-    c(timber) 'the cost of each timber, mesured in erous/1000m^3'
+c(products) 'the cost of producing each product, mesured in erous/1000m^3'
     /   Mas   550
         Kus   500
         Kos   450
@@ -56,8 +56,22 @@ afla_wood(timber) 'the alfa value for the timber'
         Hsel  820
         Lsel  800
         Pap  1700   /
-        ;
+ 
+alpha(timber) 'alpha cost parameters by timber assortments'
+    /   MAT     190
+        KUT     150
+        KOT     120
+        MAK     180
+        KUK     150
+        KOK     150 /
 
+beta(timber) 'Beta cost parameter by timber assortments'
+    /   MAT     1.0
+        KUT     0.5
+        KOT     3.0
+        MAK     0.2
+        KUK     0.3
+        KOK     0.2 /;
 
 
 
@@ -96,7 +110,9 @@ TABLE table4DELTA(j,k) 'Delta coefficient for selling product j in region k'
         KOV     4       10      12      15
         HSEL    2       4       5       6
         LSEL    3       2       5       7
-        PAP     4       10      12      15;
+        PAP     4       10      12      15 ;
+
+
 
 
 TABLE q(l,j) 'Options of amount l to be sold of product j'
@@ -273,8 +289,7 @@ obj .. 'Maximum gross profit'
 Balance(i) .. 'to keep track of our inventory, what we own'
  Sold_Prod(j) ..  'we cant sell more than we produce'
 
-Barges_buy(i) .. 'ensure we only pick one value n for barges for each timber i'
-Barges_sell(j, k) .. 'ensure we only pick one value  n for barges for each product to each city'
+Barges(i) .. 'ensure we only pick one value n for barges for each timber i'
 
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
@@ -283,6 +298,11 @@ LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
 ;
 
+
+obj .. sum((k,j), 
+
+
+
 //ÞURFUM AÐ LAGA EININGAR Í BALANCE!!!!!
 Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
                       - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
@@ -290,8 +310,7 @@ Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
 Sold_Prod(j) .. sum(k, q(j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
-Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
-Barges_sell(j, k) .. sum(n, u(n, j, k)) =l= 1;
+Barges(i) ..  sum( n,r(n,i)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
