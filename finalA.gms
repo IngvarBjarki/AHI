@@ -275,35 +275,29 @@ BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
 
 EQUATIONS
+
 obj  'Maximum gross profit'
 
-
-Balance(i)  'to keep track of our inventory, what we own'
-
-//Balance(i) .. 'to keep track of our inventory, what we own'
- Sold_Prod(j)   'we cant sell more than we produce'
- //=======================!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!nyjar skordur
+ //=============================================ENOUGH TIMBER
  timber_used(i) ' amount of  timber i used to make  product j'
  prod_starved(i)  'ensure that production can not be starved'
+USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
+Sold_Prod(j)   'we cant sell more than we produce'
 
-
-
+//============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
 Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
 
-
-
-USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
-
+//=====================================CAPACITYS FOR PRODUCTION
 SawmillCap.. 'Maximum capacity of the saw mill'
 PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
+
+// =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL     'Proportion needed of HSEL for PAP'
 PAP_LSEL     'Proportion needed of LSEL for PAP'
-
-//second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
 
 ;
 
@@ -330,8 +324,7 @@ USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
  Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
-//===============================CAPACITYS FOR PRODUCTION=============================
-
+//===============================CAPACITYS FOR PRODUCTION =============================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
 PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
