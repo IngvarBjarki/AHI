@@ -61,7 +61,7 @@ beta(timber) 'Beta cost parameter by timber assortments'
 
 
 
-TABLE table2(j,i)'Cubic-meters of material p1 used in cubic-meter of product i'
+TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
                 MAT     KUT     KOT     MAK     KUK     KOK     FUEL
         MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
@@ -265,7 +265,8 @@ z 'the objective'
 *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
 y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+s(i) 'amount of timber i used to make products'
 r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
@@ -278,8 +279,12 @@ POSITIVE VARIABLES s;
 EQUATIONS
 obj .. 'Maximum gross profit'
 
-Balance(i) .. 'to keep track of our inventory, what we own'
+//Balance(i) .. 'to keep track of our inventory, what we own'
  Sold_Prod(j) ..  'we cant sell more than we produce'
+ //=======================!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!nyjar skordur
+ timber_used(i) ..' amount of  timber i used to make  product j'
+ prod_starved(i) .. 'ensure that production can not be starved'
+
 
 Barges_buy(i) .. 'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k) .. 'ensure we only pick one value  n for barges for each product to each city'
@@ -309,16 +314,17 @@ obj ..
 
 
 
-
+timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
+prod_starved(i) .. sum(r(i, n)*h(n, i)) =g= s(i);
 
 //�URFUM A� LAGA EININGAR � BALANCE!!!!!
-Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
-                      - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
+//Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
+  //                    - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
 
 
-second_hand_pro(j) ..   =g= y(p2)*table3();
+//second_hand_pro(j) ..   =g= y(p2)*table3();
 
-Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
+Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 
 
 //only buy one number of bargers for each timber i
