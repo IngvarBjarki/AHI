@@ -308,7 +308,7 @@ Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
 
 //only buy one number of bargers for each timber i
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
- Barges_sell(j, k) .. sum(n, u(l, j, k)) =l= 1;
+ Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
