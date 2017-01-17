@@ -32,30 +32,30 @@ PARAMETERS
 
 
 c(products) 'the cost of producing each product, mesured in erous/1000m^3'
-    /   Mas   550
-        Kus   500
-        Kos   450
-        Kuv   2500
-        Kov  2600
-        Hsel  820
-        Lsel  800
-        Pap  1700   /
+    /   Mas   0.55
+        Kus   0.5
+        Kos   0.45
+        Kuv   2.5
+        Kov   2.6
+        Hsel  0.82
+        Lsel  0.8
+        Pap   1.7  /
 
 alpha(timber) 'alpha cost parameters by timber assortments'
-    /   MAT     190
-        KUT     150
-        KOT     120
-        MAK     180
-        KUK     150
-        KOK     150 /
+    /   MAT     0.19
+        KUT     0.15
+        KOT     0.12
+        MAK     0.18
+        KUK     0.15
+        KOK     0.15 /
 
 beta(timber) 'Beta cost parameter by timber assortments'
-    /   MAT     1.0
-        KUT     0.5
-        KOT     3.0
-        MAK     0.2
-        KUK     0.3
-        KOK     0.2 /;
+    /   MAT     0.001
+        KUT     0.0005
+        KOT     0.003
+        MAK     0.0002
+        KUK     0.0003
+        KOK     0.0002 /;
 
 
 
@@ -78,26 +78,26 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
-                EU      IE      PA      KI
-        MAS     1600    1300    1400    1500
-        KUS     1400    1200    1300    1400
-        KOS     1300    1400    1500    1600
-        KUV     4400    3800    3600    3500
-        KOV     4300    4100    3900    3800
-        HSEL    2300    2500    2300    2600
-        LSEL    2500    2800    2300    2500
-        PAP     4500    4700    4300    4800 ;
+                EU     IE     PA     KI
+        MAS     1.6    1.3    1.4    1.5
+        KUS     1.4    1.2    1.3    1.4
+        KOS     1.3    1.4    1.5    1.6
+        KUV     4.4    3.8    3.6    3.5
+        KOV     4.3    4.1    3.9    3.8
+        HSEL    2.3    2.5    2.3    2.6
+        LSEL    2.5    2.8    2.3    2.5
+        PAP     4.5    4.7    4.3    4.8 ;
 
 TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
                 EU      IE      PA      KI
-        MAS     4       10      12      15
-        KUS     4       10      12      15
-        KOS     14      20      22      25
-        KUV     4       10      12      15
-        KOV     4       10      12      15
-        HSEL    2       4       5       6
-        LSEL    3       2       5       7
-        PAP     4       10      12      15 ;
+        MAS     0.004   0.010   0.012   0.015
+        KUS     0.004   0.010   0.012   0.015
+        KOS     0.014   0.020   0.022   0.025
+        KUV     0.004   0.010   0.012   0.015
+        KOV     0.004   0.010   0.012   0.015
+        HSEL    0.002   0.004   0.005   0.006
+        LSEL    0.003   0.002   0.005   0.007
+        PAP     0.004   0.010   0.012   0.015 ;
 
 
 
@@ -256,6 +256,8 @@ SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
 SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
          /0.2/;
+SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
+         /-0.2/
 
 
 VARIABLES
@@ -304,12 +306,12 @@ PAP_LSEL     'Proportion needed of LSEL for PAP'
 
 
 obj ..
-        Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)*q(l,j) * u(l,j,k)))   //Amount sold times sellingprice
+        Z =e= (sum((j,k), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((j,k), DELTA(j,k) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
 
-        - sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)*h(n,i) * r(n,i)))                    //Amount bought times buying price
-        + sum(p1, y(p1)*0.2*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
-        + sum(i, s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
-        - sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
+        //- (sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)*h(n,i) * r(n,i))))                    //Amount bought times buying price
+        //+ sum(p1, y(p1)*fuel_amount*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
+        //+ sum(i, s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
+        //- sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
         ;
 
 
@@ -321,8 +323,8 @@ Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
-Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
- Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
+Barges_buy(i) ..  sum( n,r(n,i)) =E= 1;
+ Barges_sell(j, k) .. sum(l, u(l, j, k)) =E= 1;
 
 //===============================CAPACITYS FOR PRODUCTION =============================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
@@ -337,5 +339,7 @@ PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
 
 
 MODEL final /all/;
-Solve final using lp minimizing Z
+Solve final using mip maxmizing Z;
+DISPLAY z.l, r.l, y.l, s.l, u.l;
+
 
