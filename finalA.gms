@@ -67,13 +67,16 @@ TABLE table2(p1,i)'Cubic-meters of material p1 used in cubic-meter of product i'
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
         KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
         KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
-        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2 ;
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2
+        HSEL    0.0     0.0     0.0     4.8     0.0     0.0      0.0
+        LSEL    0.0     0.0     0.0     0.0     0.0     4.2      0.0
+        PAP     0.0     0.0     0.0     0.0     1.0     0.0      0.0 ;
 
-TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
-                     Mak    Kuk     Kok   Hsel    Lsel
-        Hsel      4.8      0.0      0.0      0.0      0.0
-        Lsel       0.0      0.0      4.2      0.0      0.0
-        Pap       0.0      1.0       0.0     0.2      0.2;
+*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+*                     Mak    Kuk     Kok   Hsel    Lsel
+*        Hsel      4.8      0.0      0.0      0.0      0.0
+*        Lsel       0.0      0.0      4.2      0.0      0.0
+*        Pap       0.0      1.0       0.0     0.2      0.2;
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
