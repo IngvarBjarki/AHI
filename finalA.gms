@@ -19,10 +19,8 @@ SET p1(products) 'normal products'
 / Mas, Kus, Kos, Kuv, Kov  /;
 SET p2(products) 'products possible to make from leftovers'
 /   Hsel, Lsel, Pap     /;
-SET p3(products)'subset made for table3'
-/   Mak, Kuk, Kok, Hsel, Lsel   /;
 SET n 'number of barges'
-/   1*105  /;
+/   1*107  /;
 SET l 'number of barges'
 / 1*23 /;
 
@@ -274,27 +272,27 @@ BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
 
 EQUATIONS
-obj .. 'Maximum gross profit'
+obj  'Maximum gross profit'
 
-Balance(i) .. 'to keep track of our inventory, what we own'
- Sold_Prod(j) ..  'we cant sell more than we produce'
+Balance(i)  'to keep track of our inventory, what we own'
+ Sold_Prod(j)   'we cant sell more than we produce'
 
-Barges_buy(i) .. 'ensure we only pick one value n for barges for each timber i'
-Barges_sell(j, k) .. 'ensure we only pick one value  n for barges for each product to each city'
+Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
+Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
 
-SawmillCap.. 'Maximum capacity of the saw mill'
-PlywoodCap.. 'Maximum capacity of plywood mill'
-HSELCap..    'Maximum capacity of HSEL production'
-LSELCap..    'Maximum capacity of LSEL production'
-PAPCap..     'Maximum capacity of PAP production'
+SawmillCap 'Maximum capacity of the saw mill'
+PlywoodCap 'Maximum capacity of plywood mill'
+HSELCap    'Maximum capacity of HSEL production'
+LSELCap    'Maximum capacity of LSEL production'
+PAPCap     'Maximum capacity of PAP production'
 
-second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
+USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 ;
 
 
 
 obj ..
-          sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+        Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
 
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
@@ -312,7 +310,7 @@ Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
                       - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
 
 
-second_hand_pro(j) ..   =g= y(p2)*table3();
+
 
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
 
@@ -321,6 +319,8 @@ Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
  Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
+USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
+
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
 PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
@@ -328,4 +328,5 @@ HSELCap ..   y("Hsel") =l= Hsel_line;
 LSELCap ..  y("Lsel") =l= Lsel_line;
 PAPCap ..   y("Pap") =l= Pap_mill;
 
-
+MODEL final /all/;
+Solve final using lp minimizing Z
