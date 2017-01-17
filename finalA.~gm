@@ -67,13 +67,16 @@ TABLE table2(p1,i)'Cubic-meters of material p1 used in cubic-meter of product i'
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
         KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
         KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
-        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2 ;
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2
+        HSEL    0.0     0.0     0.0     4.8     0.0     0.0      0.0
+        LSEL    0.0     0.0     0.0     0.0     0.0     4.2      0.0
+        PAP     0.0     0.0     0.0     0.0     1.0     0.0      0.0 ;
 
-TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
-                     Mak    Kuk     Kok   Hsel    Lsel
-        Hsel      4.8      0.0      0.0      0.0      0.0
-        Lsel       0.0      0.0      4.2      0.0      0.0
-        Pap       0.0      1.0       0.0     0.2      0.2;
+*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+*                     Mak    Kuk     Kok   Hsel    Lsel
+*        Hsel      4.8      0.0      0.0      0.0      0.0
+*        Lsel       0.0      0.0      4.2      0.0      0.0
+*        Pap       0.0      1.0       0.0     0.2      0.2;
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
@@ -258,13 +261,14 @@ SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
 VARIABLES
 z 'the objective'
 *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j) 'Cubic meters produced of product j'
+y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
 r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
+// y/table --> product made
 INTEGER VARIABLES h, y;
 BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
@@ -283,12 +287,15 @@ PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
+
+second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
 ;
 
 
 
 obj ..
           sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
@@ -304,11 +311,15 @@ obj ..
 Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
                       - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
 
+
+second_hand_pro(j) ..   =g= y(p2)*table3();
+
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k) =l= y(j);
+
 
 //only buy one number of bargers for each timber i
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
- Barges_sell(j, k) .. sum(n, u(l, j, k)) =l= 1;
+ Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
@@ -316,3 +327,5 @@ PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
 LSELCap ..  y("Lsel") =l= Lsel_line;
 PAPCap ..   y("Pap") =l= Pap_mill;
+
+
