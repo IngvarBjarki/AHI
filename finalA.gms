@@ -261,13 +261,14 @@ SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
 VARIABLES
 z 'the objective'
 *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j) 'Cubic meters produced of product j'
+y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
 r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
+// y/table --> product made
 INTEGER VARIABLES h, y;
 BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
@@ -294,6 +295,7 @@ second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when
 
 obj ..
           sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
