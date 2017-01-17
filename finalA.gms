@@ -61,7 +61,7 @@ beta(timber) 'Beta cost parameter by timber assortments'
 
 
 
-TABLE table2(p1,i)'Cubic-meters of material p1 used in cubic-meter of product i'
+TABLE table2(j,i)'Cubic-meters of material p1 used in cubic-meter of product i'
                 MAT     KUT     KOT     MAK     KUK     KOK     FUEL
         MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
