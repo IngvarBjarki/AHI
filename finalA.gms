@@ -32,7 +32,6 @@ PARAMETERS
 
 
 c(products) 'the cost of producing each product, mesured in erous/1000m^3'
-
     /   Mas   550
         Kus   500
         Kos   450
@@ -79,6 +78,7 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
 *        Pap       0.0      1.0       0.0     0.2      0.2;
 
 
+
 TABLE GAMMA1(j,k) 'Gamma coefficent for selling product j in region k'
                   EU      IE      PA      KI
          MAS     1600    1300    1400    1500
@@ -101,6 +101,7 @@ TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
          HSEL    2       4       5       6
          LSEL    3       2       5       7
          PAP     4       10      12      15 ;
+
 
 
 
@@ -313,10 +314,10 @@ PAP_LSEL     'Proportion needed of LSEL for PAP'
 
 
 obj ..
-        Z =e= (sum((k,j), (GAMMA1(j,k)/1000) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
 
+        Z =e= (sum((k,j), (GAMMA1(j,k)/1000) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
         +(sum(i, -1*ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i))) + sum(i, -1*BETA1(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i))))                    //Amount bought times buying price
-        + sum(p1, y(p1)*fuel_amount*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(p1, y(p1)*fuel_amount*(-fuel_price)/1000)                                                               //Amount of fuel produced times selling price of fuel
         + sum(i, (b(i)-s(i))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
         - sum(j, y(j)*c(j)/1000)                                                                                         //Amount of produced products times the production cost
         ;
@@ -332,7 +333,8 @@ timber_bought(i) .. b(i) =e= sum(n, r(n, i)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
 Barges_buy(i) ..  sum( n,r(n,i)) =E= 1;
-Barges_sell(j, k) .. sum((l), u(l, j, k)) =E= 1;
+Barges_sell(j, k) .. sum(l, u(l, j, k)) =E= 1;
+
 
 //===============================CAPACITYS FOR PRODUCTION =============================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
