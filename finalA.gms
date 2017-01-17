@@ -313,32 +313,23 @@ obj ..
 
 
 
-
+//==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
 prod_starved(i) .. sum(r(i, n)*h(n, i)) =g= s(i);
-
-//ÞURFUM AÐ LAGA EININGAR Í BALANCE!!!!!
-//Balance(i) ..   s(i) =e= h(i) - sum(p1, y(p1)*table2(p1, i)$(table2(p1, i)<0.0))
-  //                    - sum(j, y(j)*table2(j, i)$(table(j,i) > 0.0));
-
-
-//second_hand_pro(j) ..   =g= y(p2)*table3();
-
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 
-
-//only buy one number of bargers for each timber i
+//=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
  Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
-//=================CAPACITYS FOR PRODUCTION===========
+//===============================CAPACITYS FOR PRODUCTION=============================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
 PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
 LSELCap ..  y("Lsel") =l= Lsel_line;
 PAPCap ..   y("Pap") =l= Pap_mill;
 
-// Proportion of HSEL AND LSEL NEEDED FOR PAP
+// =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL..  PAP_Pro*y("PAP") =l= y("HSEL");
 PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
 
