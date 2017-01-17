@@ -291,11 +291,7 @@ Balance(i)  'to keep track of our inventory, what we own'
 Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
 
-SawmillCap 'Maximum capacity of the saw mill'
-PlywoodCap 'Maximum capacity of plywood mill'
-HSELCap    'Maximum capacity of HSEL production'
-LSELCap    'Maximum capacity of LSEL production'
-PAPCap     'Maximum capacity of PAP production'
+
 
 USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 
