@@ -283,9 +283,9 @@ EQUATIONS
 
 obj  'Maximum gross profit'
 
- //=============================================ENOUGH TIMBER
- timber_used(i) ' amount of  timber i used to make  product j'
- prod_starved(i)  'ensure that production can not be starved'
+//=============================================ENOUGH TIMBER
+timber_used(i) ' amount of  timber i used to make  product j'
+prod_starved(i)  'ensure that production can not be starved'
 USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(j)   'we cant sell more than we produce'
 
@@ -309,12 +309,12 @@ PAP_LSEL     'Proportion needed of LSEL for PAP'
 
 
 obj ..
-        Z =e= (sum((j,k), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k))) - sum((j,k), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
+        Z =e= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
 
-        //- (sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)*h(n,i) * r(n,i))))                    //Amount bought times buying price
-        //+ sum(p1, y(p1)*fuel_amount*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
-        //+ sum(i, s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
-        //- sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
+        - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i)))                    //Amount bought times buying price
+        + sum(p1, y(p1)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(i, s(i)*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+        - sum(j, y(j)*c(j)/1000)                                                                                         //Amount of produced products times the production cost
         ;
 
 
@@ -343,6 +343,6 @@ PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-DISPLAY z.l, r.l, y.l, s.l, u.l;
+DISPLAY z.l, u.l, r.l, y.l, s.l;
 
 
