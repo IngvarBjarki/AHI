@@ -19,6 +19,8 @@ SET p1(products) 'normal products'
 / Mas, Kus, Kos, Kuv, Kov  /;
 SET p2(products) 'products possible to make from leftovers'
 /   Hsel, Lsel, Pap     /;
+SET p3(products) 'Pulp products which can make paper'
+/   HSEL, LSEL /;
 SET n 'number of barges'
 /   1*107  /;
 SET l 'number of barges'
@@ -310,7 +312,7 @@ PAPCap     'Maximum capacity of PAP production'
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL     'Proportion needed of HSEL for PAP'
 PAP_LSEL     'Proportion needed of LSEL for PAP'
-
+PULP_Bal(p3)     'Cant produce paper without pulp'
 ;
 
 
@@ -350,7 +352,7 @@ PAPCap ..   y("Pap") =l= Pap_mill;
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL..  PAP_Pro*y("PAP") =l= y("HSEL");
 PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
-
+PULP_Bal(p3) .. sum((l,k), u(l,p3,k)*q(l,p3)) + PAP_Pro*y("PAP") =l= y(P3);
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
