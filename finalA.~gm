@@ -61,7 +61,7 @@ beta(timber) 'Beta cost parameter by timber assortments'
 
 
 
-TABLE table2(p1,i)'Cubic-meters of material p1 used in cubic-meter of product i'
+TABLE table2(j,i)'Cubic-meters of material p1 used in cubic-meter of product i'
                 MAT     KUT     KOT     MAK     KUK     KOK     FUEL
         MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
         KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
@@ -134,7 +134,7 @@ TABLE q(l,j) 'Options of amount l to be sold of product j'
 
 TABLE h(n,i) 'Options of amount n to be bought of material i'
     Mat     KUT     KOT     MAK     KUK     KOK
-1   0   0   0   0   0   0
+1   0       0       0       0       0       0
 2   10000   10000   10000   10000   10000   10000
 3   20000   20000   20000   20000   20000   20000
 4   30000   30000   30000   30000   30000   30000
@@ -294,7 +294,7 @@ second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when
 
 
 obj ..
-          sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+          sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
 
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel

@@ -256,6 +256,8 @@ SCALAR Pap_mill 'the capcity of the paper mill, ton/year'
          /80000/;
 SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
+SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
+         /0.2/;
 
 
 VARIABLES
@@ -292,6 +294,8 @@ PlywoodCap.. 'Maximum capacity of plywood mill'
 HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
+PAP_HSEL     'Proportion needed of HSEL for PAP'
+PAP_LSEL     'Proportion needed of LSEL for PAP'
 
 //second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
 ;
@@ -333,5 +337,10 @@ PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
 LSELCap ..  y("Lsel") =l= Lsel_line;
 PAPCap ..   y("Pap") =l= Pap_mill;
+
+// Proportion of HSEL AND LSEL NEEDED FOR PAP
+PAP_HSEL..  PAP_Pro*y("PAP") =l= y("HSEL");
+PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
+
 
 
