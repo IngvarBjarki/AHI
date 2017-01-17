@@ -60,15 +60,15 @@ beta(timber) 'Beta cost parameter by timber assortments'
 
 
 TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
-                MAT     KUT     KOT     MAK     KUK     KOK     FUEL
-        MAS     2.0     0.0     0.0     -0.8    0.0     0.0     -0.2
-        KUS     0.0     2.0     0.0     0.0     -0.8    0.0     -0.2
-        KOS     0.0     0.0     2.0     0.0     0.0     -0.8    -0.2
-        KUV     0.0     2.8     0.0     0.0     -1.6    0.0     -0.2
-        KOV     0.0     0.0     2.8     0.0     0.0     -1.6    -0.2
-        HSEL    0.0     0.0     0.0     4.8     0.0     0.0      0.0
-        LSEL    0.0     0.0     0.0     0.0     0.0     4.2      0.0
-        PAP     0.0     0.0     0.0     0.0     1.0     0.0      0.0 ;
+                MAT     KUT     KOT     MAK     KUK     KOK
+        MAS     2.0     0.0     0.0     -0.8    0.0     0.0
+        KUS     0.0     2.0     0.0     0.0     -0.8    0.0
+        KOS     0.0     0.0     2.0     0.0     0.0     -0.8
+        KUV     0.0     2.8     0.0     0.0     -1.6    0.0
+        KOV     0.0     0.0     2.8     0.0     0.0     -1.6
+        HSEL    0.0     0.0     0.0     4.8     0.0     0.0
+        LSEL    0.0     0.0     0.0     0.0     0.0     4.2
+        PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
 *TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
 *                     Mak    Kuk     Kok   Hsel    Lsel
@@ -270,7 +270,7 @@ u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
 // y/table --> product made
-INTEGER VARIABLES h, y;
+INTEGER VARIABLES y;
 BINARY VARIABLES u, r;
 POSITIVE VARIABLES s;
 
@@ -289,11 +289,11 @@ Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-SawmillCap.. 'Maximum capacity of the saw mill'
-PlywoodCap.. 'Maximum capacity of plywood mill'
-HSELCap..    'Maximum capacity of HSEL production'
-LSELCap..    'Maximum capacity of LSEL production'
-PAPCap..     'Maximum capacity of PAP production'
+SawmillCap 'Maximum capacity of the saw mill'
+PlywoodCap 'Maximum capacity of plywood mill'
+HSELCap    'Maximum capacity of HSEL production'
+LSELCap    'Maximum capacity of LSEL production'
+PAPCap     'Maximum capacity of PAP production'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL     'Proportion needed of HSEL for PAP'
@@ -304,9 +304,9 @@ PAP_LSEL     'Proportion needed of LSEL for PAP'
 
 
 obj ..
-        Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+        Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)*q(l,j) * u(l,j,k)))   //Amount sold times sellingprice
 
-        - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
+        - sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
         - sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
