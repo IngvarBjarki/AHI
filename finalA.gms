@@ -37,8 +37,8 @@ c(products) 'the cost of producing each product, mesured in erous/1000m^3'
     /   Mas   550
         Kus   500
         Kos   450
-        Kuv   250
-        Kov   260
+        Kuv   2500
+        Kov   2600
         Hsel  820
         Lsel  800
         Pap   1700  /
@@ -356,6 +356,6 @@ PULP_Bal(p3) .. sum((l,k), u(l,p3,k)*q(l,p3)) + PAP_Pro*y("PAP") =l= y(P3);
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-DISPLAY z.l, u.l, r.l, y.l, s.l;
+DISPLAY z.l, u.l, r.l, y.l, s.l, b.l;
 
 
