@@ -134,7 +134,7 @@ TABLE q(l,j) 'Options of amount l to be sold of product j'
 
 TABLE h(n,i) 'Options of amount n to be bought of material i'
     Mat     KUT     KOT     MAK     KUK     KOK
-1   0   0   0   0   0   0
+1   0       0       0       0       0       0
 2   10000   10000   10000   10000   10000   10000
 3   20000   20000   20000   20000   20000   20000
 4   30000   30000   30000   30000   30000   30000
@@ -299,7 +299,7 @@ second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when
 
 
 obj ..
-          sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
+          sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
 
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
@@ -325,7 +325,7 @@ Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 
 //only buy one number of bargers for each timber i
 Barges_buy(i) ..  sum( n,r(n,i)) =l= 1;
- Barges_sell(j, k) .. sum(n, u(l, j, k)) =l= 1;
+ Barges_sell(j, k) .. sum(l, u(l, j, k)) =l= 1;
 
 //=================CAPACITYS FOR PRODUCTION===========
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
