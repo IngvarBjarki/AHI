@@ -244,7 +244,7 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 SCALAR saw_mill 'the capacity of the saw mill, m^3/year'
          /200000/;
-SCALAR playwood_mill 'the capacity of the playwood mill, m^3/year'
+SCALAR plywood_mill 'the capacity of the playwood mill, m^3/year'
          /90000/;
 SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year'
          /220000/;
@@ -265,7 +265,7 @@ y(j) 'Cubic meters produced of product j'//total timber i for used in product j 
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 //s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
 s(i) 'amount of timber i used to make products'
-r(i, n) '1 if we buy n boats of timber i, 0 otherwise'
+r(n, i) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 ;
 
@@ -306,9 +306,9 @@ PAP_LSEL     'Proportion needed of LSEL for PAP'
 obj ..
         Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)*q(l,j) * u(l,j,k)))   //Amount sold times sellingprice
 
-        - sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
-        + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
-        + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
+        - sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)*h(n,i) * r(n,i)))                    //Amount bought times buying price
+        + sum(p1, y(p1)*0.2*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(i, s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
         - sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
         ;
 
@@ -316,7 +316,7 @@ obj ..
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
-prod_starved(i) .. sum(r(i, n)*h(n, i)) =g= s(i);
+prod_starved(i) .. sum(n, r(n, i)*h(n, i)) =g= s(i);
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 
