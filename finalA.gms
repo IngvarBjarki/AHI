@@ -256,6 +256,7 @@ SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
 SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
          /0.2/;
+SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1' /-0.2/
 
 
 VARIABLES
@@ -307,7 +308,7 @@ obj ..
         Z =e= sum((k,j), GAMMA(j,k) * sum(l, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(l, q(l,j)*q(l,j) * u(l,j,k)))   //Amount sold times sellingprice
 
         - sum(i, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)*h(n,i) * r(n,i)))                    //Amount bought times buying price
-        + sum(p1, y(p1)*0.2*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(p1, y(p1)*fuel_amount*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(i, s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
         - sum(j, y(j)*c(j))                                                                                         //Amount of produced products times the production cost
         ;
