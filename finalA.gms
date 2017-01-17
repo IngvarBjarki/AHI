@@ -290,11 +290,7 @@ second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when
 
 
 obj ..
-<<<<<<< HEAD
-          sum((k,j), GAMMA(j,k) * sum(n, q(n,j)*u(n,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
-=======
           sum((k,j), GAMMA(j,k) * sum(n, q(l,j)*u(l,j,k))) - sum((k,j), DELTA(j,k) * sum(n, q(l,j)^2 * u(l,j,k)))   //Amount sold times sellingprice
->>>>>>> a923a6a80c61b490c78146134f6bd75a42291eef
         - sum(j, ALPHA(i) * sum(n, h(n,i)*r(n,i))) + sum(i, BETA(i) * sum(n, h(n,i)^2 * r(n,i)))                    //Amount bought times buying price
         + sum(p1, y(p1)*table2(p1,'7')*(-fuel_price))                                                               //Amount of fuel produced times selling price of fuel
         + sum(s(i)*ALPHA(i))                                                                                        //Amount of extra material times its selling price
