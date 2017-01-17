@@ -277,7 +277,7 @@ POSITIVE VARIABLES s;
 EQUATIONS
 obj .. 'Maximum gross profit'
 
-Balance(i) .. 'to keep track of our inventory, what we own'
+//Balance(i) .. 'to keep track of our inventory, what we own'
  Sold_Prod(j) ..  'we cant sell more than we produce'
  //=======================!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!nyjar skordur
  timber_used(i) ..' amount of  timber i used to make  product j'
