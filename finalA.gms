@@ -293,7 +293,7 @@ HSELCap..    'Maximum capacity of HSEL production'
 LSELCap..    'Maximum capacity of LSEL production'
 PAPCap..     'Maximum capacity of PAP production'
 
-second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
+//second_hand_pro(j) .. 'we cant produce more of p2 than the material we gain when we produce p1'
 ;
 
 
