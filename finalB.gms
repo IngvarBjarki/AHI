@@ -274,13 +274,13 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 VARIABLES
 z 'the objective'
 *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
+y(j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 //s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
-s(i) 'amount of timber i used to make products'
-r(n, i) '1 if we buy n boats of timber i, 0 otherwise'
-u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
-b(i) 'amount of timber i bought'
+s(i,t) 'amount of timber i used to make products'
+r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
+u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
+b(i,t) 'amount of timber i bought'
 ;
 
 // y/table --> product made
@@ -297,11 +297,11 @@ obj  'Maximum gross profit'
 
 
 //=============================================ENOUGH TIMBER
-timber_used(i) ' amount of  timber i used to make  product j'
-prod_starved(i)  'ensure that production can not be starved'
+timber_used(i,t) ' amount of  timber i used to make  product j in year t'
+prod_starved(i,t)  'ensure that production can not be starved in each year'
 //USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
-Sold_Prod(j)   'we cant sell more than we produce'
-timber_bought(i) 'amount of timber i bought'
+Sold_Prod(j,t)   'we cant sell more than we produce in each year'
+timber_bought(i,t) 'amount of timber i bought in each year'
 
 //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
 Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
@@ -336,8 +336,8 @@ obj ..
 
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
-timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
-prod_starved(i) .. sum(n, r(n, i)*h(n, i)) =g= s(i);
+timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
+prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i,t)) =g= s(i,t);
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i) .. b(i) =e= sum(n, r(n, i)*h(n, i));
