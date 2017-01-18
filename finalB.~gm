@@ -333,7 +333,7 @@ PULP_Bal(p3,t)     'Cant produce paper without pulp'
 
 obj ..
 
-        Z =e= sum(t, power(0.95, 2)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
+        Z =e= sum(t, power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
 
         - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
         + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
