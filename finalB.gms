@@ -253,16 +253,16 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 
 
-SCALAR saw_mill 'the capacity of the saw mill in year t = 0, m^3/year'
-         /100000/;
-SCALAR plywood_mill 'the capacity of the playwood mill in year t = 0, m^3/year'
-         /90000/;
-SCALAR Hsel_line 'the capacity of the first line in year t = 0, production hsel ton/year'
-         /100000/;
-SCALAR Lsel_line 'the capacity of the second line in year t = 0, producinng lsel ton/year'
-         /150000/;
-SCALAR Pap_mill 'the capcity of the paper mill in year t = 0, ton/year'
-         /80000/;
+SCALAR CAPsaw0 'the capacity of the saw mill in year t = 0, m^3/year'
+         /100000*1.5/;
+SCALAR CAPply0 'the capacity of the playwood mill in year t = 0, m^3/year'
+         /90000*1.5/;
+SCALAR CAPHsel0 'the capacity of the first line in year t = 0, production hsel ton/year'
+         /100000*2.0/;
+SCALAR CAPLsel0 'the capacity of the second line in year t = 0, producinng lsel ton/year'
+         /150000*2.0/;
+SCALAR CAPPap0 'the capcity of the paper mill in year t = 0, ton/year'
+         /80000*2.0/;
 SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
 SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
@@ -288,7 +288,7 @@ INTEGER VARIABLES y;
 BINARY VARIABLES u, r;
 POSITIVE VARIABLES s, b;
 
-y.up(j) = 1060000;
+y.up(j,t) = 1060000;
 
 EQUATIONS
 
@@ -304,8 +304,8 @@ Sold_Prod(j,t)   'we cant sell more than we produce in each year'
 timber_bought(i,t) 'amount of timber i bought in each year'
 
 //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
-Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
-Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
+Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
+Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
 SawmillCap 'Maximum capacity of the saw mill'
@@ -315,49 +315,49 @@ LSELCap    'Maximum capacity of LSEL production'
 PAPCap     'Maximum capacity of PAP production'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
-PAP_HSEL     'Proportion needed of HSEL for PAP'
-PAP_LSEL     'Proportion needed of LSEL for PAP'
-PULP_Bal(p3)     'Cant produce paper without pulp'
+PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
+PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
+PULP_Bal(p3,t)     'Cant produce paper without pulp'
 ;
 
 
 
 obj ..
 
-        Z =e= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k))))   //Amount sold times sellingprice
+        Z =e= sum(t, (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
 
-        - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i)))                    //Amount bought times buying price
-        + sum(p1, y(p1)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
-        + sum(i, (b(i)-s(i))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+        - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
+        + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
+        + sum(i, (b(imt)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
 
-        - sum(j, y(j)*c(j)/1000)                                                                                         //Amount of produced products times the production cost
+        - sum(j, y(j,t)*c(j,t)/1000) )                                                                                         //Amount of produced products times the production cost
         ;
 
 
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
-prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i,t)) =g= s(i,t);
-Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
+prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
+Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
-timber_bought(i) .. b(i) =e= sum(n, r(n, i)*h(n, i));
+timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i,t));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
-Barges_buy(i) ..  sum( n,r(n,i)) =E= 1;
-Barges_sell(j, k) .. sum(l, u(l, j, k)) =E= 1;
+Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
+Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
-//===============================CAPACITYS FOR PRODUCTION =============================
-SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
-PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
-HSELCap ..   y("Hsel") =l= Hsel_line;
-LSELCap ..  y("Lsel") =l= Lsel_line;
-PAPCap ..   y("Pap") =l= Pap_mill;
+//===============================Maximum CAPACITYS FOR PRODUCTION =============================
+SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= CAPsaw0;
+PlywoodCap ..    y("Kuv") + y("Kov")  =l= CAPply0;
+HSELCap ..   y("Hsel") =l= CAPHsel0;
+LSELCap ..  y("Lsel") =l= CAPLsel0;
+PAPCap ..   y("Pap") =l= CAPPap0;
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
-PAP_HSEL..  PAP_Pro*y("PAP") =l= y("HSEL");
-PAP_LSEL..  PAP_Pro*y("PAP") =l= y("LSEL");
-PULP_Bal(p3) .. sum((l,k), u(l,p3,k)*q(l,p3)) + PAP_Pro*y("PAP") =l= y(P3);
+PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
+PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
+PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;

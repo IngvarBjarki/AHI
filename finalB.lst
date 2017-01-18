@@ -1,0 +1,452 @@
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  * FinalA.gms
+   2  *
+   4  option iterlim=999999999;     // avoid limit on iterations
+   5  option reslim=300;            // timelimit for solver in sec.
+   6  option optcr=0.0;             // gap tolerance
+   7  option solprint=ON;           // include solution print in .lst file
+   8  option limrow=100;            // limit number of rows in .lst file
+   9  option limcol=100;            // limit number of columns in .lst file
+  10  //--------------------------------------------------------------------
+  11   
+  12  SET timber 'raw material bought by Metsa Oy'
+  13  /   Mat, Kut, Kot, Mak, Kuk, Kok   /;
+  14  SET products 'Products made by Metsa Oy'
+  15  /   Mas, Kus, Kos, Kuv, Kov, Hsel, Lsel, Pap    /;
+  16  SET destinations 'places where Metsa sells products'
+  17  /   EU, IE, PA, KI  /;
+  18  SET p1(products) 'normal products'
+  19  / Mas, Kus, Kos, Kuv, Kov  /;
+  20  SET p2(products) 'products possible to make from leftovers'
+  21  /   Hsel, Lsel, Pap     /;
+  22  SET p3(products) 'Pulp products which can make paper'
+  23  /   HSEL, LSEL /;
+  24  SET n 'number of barges'
+  25  /   1*107  /;
+  26  SET l 'number of barges'
+  27  / 1*23 /;
+  28  SET v 'Set for profit calculations'
+  29  /   ATO, DPC, SP, FC, PROFIT /
+  30  SET t 'years'
+  31  / 0 1 2 /
+  32   
+  33  ALIAS(timber, i);
+  34  ALIAS(products, j);
+  35  ALIAS(destinations, k);
+  36   
+  37  PARAMETERS
+  38   
+  39   
+  40  c(products) 'the cost of producing each product, mesured in erous/1000m^3'
+  41      /   Mas   550
+  42          Kus   500
+  43          Kos   450
+  44          Kuv   2500
+  45          Kov   2600
+  46          Hsel  820
+  47          Lsel  800
+  48          Pap   1700  /
+  49   
+  50   
+  51  alpha(timber) 'alpha cost parameters by timber assortments'
+  52      /   MAT     190
+  53          KUT     150
+  54          KOT     120
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+  55          MAK     180
+  56          KUK     150
+  57          KOK     150 /
+  58   
+  59  beta(timber) 'Beta cost parameter by timber assortments'
+  60      /   MAT     1.0
+  61          KUT     0.5
+  62          KOT     3.0
+  63          MAK     0.2
+  64          KUK     0.3
+  65          KOK     0.2 /;
+  66   
+  67   
+  68   
+  69   
+  70  TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
+  71                  MAT     KUT     KOT     MAK     KUK     KOK
+  72          MAS     2.0     0.0     0.0     -0.8    0.0     0.0
+  73          KUS     0.0     2.0     0.0     0.0     -0.8    0.0
+  74          KOS     0.0     0.0     2.0     0.0     0.0     -0.8
+  75          KUV     0.0     2.8     0.0     0.0     -1.6    0.0
+  76          KOV     0.0     0.0     2.8     0.0     0.0     -1.6
+  77          HSEL    0.0     0.0     0.0     4.8     0.0     0.0
+  78          LSEL    0.0     0.0     0.0     0.0     0.0     4.2
+  79          PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
+  80   
+  81  *TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+  82  *                     Mak    Kuk     Kok   Hsel    Lsel
+  83  *        Hsel      4.8      0.0      0.0      0.0      0.0
+  84  *        Lsel       0.0      0.0      4.2      0.0      0.0
+  85  *        Pap       0.0      1.0       0.0     0.2      0.2;
+  86   
+  87   
+  88   
+  89  TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
+  90                    EU      IE      PA      KI
+  91           MAS     1600    1300    1400    1500
+  92           KUS     1400    1200    1300    1400
+  93           KOS     1300    1400    1500    1600
+  94           KUV     4400    3800    3600    3500
+  95           KOV     4300    4100    3900    3800
+  96           HSEL    2300    2500    2300    2600
+  97           LSEL    2500    2800    2300    2500
+  98           PAP     4500    4700    4300    4800 ;
+  99   
+ 100   
+ 101  TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
+ 102                   EU      IE      PA      KI
+ 103           MAS     4       10      12      15
+ 104           KUS     4       10      12      15
+ 105           KOS     14      20      22      25
+ 106           KUV     4       10      12      15
+ 107           KOV     4       10      12      15
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 108           HSEL    2       4       5       6
+ 109           LSEL    3       2       5       7
+ 110           PAP     4       10      12      15 ;
+ 111   
+ 112   
+ 113   
+ 114   
+ 115   
+ 116  TABLE q(l,j) 'Options of amount l to be sold of product j'
+ 117     MAS     KOS     KUV     KOV    HSEL   LSEL   PAP
+ 118  1  0       0       0       0      0      0      0
+ 119  2  10000   10000   10000   10000  10000  10000  10000
+ 120  3  20000   20000   20000   20000  20000  20000  20000
+ 121  4  30000   30000   30000   30000  30000  30000  30000
+ 122  5  40000   40000   40000   40000  40000  40000  40000
+ 123  6  50000   50000   50000   50000  50000  50000  50000
+ 124  7  60000   60000   60000   60000  60000  60000  60000
+ 125  8  70000   70000   70000   70000  70000  70000  70000
+ 126  9  80000   80000   80000   80000  80000  80000  80000
+ 127  10 90000   90000   90000   90000  90000  90000  90000
+ 128  11 100000  100000  100000  100000 100000 100000 100000
+ 129  12 110000  110000  110000  110000 110000 110000 110000
+ 130  13 120000  120000  120000  120000 120000 120000 120000
+ 131  14 130000  130000  130000  130000 130000 130000 130000
+ 132  15 140000  140000  140000  140000 140000 140000 140000
+ 133  16 150000  150000  150000  150000 150000 150000 150000
+ 134  17 160000  160000  160000  160000 160000 160000 160000
+ 135  18 170000  170000  170000  170000 170000 170000 170000
+ 136  19 180000  180000  180000  180000 180000 180000 180000
+ 137  20 190000  190000  190000  190000 190000 190000 190000
+ 138  21 200000  200000  200000  200000 200000 200000 200000
+ 139  22 210000  210000  210000  210000 210000 210000 210000
+ 140  23 220000  220000  220000  220000 220000 220000 220000 ;
+ 141   
+ 142   
+ 143   
+ 144  TABLE h(n,i) 'Options of amount n to be bought of material i'
+ 145      Mat     KUT     KOT     MAK     KUK     KOK
+ 146  1   0       0       0       0       0       0
+ 147  2   10000   10000   10000   10000   10000   10000
+ 148  3   20000   20000   20000   20000   20000   20000
+ 149  4   30000   30000   30000   30000   30000   30000
+ 150  5   40000   40000   40000   40000   40000   40000
+ 151  6   50000   50000   50000   50000   50000   50000
+ 152  7   60000   60000   60000   60000   60000   60000
+ 153  8   70000   70000   70000   70000   70000   70000
+ 154  9   80000   80000   80000   80000   80000   80000
+ 155  10  90000   90000   90000   90000   90000   90000
+ 156  11  100000  100000  100000  100000  100000  100000
+ 157  12  110000  110000  110000  110000  110000  110000
+ 158  13  120000  120000  120000  120000  120000  120000
+ 159  14  130000  130000  130000  130000  130000  130000
+ 160  15  140000  140000  140000  140000  140000  140000
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 161  16  150000  150000  150000  150000  150000  150000
+ 162  17  160000  160000  160000  160000  160000  160000
+ 163  18  170000  170000  170000  170000  170000  170000
+ 164  19  180000  180000  180000  180000  180000  180000
+ 165  20  190000  190000  190000  190000  190000  190000
+ 166  21  200000  200000  200000  200000  200000  200000
+ 167  22  210000  210000  210000  210000  210000  210000
+ 168  23  220000  220000  220000  220000  220000  220000
+ 169  24  230000  230000  230000  230000  230000  230000
+ 170  25  240000  240000  240000  240000  240000  240000
+ 171  26  250000  250000  250000  250000  250000  250000
+ 172  27  260000  260000  260000  260000  260000  260000
+ 173  28  270000  270000  270000  270000  270000  270000
+ 174  29  280000  280000  280000  280000  280000  280000
+ 175  30  290000  290000  290000  290000  290000  290000
+ 176  31  300000  300000  300000  300000  300000  300000
+ 177  32  310000  310000  310000  310000  310000  310000
+ 178  33  320000  320000  320000  320000  320000  320000
+ 179  34  330000  330000  330000  330000  330000  330000
+ 180  35  340000  340000  340000  340000  340000  340000
+ 181  36  350000  350000  350000  350000  350000  350000
+ 182  37  360000  360000  360000  360000  360000  360000
+ 183  38  370000  370000  370000  370000  370000  370000
+ 184  39  380000  380000  380000  380000  380000  380000
+ 185  40  390000  390000  390000  390000  390000  390000
+ 186  41  400000  400000  400000  400000  400000  400000
+ 187  42  410000  410000  410000  410000  410000  410000
+ 188  43  420000  420000  420000  420000  420000  420000
+ 189  44  430000  430000  430000  430000  430000  430000
+ 190  45  440000  440000  440000  440000  440000  440000
+ 191  46  450000  450000  450000  450000  450000  450000
+ 192  47  460000  460000  460000  460000  460000  460000
+ 193  48  470000  470000  470000  470000  470000  470000
+ 194  49  480000  480000  480000  480000  480000  480000
+ 195  50  490000  490000  490000  490000  490000  490000
+ 196  51  500000  500000  500000  500000  500000  500000
+ 197  52  510000  510000  510000  510000  510000  510000
+ 198  53  520000  520000  520000  520000  520000  520000
+ 199  54  530000  530000  530000  530000  530000  530000
+ 200  55  540000  540000  540000  540000  540000  540000
+ 201  56  550000  550000  550000  550000  550000  550000
+ 202  57  560000  560000  560000  560000  560000  560000
+ 203  58  570000  570000  570000  570000  570000  570000
+ 204  59  580000  580000  580000  580000  580000  580000
+ 205  60  590000  590000  590000  590000  590000  590000
+ 206  61  600000  600000  600000  600000  600000  600000
+ 207  62  610000  610000  610000  610000  610000  610000
+ 208  63  620000  620000  620000  620000  620000  620000
+ 209  64  630000  630000  630000  630000  630000  630000
+ 210  65  640000  640000  640000  640000  640000  640000
+ 211  66  650000  650000  650000  650000  650000  650000
+ 212  67  660000  660000  660000  660000  660000  660000
+ 213  68  670000  670000  670000  670000  670000  670000
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 214  69  680000  680000  680000  680000  680000  680000
+ 215  70  690000  690000  690000  690000  690000  690000
+ 216  71  700000  700000  700000  700000  700000  700000
+ 217  72  710000  710000  710000  710000  710000  710000
+ 218  73  720000  720000  720000  720000  720000  720000
+ 219  74  730000  730000  730000  730000  730000  730000
+ 220  75  740000  740000  740000  740000  740000  740000
+ 221  76  750000  750000  750000  750000  750000  750000
+ 222  77  760000  760000  760000  760000  760000  760000
+ 223  78  770000  770000  770000  770000  770000  770000
+ 224  79  780000  780000  780000  780000  780000  780000
+ 225  80  790000  790000  790000  790000  790000  790000
+ 226  81  800000  800000  800000  800000  800000  800000
+ 227  82  810000  810000  810000  810000  810000  810000
+ 228  83  820000  820000  820000  820000  820000  820000
+ 229  84  830000  830000  830000  830000  830000  830000
+ 230  85  840000  840000  840000  840000  840000  840000
+ 231  86  850000  850000  850000  850000  850000  850000
+ 232  87  860000  860000  860000  860000  860000  860000
+ 233  88  870000  870000  870000  870000  870000  870000
+ 234  89  880000  880000  880000  880000  880000  880000
+ 235  90  890000  890000  890000  890000  890000  890000
+ 236  91  900000  900000  900000  900000  900000  900000
+ 237  92  910000  910000  910000  910000  910000  910000
+ 238  93  920000  920000  920000  920000  920000  920000
+ 239  94  930000  930000  930000  930000  930000  930000
+ 240  95  940000  940000  940000  940000  940000  940000
+ 241  96  950000  950000  950000  950000  950000  950000
+ 242  97  960000  960000  960000  960000  960000  960000
+ 243  98  970000  970000  970000  970000  970000  970000
+ 244  99  980000  980000  980000  980000  980000  980000
+ 245  100 990000  990000  990000  990000  990000  990000
+ 246  101 1000000 1000000 1000000 1000000 1000000 1000000
+ 247  102 1010000 1010000 1010000 1010000 1010000 1010000
+ 248  103 1020000 1020000 1020000 1020000 1020000 1020000
+ 249  104 1030000 1030000 1030000 1030000 1030000 1030000
+ 250  105 1040000 1040000 1040000 1040000 1040000 1040000
+ 251  106 1050000 1050000 1050000 1050000 1050000 1050000
+ 252  107 1060000 1060000 1060000 1060000 1060000 1060000 ;
+ 253   
+ 254   
+ 255   
+ 256  SCALAR CAPsaw0 'the capacity of the saw mill in year t = 0, m^3/year'
+ 257           /100000/;
+ 258  SCALAR CAPply0 'the capacity of the playwood mill in year t = 0, m^3/year'
+ 259           /90000/;
+ 260  SCALAR CAPHsel0 'the capacity of the first line in year t = 0, production hsel ton/year'
+ 261           /100000/;
+ 262  SCALAR CAPLsel0 'the capacity of the second line in year t = 0, producinng lsel ton/year'
+ 263           /150000/;
+ 264  SCALAR CAPPap0 'the capcity of the paper mill in year t = 0, ton/year'
+ 265           /80000/;
+ 266  SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 267           /40/;
+ 268  SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
+ 269           /0.2/;
+ 270  SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
+ 271           /-0.2/
+ 272   
+ 273   
+ 274  VARIABLES
+ 275  z 'the objective'
+ 276  *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
+ 277  y(j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
+ 278  *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
+ 279  //s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+ 280  s(i,t) 'amount of timber i used to make products'
+ 281  r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
+ 282  u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
+ 283  b(i,t) 'amount of timber i bought'
+ 284  ;
+ 285   
+ 286  // y/table --> product made
+ 287  INTEGER VARIABLES y;
+ 288  BINARY VARIABLES u, r;
+ 289  POSITIVE VARIABLES s, b;
+ 290   
+ 291  y.up(j,t) = 1060000;
+ 292   
+ 293  EQUATIONS
+ 294   
+ 295  obj  'Maximum gross profit'
+ 296   
+ 297   
+ 298   
+ 299  //=============================================ENOUGH TIMBER
+ 300  timber_used(i,t) ' amount of  timber i used to make  product j in year t'
+ 301  prod_starved(i,t)  'ensure that production can not be starved in each year'
+ 302  //USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
+ 303  Sold_Prod(j,t)   'we cant sell more than we produce in each year'
+ 304  timber_bought(i,t) 'amount of timber i bought in each year'
+ 305   
+ 306  //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
+ 307  Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
+ 308  Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
+ 309   
+ 310  //=====================================CAPACITYS FOR PRODUCTION
+ 311  SawmillCap 'Maximum capacity of the saw mill'
+ 312  PlywoodCap 'Maximum capacity of plywood mill'
+ 313  HSELCap    'Maximum capacity of HSEL production'
+ 314  LSELCap    'Maximum capacity of LSEL production'
+ 315  PAPCap     'Maximum capacity of PAP production'
+ 316   
+ 317  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
+ 318  PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
+ 319  PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 320  PULP_Bal(p3,t)     'Cant produce paper without pulp'
+ 321  ;
+ 322   
+ 323   
+ 324   
+ 325  obj ..
+ 326   
+ 327          Z =e= sum(t, (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
+ 328   
+ 329          - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
+ 330          + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
+ 331          + sum(i, (b(imt)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+****                        $120,340,149,171,148
+ 332   
+ 333          - sum(j, y(j,t)*c(j,t)/1000) )                                                                                         //Amount of produced products times the production cost
+****                               $148
+ 334          ;
+ 335   
+ 336   
+ 337   
+ 338  //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
+ 339  timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
+ 340  prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
+ 341  Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+ 342  //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
+ 343  timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i,t));
+****                                                            $148
+ 344   
+ 345  //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
+ 346  Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
+ 347  Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
+ 348   
+ 349   
+ 350  //===============================CAPACITYS FOR PRODUCTION =============================
+ 351  SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= CAPsaw0;
+****                        $148       $148       $148
+ 352  PlywoodCap ..    y("Kuv") + y("Kov")  =l= CAPply0;
+****                          $148       $148
+ 353  HSELCap ..   y("Hsel") =l= CAPHsel0;
+****                       $148
+ 354  LSELCap ..  y("Lsel") =l= CAPLsel0;
+****                      $148
+ 355  PAPCap ..   y("Pap") =l= CAPPap0;
+****                     $148
+ 356   
+ 357  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
+ 358  PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
+ 359  PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
+ 360  PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
+ 361   
+ 362  MODEL final /all/;
+ 363  Solve final using mip maxmizing Z;
+****                                   $257
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 364  DISPLAY z.l, u.l, r.l, y.l, s.l, b.l;
+****            $141 $141 $141      $141 $141
+ 365   
+ 366   
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/18/17 12:16:10 Page 9
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+120  Unknown identifier entered as set
+141  Symbol declared but no values have been assigned. Check for missing
+        data definition, assignment, data loading or implicit assignment
+        via a solve statement.
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+148  Dimension different - The symbol is referenced with more/less
+        indices as declared
+149  Uncontrolled set entered as constant
+171  Domain violation for set
+257  Solve statement not checked because of previous errors
+340  A label/element with the same name exist. You may have forgotten
+        to quote a label/element reference. For example,
+        set i / a,b,c /; parameter x(i); x('a') = 10;
+
+**** 21 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.022 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
+
+
+USER: Course License Spring 2017                     A161219:0249AN-GEN
+      Management Engineering, Technical University of Denmark    DC8756
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      /Users/AtliPall/AHI/finalB.gms
+Output     /Users/AtliPall/AHI/finalB.lst
+
+**** USER ERROR(S) ENCOUNTERED
