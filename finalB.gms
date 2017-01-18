@@ -84,7 +84,18 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /   
+        PAP     80000  /
+
+demand_growth(j) 'demand growth for product j'
+/   MAS    1.010
+     KUS    1.008
+     KOS    1.015
+     KUV    1.015
+     KOV    1.020
+     HSEL  1.025
+     LSEL   1.030
+     PAP     1.035  /
+
 
 FCOST(m) 'Fixed cost'
     /   SAW     100
@@ -99,6 +110,8 @@ MaxCap(m)
     SPULP   200000
     HPULP   300000
     PAP     160000 /;
+
+
 
 
 
@@ -123,7 +136,7 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
 
 TABLE Prodinm(m,j) 'What products j are in what machines m'
         MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
-SAW       1       1       1       0       0        0       0      0     
+SAW       1       1       1       0       0        0       0      0
 PLY       0       0       0       1       1        0       0      0
 SPULP     0       0       0       0       0        1       0      0
 HPULP     0       0       0       0       0        0       1      0
@@ -363,6 +376,9 @@ PULP_Bal(p3,t)     'Cant produce paper without pulp'
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t) 'Profit is what we gain minus what we spend'
+
+
+
 ;
 
 
@@ -374,7 +390,8 @@ obj ..
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
-Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+//Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)*power(demand_growth(j), ord(t)-1) =l= y(j,t);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
