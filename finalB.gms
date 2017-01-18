@@ -26,9 +26,11 @@ SET n 'number of barges'
 SET l 'number of barges'
 / 1*23 /;
 SET v 'Set for profit calculations'
-/   ATO, DPC, SP, FC, PROFIT /
+/   ATO, DPC, SP, FC, PROFIT /;
 SET t 'years'
-/ 0 1 2 /
+/ 0 1 2 /;
+SET m 'machines'
+/ SAW, PLY, SPULP, HPULP, PAP /;
 
 ALIAS(timber, i);
 ALIAS(products, j);
@@ -62,7 +64,14 @@ beta(timber) 'Beta cost parameter by timber assortments'
         KOT     3.0
         MAK     0.2
         KUK     0.3
-        KOK     0.2 /;
+        KOK     0.2 /
+
+CAP0(m) 'Starting capacity' 
+    /   SAW 
+        PLY
+        SPULP 
+        HPULP 
+        PAP  /   ;
 
 
 
@@ -253,16 +262,16 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 
 
-SCALAR CAPsaw0 'the capacity of the saw mill in year t = 0, m^3/year'
-         /100000*1.5/;
-SCALAR CAPply0 'the capacity of the playwood mill in year t = 0, m^3/year'
-         /90000*1.5/;
-SCALAR CAPHsel0 'the capacity of the first line in year t = 0, production hsel ton/year'
-         /100000*2.0/;
-SCALAR CAPLsel0 'the capacity of the second line in year t = 0, producinng lsel ton/year'
-         /150000*2.0/;
-SCALAR CAPPap0 'the capcity of the paper mill in year t = 0, ton/year'
-         /80000*2.0/;
+SCALAR CAPsawMax 'the maximum capacity of the saw mill, m^3/year'
+         /150000/;
+SCALAR CAPplyMax 'the capacity of the playwood mill, m^3/year'
+         /135000/;
+SCALAR CAPHselMax 'the capacity of the first line, production hsel ton/year'
+         /200000/;
+SCALAR CAPLselMax 'the capacity of the second line, producinng lsel ton/year'
+         /300000/;
+SCALAR CAPPapMax 'the capcity of the paper mill, ton/year'
+         /160000/;
 SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
 SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
@@ -328,7 +337,7 @@ obj ..
 
         - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
         + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
-        + sum(i, (b(imt)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+        + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
 
         - sum(j, y(j,t)*c(j,t)/1000) )                                                                                         //Amount of produced products times the production cost
         ;
@@ -348,11 +357,11 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
 //===============================Maximum CAPACITYS FOR PRODUCTION =============================
-SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= CAPsaw0;
-PlywoodCap ..    y("Kuv") + y("Kov")  =l= CAPply0;
-HSELCap ..   y("Hsel") =l= CAPHsel0;
-LSELCap ..  y("Lsel") =l= CAPLsel0;
-PAPCap ..   y("Pap") =l= CAPPap0;
+SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= CAPsawMax;
+PlywoodCap ..    y("Kuv") + y("Kov")  =l= CAPplyMax;
+HSELCap ..   y("Hsel") =l= CAPHselMax;
+LSELCap ..  y("Lsel") =l= CAPLselMax;
+PAPCap ..   y("Pap") =l= CAPPapMax;
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
