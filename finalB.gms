@@ -391,7 +391,7 @@ obj ..
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
 //Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
-Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)*power(demand_growth(j), ord(t)-1) =l= y(j,t);
+Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)*power(demand_growth(j), ord(t)-1)) =l= y(j,t);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
