@@ -43,7 +43,7 @@ SET t 'years'
         /PAP/;
 
 SET m 'production lines'
-/   SAW, PLY, SPULP, HPULP, PAP /;
+/   SAW, PLY, SPULP, HPULP, PAPM /;
 
 ALIAS(timber, i);
 ALIAS(products, j);
@@ -84,7 +84,7 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /
+        PAPM    80000  /
 
 demand_growth(j) 'demand growth for product j'
 /   MAS    1.010
@@ -102,14 +102,14 @@ FCOST(m) 'Fixed cost'
         PLY     300
         SPULP   500
         HPULP   500
-        PAP     700 /
+        PAPM    700 /
 
 MaxCap(m)
    /SAW     150000
     PLY     135000
     SPULP   200000
     HPULP   300000
-    PAP     160000 /;
+    PAPM    160000 /;
 
 
 
@@ -140,7 +140,7 @@ SAW       1       1       1       0       0        0       0      0
 PLY       0       0       0       1       1        0       0      0
 SPULP     0       0       0       0       0        1       0      0
 HPULP     0       0       0       0       0        0       1      0
-PAP       0       0       0       0       0        0       0      1;
+PAPM      0       0       0       0       0        0       0      1;
 
 
 
@@ -408,7 +408,7 @@ Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1);
 
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
-CapStart(m,t).. Cap(m,"1") =l= Cap0(m);
+CapStart(m,t).. Cap(m,"1") =E= Cap0(m);
 
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
@@ -421,7 +421,7 @@ PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
-PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t))/power(demand_growth(j), ord(t)-1))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), (ord(t)-1))))   //Amount sold times sellingprice
+PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j),(ord(t)-1))))   //Amount sold times sellingprice
 
                     - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
                     + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
