@@ -25,6 +25,10 @@ SET n 'number of barges'
 /   1*107  /;
 SET l 'number of barges'
 / 1*23 /;
+SET v 'Set for profit calculations'
+/   ATO, DPC, SP, FC, PROFIT /
+SET t 'years'
+/ 0 1 2 /
 
 ALIAS(timber, i);
 ALIAS(products, j);
@@ -42,6 +46,7 @@ c(products) 'the cost of producing each product, mesured in erous/1000m^3'
         Hsel  820
         Lsel  800
         Pap   1700  /
+
 
 alpha(timber) 'alpha cost parameters by timber assortments'
     /   MAT     190
@@ -248,15 +253,15 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 
 
-SCALAR saw_mill 'the capacity of the saw mill, m^3/year'
-         /200000/;
-SCALAR plywood_mill 'the capacity of the playwood mill, m^3/year'
+SCALAR saw_mill 'the capacity of the saw mill in year t = 0, m^3/year'
+         /100000/;
+SCALAR plywood_mill 'the capacity of the playwood mill in year t = 0, m^3/year'
          /90000/;
-SCALAR Hsel_line 'the capacity of the first line, production hsel ton/year'
-         /220000/;
-SCALAR Lsel_line 'the capacity of the second line, producinng lsel ton/year'
-         /180000/;
-SCALAR Pap_mill 'the capcity of the paper mill, ton/year'
+SCALAR Hsel_line 'the capacity of the first line in year t = 0, production hsel ton/year'
+         /100000/;
+SCALAR Lsel_line 'the capacity of the second line in year t = 0, producinng lsel ton/year'
+         /150000/;
+SCALAR Pap_mill 'the capcity of the paper mill in year t = 0, ton/year'
          /80000/;
 SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
