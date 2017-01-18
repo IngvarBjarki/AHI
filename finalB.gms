@@ -84,9 +84,17 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /   ;
+        PAP     80000  /
 
-
+demand_growth(j) 'demand growth for product j'
+/   MAS    1.010
+     KUS    1.008
+     KOS    1.015
+     KUV    1.015
+     KOV    1.020
+     HSEL  1.025
+     LSEL   1.030
+     PAP     1.035  /;
 
 
 TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
