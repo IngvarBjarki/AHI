@@ -28,9 +28,9 @@ SET l 'number of barges'
 SET v 'Set for profit calculations'
 /   ATO, DPC, SP, FC, PROFIT /;
 SET t 'years'
-/ 0 1 2 /;
+/ 0, 1, 2 /;
 
-    
+
     SET SAWm(products)
         / MAS, KUS, KOS /;
     SET PLYm(products)
@@ -383,11 +383,11 @@ PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t)) 
+FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t))
                             + sum(PLYm, y(PLYm,t))
                             + y("HSEL",t)
                             + y("LSEL",t)
-                            +y("PAP",t)) * ;  
+                            +y("PAP",t)) * ;
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t).. Pr(t) =e= power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
