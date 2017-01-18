@@ -377,6 +377,7 @@ PULP_Bal(p3,t)     'Cant produce paper without pulp'
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t) 'Profit is what we gain minus what we spend'
 
+Capacity3(m,t) 'safdasd'
 
 
 ;
@@ -385,7 +386,7 @@ PROFIT(t) 'Profit is what we gain minus what we spend'
 
 obj ..
 
-        Z =e= sum(t, Pr(t));
+        Z =e= sum(t, power(0.95, ord(t)-1)*Pr(t));
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
@@ -403,6 +404,9 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 //=============================== CAPACITYS FOR PRODUCTION =============================
 
 Capacity2(m,t).. Cap(m,t) =g= sum(j, y(j,t)*Prodinm(m,j));
+Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1);
+
+
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
 CapStart(m,t).. Cap(m,"1") =l= Cap0(m);
 
@@ -417,7 +421,7 @@ PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
-PROFIT(t).. Pr(t) =e= power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t))/power(demand_growth(j), ord(t)-1))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), 2*(ord(t)-1))))   //Amount sold times sellingprice
+PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t))/power(demand_growth(j), ord(t)-1))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), (ord(t)-1))))   //Amount sold times sellingprice
 
                     - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
                     + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
