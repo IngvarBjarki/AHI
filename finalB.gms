@@ -94,7 +94,18 @@ demand_growth(j) 'demand growth for product j'
      KOV    1.020
      HSEL  1.025
      LSEL   1.030
-     PAP     1.035  /;
+     PAP     1.035  /
+
+
+FCOST(m) 'Fixed cost'
+    /   SAW     100
+        PLY     300
+        SPULP   500
+        HPULP   500
+        PAP     700  /;
+
+
+>>>>>>> e6d3834aa611d3158b621bdef2855a1dba6ebf41
 
 
 TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
@@ -107,6 +118,23 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         HSEL    0.0     0.0     0.0     4.8     0.0     0.0
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
+
+
+*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+*                     Mak    Kuk     Kok   Hsel    Lsel
+*        Hsel      4.8      0.0      0.0      0.0      0.0
+*        Lsel       0.0      0.0      4.2      0.0      0.0
+*        Pap       0.0      1.0       0.0     0.2      0.2;
+
+TABLE Prodinm(m,j) 'What products j are in what machines m'
+        MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+SAW       1       1       1       0       0        0       0      0
+PLY       0       0       0       1       1        0       0      0
+SPULP     0       0       0       0       0        1       0      0
+HPULP     0       0       0       0       0        0       1      0
+PAP       0       0       0       0       0        0       0      1/
+
+
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
@@ -382,6 +410,7 @@ PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
+
 FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t))
                             + sum(PLYm, y(PLYm,t))
                             + y("HSEL",t)
