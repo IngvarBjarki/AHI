@@ -84,7 +84,14 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /   ;
+        PAP     80000  /   
+
+FCOST(m) 'Fixed cost'
+    /   SAW     100
+        PLY     300
+        SPULP   500
+        HPULP   500
+        PAP     700 /;
 
 
 
@@ -105,6 +112,14 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
 *        Hsel      4.8      0.0      0.0      0.0      0.0
 *        Lsel       0.0      0.0      4.2      0.0      0.0
 *        Pap       0.0      1.0       0.0     0.2      0.2;
+
+TABLE Prodinm(m,j) 'What products j are in what machines m'
+        MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+SAW       1       1       1       0       0        0       0      0     
+PLY       0       0       0       1       1        0       0      0
+SPULP     0       0       0       0       0        1       0      0
+HPULP     0       0       0       0       0        0       1      0
+PAP       0       0       0       0       0        0       0      1/
 
 
 
@@ -383,7 +398,7 @@ PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t)) 
+FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t) * c) 
                             + sum(PLYm, y(PLYm,t))
                             + y("HSEL",t)
                             + y("LSEL",t)
