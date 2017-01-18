@@ -9,28 +9,28 @@ option limrow=100;            // limit number of rows in .lst file
 option limcol=100;            // limit number of columns in .lst file
 //--------------------------------------------------------------------
 
-SET timber 'raw material bought by Metsa Oy'
+SET timber 'raw material timber bought by Metsa Oy'
 /   Mat, Kut, Kot, Mak, Kuk, Kok   /;
 SET products 'Products made by Metsa Oy'
 /   Mas, Kus, Kos, Kuv, Kov, Hsel, Lsel, Pap    /;
-SET destinations 'places where Metsa sells products'
+SET destinations 'destinations where Metsa sells products'
 /   EU, IE, PA, KI  /;
-SET p1(products) 'normal products'
+SET p1(products) 'normal products p1 produced'
 / Mas, Kus, Kos, Kuv, Kov  /;
-SET p2(products) 'products possible to make from leftovers'
+SET p2(products) 'products p2 possible to make from leftovers'
 /   Hsel, Lsel, Pap     /;
-SET p3(products) 'Pulp products which can make paper'
+SET p3(products) 'Pulp products p3 which can make paper'
 /   HSEL, LSEL /;
-SET n 'number of barges'
+SET n 'number of barges n bought'
 /   1*107  /;
-SET l 'number of barges'
+SET l 'number of barges l sold'
 / 1*23 /;
 SET v 'Set for profit calculations'
 /   ATO, DPC, SP, FC, PROFIT /;
 SET t 'years'
-/ 0 1 2 /;
+/ 0, 1, 2 /;
 
-    
+
     SET SAWm(products)
         / MAS, KUS, KOS /;
     SET PLYm(products)
@@ -107,6 +107,7 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
+
 *TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
 *                     Mak    Kuk     Kok   Hsel    Lsel
 *        Hsel      4.8      0.0      0.0      0.0      0.0
@@ -120,6 +121,7 @@ PLY       0       0       0       1       1        0       0      0
 SPULP     0       0       0       0       0        1       0      0
 HPULP     0       0       0       0       0        0       1      0
 PAP       0       0       0       0       0        0       0      1/
+
 
 
 
@@ -371,8 +373,6 @@ obj ..
 
         Z =e= sum(t, Pr(t));
 
-
-
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
@@ -398,11 +398,12 @@ PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t) * c) 
+
+FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t))
                             + sum(PLYm, y(PLYm,t))
                             + y("HSEL",t)
                             + y("LSEL",t)
-                            +y("PAP",t)) * ;  
+                            +y("PAP",t)) * ;
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t).. Pr(t) =e= power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
