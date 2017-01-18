@@ -9,28 +9,28 @@ option limrow=100;            // limit number of rows in .lst file
 option limcol=100;            // limit number of columns in .lst file
 //--------------------------------------------------------------------
 
-SET timber 'raw material bought by Metsa Oy'
+SET timber 'raw material timber bought by Metsa Oy'
 /   Mat, Kut, Kot, Mak, Kuk, Kok   /;
 SET products 'Products made by Metsa Oy'
 /   Mas, Kus, Kos, Kuv, Kov, Hsel, Lsel, Pap    /;
-SET destinations 'places where Metsa sells products'
+SET destinations 'destinations where Metsa sells products'
 /   EU, IE, PA, KI  /;
-SET p1(products) 'normal products'
+SET p1(products) 'normal products p1 produced'
 / Mas, Kus, Kos, Kuv, Kov  /;
-SET p2(products) 'products possible to make from leftovers'
+SET p2(products) 'products p2 possible to make from leftovers'
 /   Hsel, Lsel, Pap     /;
-SET p3(products) 'Pulp products which can make paper'
+SET p3(products) 'Pulp products p3 which can make paper'
 /   HSEL, LSEL /;
-SET n 'number of barges'
+SET n 'number of barges n bought'
 /   1*107  /;
-SET l 'number of barges'
+SET l 'number of barges l sold'
 / 1*23 /;
 SET v 'Set for profit calculations'
 /   ATO, DPC, SP, FC, PROFIT /;
 SET t 'years'
-/ 0 1 2 /;
+/ 1, 2, 3 /;
 
-    
+
     SET SAWm(products)
         / MAS, KUS, KOS /;
     SET PLYm(products)
@@ -84,7 +84,34 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /   ;
+        PAP     80000  /
+
+demand_growth(j) 'demand growth for product j'
+/   MAS    1.010
+     KUS    1.008
+     KOS    1.015
+     KUV    1.015
+     KOV    1.020
+     HSEL  1.025
+     LSEL   1.030
+     PAP     1.035  /
+
+
+FCOST(m) 'Fixed cost'
+    /   SAW     100
+        PLY     300
+        SPULP   500
+        HPULP   500
+        PAP     700 /
+
+MaxCap(m)
+   /SAW     150000 
+    PLY     135000
+    SPULP   200000
+    HPULP   300000
+    PAP     160000 /;
+
+
 
 
 
@@ -100,11 +127,21 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
+
 *TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
 *                     Mak    Kuk     Kok   Hsel    Lsel
 *        Hsel      4.8      0.0      0.0      0.0      0.0
 *        Lsel       0.0      0.0      4.2      0.0      0.0
 *        Pap       0.0      1.0       0.0     0.2      0.2;
+
+TABLE Prodinm(m,j) 'What products j are in what machines m'
+        MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+SAW       1       1       1       0       0        0       0      0
+PLY       0       0       0       1       1        0       0      0
+SPULP     0       0       0       0       0        1       0      0
+HPULP     0       0       0       0       0        0       1      0
+PAP       0       0       0       0       0        0       0      1;
+
 
 
 
@@ -275,16 +312,6 @@ TABLE h(n,i) 'Options of amount n to be bought of material i'
 
 
 
-SCALAR CAPsawMax 'the maximum capacity of the saw mill, m^3/year'
-         /150000/;
-SCALAR CAPplyMax 'the capacity of the playwood mill, m^3/year'
-         /135000/;
-SCALAR CAPHselMax 'the capacity of the first line, production hsel ton/year'
-         /200000/;
-SCALAR CAPLselMax 'the capacity of the second line, producinng lsel ton/year'
-         /300000/;
-SCALAR CAPPapMax 'the capcity of the paper mill, ton/year'
-         /160000/;
 SCALAR fuel_price 'fuel wood suitable for producing energy at value of 40'
          /40/;
 SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
@@ -305,6 +332,7 @@ u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 b(i,t) 'amount of timber i bought'
 fxC(t) 'Fixed cost of machine m in year t'
 Pr(t) 'Net profit in each year t'
+Cap(m,t) 'Capacity of machine m in year t'
 ;
 
 // y/table --> product made
@@ -313,6 +341,7 @@ BINARY VARIABLES u, r;
 POSITIVE VARIABLES s, b;
 
 y.up(j,t) = 1060000;
+
 
 EQUATIONS
 
@@ -332,11 +361,10 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-SawmillCap(t) 'Maximum capacity of the saw mill'
-PlywoodCap(t) 'Maximum capacity of plywood mill'
-HSELCap(t)    'Maximum capacity of HSEL production'
-LSELCap(t)    'Maximum capacity of LSEL production'
-PAPCap(t)     'Maximum capacity of PAP production'
+Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+Capacity2(m,t) 'Make sure that the capacity does not go down'
+MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
+CapStart(m,t)   'Make sure the starting capacity is right'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
@@ -344,10 +372,13 @@ PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
 PULP_Bal(p3,t)     'Cant produce paper without pulp'
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-FixedCost(t) 'Fixed cost of machine m in year t'
+*FixedCost(t) 'Fixed cost of machine m in year t'
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t) 'Profit is what we gain minus what we spend'
+
+
+
 ;
 
 
@@ -356,12 +387,11 @@ obj ..
 
         Z =e= sum(t, Pr(t));
 
-
-
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
-Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+//Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)*power(demand_growth(j), ord(t)-1) =l= y(j,t);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
@@ -370,12 +400,12 @@ Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
 Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
-//===============================Maximum CAPACITYS FOR PRODUCTION =============================
-SawmillCap(t) ..  y("Mas",t) + y("Kus",t) + y("Kos",t)  =l= CAPsawMax;
-PlywoodCap(t) ..    y("Kuv",t) + y("Kov",t)  =l= CAPplyMax;
-HSELCap(t) ..   y("Hsel",t) =l= CAPHselMax;
-LSELCap(t) ..  y("Lsel",t) =l= CAPLselMax;
-PAPCap(t) ..   y("Pap",t) =l= CAPPapMax;
+//=============================== CAPACITYS FOR PRODUCTION =============================
+Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
+Capacity2(m,t).. Cap(m,t) =g= sum(j, y(j,t)*Prodinm(m,j));
+MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
+CapStart(m,t).. Cap(m,"1") =l= Cap0(m);
+
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
@@ -383,11 +413,8 @@ PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
 // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-FixedCost(t).. fxC(t) =e=    (sum(SAWm, y(SAWm,t)) 
-                            + sum(PLYm, y(PLYm,t))
-                            + y("HSEL",t)
-                            + y("LSEL",t)
-                            +y("PAP",t)) * ;  
+
+
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 PROFIT(t).. Pr(t) =e= power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))))   //Amount sold times sellingprice
@@ -396,13 +423,14 @@ PROFIT(t).. Pr(t) =e= power(0.95, ord(t)-1)* (sum((k,j), (GAMMA(j,k)/1000) * sum
                     + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
                     + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
 
-                    - sum(j, y(j,t)*c(j)/1000)                                                                                       //Amount of produced products times the production cost
+                    - sum(j, y(j,t)*c(j)/1000) 
+                    - sum(m, Cap(m,t+1)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
 
 
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-DISPLAY z.l, u.l, r.l, y.l, s.l, b.l;
+DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l;
 
 
