@@ -339,7 +339,7 @@ obj ..
         + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
         + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
 
-        - sum(j, y(j,t)*c(j,t)/1000) )                                                                                         //Amount of produced products times the production cost
+        - sum(j, y(j,t)*c(j)/1000) )                                                                                         //Amount of produced products times the production cost
         ;
 
 
@@ -349,7 +349,7 @@ timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
 Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
 //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
-timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i,t));
+timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
 Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
