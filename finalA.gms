@@ -73,12 +73,6 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
-*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
-*                     Mak    Kuk     Kok   Hsel    Lsel
-*        Hsel      4.8      0.0      0.0      0.0      0.0
-*        Lsel       0.0      0.0      4.2      0.0      0.0
-*        Pap       0.0      1.0       0.0     0.2      0.2;
-
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
@@ -268,10 +262,7 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 
 VARIABLES
 z 'the objective'
-*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
-*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+y(j) 'Cubic meters produced of product j'
 s(i) 'amount of timber i used to make products'
 r(n, i) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'

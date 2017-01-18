@@ -100,12 +100,6 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
-*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
-*                     Mak    Kuk     Kok   Hsel    Lsel
-*        Hsel      4.8      0.0      0.0      0.0      0.0
-*        Lsel       0.0      0.0      4.2      0.0      0.0
-*        Pap       0.0      1.0       0.0     0.2      0.2;
-
 
 
 TABLE GAMMA(j,k) 'Gamma coefficent for selling product j in region k'
@@ -295,10 +289,7 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 
 VARIABLES
 z 'the objective'
-*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
-*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+y(j,t) 'Cubic meters produced of product j'
 s(i,t) 'amount of timber i used to make products'
 r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
@@ -323,7 +314,6 @@ obj  'Maximum gross profit'
 //=============================================ENOUGH TIMBER
 timber_used(i,t) ' amount of  timber i used to make  product j in year t'
 prod_starved(i,t)  'ensure that production can not be starved in each year'
-//USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(j,t)   'we cant sell more than we produce in each year'
 timber_bought(i,t) 'amount of timber i bought in each year'
 
@@ -362,7 +352,6 @@ obj ..
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
 Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
-//USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
