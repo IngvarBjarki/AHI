@@ -67,11 +67,11 @@ beta(timber) 'Beta cost parameter by timber assortments'
         KOK     0.2 /
 
 CAP0(m) 'Starting capacity' 
-    /   SAW 
-        PLY
-        SPULP 
-        HPULP 
-        PAP  /   ;
+    /   SAW     100000
+        PLY     90000
+        SPULP   100000
+        HPULP   150000
+        PAP     80000  /   ;
 
 
 
@@ -317,11 +317,11 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-SawmillCap 'Maximum capacity of the saw mill'
-PlywoodCap 'Maximum capacity of plywood mill'
-HSELCap    'Maximum capacity of HSEL production'
-LSELCap    'Maximum capacity of LSEL production'
-PAPCap     'Maximum capacity of PAP production'
+SawmillCap(t) 'Maximum capacity of the saw mill'
+PlywoodCap(t) 'Maximum capacity of plywood mill'
+HSELCap(t)    'Maximum capacity of HSEL production'
+LSELCap(t)    'Maximum capacity of LSEL production'
+PAPCap(t)     'Maximum capacity of PAP production'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
@@ -357,11 +357,11 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
 //===============================Maximum CAPACITYS FOR PRODUCTION =============================
-SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= CAPsawMax;
-PlywoodCap ..    y("Kuv") + y("Kov")  =l= CAPplyMax;
-HSELCap ..   y("Hsel") =l= CAPHselMax;
-LSELCap ..  y("Lsel") =l= CAPLselMax;
-PAPCap ..   y("Pap") =l= CAPPapMax;
+SawmillCap(t) ..  y("Mas",t) + y("Kus",t) + y("Kos",t)  =l= CAPsawMax;
+PlywoodCap(t) ..    y("Kuv",t) + y("Kov",t)  =l= CAPplyMax;
+HSELCap(t) ..   y("Hsel",t) =l= CAPHselMax;
+LSELCap(t) ..  y("Lsel",t) =l= CAPLselMax;
+PAPCap(t) ..   y("Pap",t) =l= CAPPapMax;
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
