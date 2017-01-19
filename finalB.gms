@@ -315,7 +315,8 @@ s(i,t) 'amount of timber i used to make products'
 r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 b(i,t) 'amount of timber i bought'
-fxC(t) 'Fixed cost of machine m in year t'
+
+*fxC(t) 'Fixed cost of machine m in year t'
 Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
 
