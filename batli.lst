@@ -1,4 +1,4 @@
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 1
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -56,7 +56,7 @@ C o m p i l a t i o n
   52  PARAMETERS
   53   
   54   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 2
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -114,7 +114,7 @@ C o m p i l a t i o n
  105          PAPM    700 /
  106   
  107  MaxCap(m)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 3
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -172,7 +172,7 @@ C o m p i l a t i o n
  158   
  159   
  160  TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 4
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -230,7 +230,7 @@ C o m p i l a t i o n
  211  7   60000   60000   60000   60000   60000   60000
  212  8   70000   70000   70000   70000   70000   70000
  213  9   80000   80000   80000   80000   80000   80000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 5
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -288,7 +288,7 @@ C o m p i l a t i o n
  264  60  590000  590000  590000  590000  590000  590000
  265  61  600000  600000  600000  600000  600000  600000
  266  62  610000  610000  610000  610000  610000  610000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 6
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -346,7 +346,7 @@ C o m p i l a t i o n
  317  SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
  318           /0.2/;
  319  SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 7
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -404,7 +404,7 @@ C o m p i l a t i o n
  370  PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
  371  PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
  372  PULP_Bal(p3,t)     'Cant produce paper without pulp'
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 8
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -462,7 +462,7 @@ C o m p i l a t i o n
  423  // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
  424  PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j),(ord(t)-1))))   //Amount sold times sellingprice
  425   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:05:06 Page 9
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 13:35:28 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -485,7 +485,7 @@ C o m p i l a t i o n
 
 
 COMPILATION TIME     =        0.003 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 10
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 10
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -543,7 +543,7 @@ prod_starved(Mat,1)..  - s(Mat,1) + 10000*r(2,Mat,1) + 20000*r(3,Mat,1) + 30000*
       + 230000*r(24,Mat,1) + 240000*r(25,Mat,1) + 250000*r(26,Mat,1) + 260000*r(27,Mat,1) + 270000*r(28,Mat,1) + 280000*r(29,Mat,1) + 290000*r(30,Mat,1) + 300000*r(31,Mat,1) + 310000*r(32,Mat,1) + 320000*r(33,Mat,1) + 330000*r(34,Mat,1)
      
       + 340000*r(35,Mat,1) + 350000*r(36,Mat,1) + 360000*r(37,Mat,1) + 370000*r(38,Mat,1) + 380000*r(39,Mat,1) + 390000*r(40,Mat,1) + 400000*r(41,Mat,1) + 410000*r(42,Mat,1) + 420000*r(43,Mat,1) + 430000*r(44,Mat,1) + 440000*r(45,Mat,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 11
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 11
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -601,7 +601,7 @@ prod_starved(Mat,3)..  - s(Mat,3) + 10000*r(2,Mat,3) + 20000*r(3,Mat,3) + 30000*
       + 890000*r(90,Mat,3) + 900000*r(91,Mat,3) + 910000*r(92,Mat,3) + 920000*r(93,Mat,3) + 930000*r(94,Mat,3) + 940000*r(95,Mat,3) + 950000*r(96,Mat,3) + 960000*r(97,Mat,3) + 970000*r(98,Mat,3) + 980000*r(99,Mat,3) + 990000*r(100,Mat,3)
      
       + 1000000*r(101,Mat,3) + 1010000*r(102,Mat,3) + 1020000*r(103,Mat,3) + 1030000*r(104,Mat,3) + 1040000*r(105,Mat,3) + 1050000*r(106,Mat,3) + 1060000*r(107,Mat,3) =G= 0 ; (LHS = 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 12
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 12
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -659,7 +659,7 @@ prod_starved(Kut,3)..  - s(Kut,3) + 10000*r(2,Kut,3) + 20000*r(3,Kut,3) + 30000*
       + 450000*r(46,Kut,3) + 460000*r(47,Kut,3) + 470000*r(48,Kut,3) + 480000*r(49,Kut,3) + 490000*r(50,Kut,3) + 500000*r(51,Kut,3) + 510000*r(52,Kut,3) + 520000*r(53,Kut,3) + 530000*r(54,Kut,3) + 540000*r(55,Kut,3) + 550000*r(56,Kut,3)
      
       + 560000*r(57,Kut,3) + 570000*r(58,Kut,3) + 580000*r(59,Kut,3) + 590000*r(60,Kut,3) + 600000*r(61,Kut,3) + 610000*r(62,Kut,3) + 620000*r(63,Kut,3) + 630000*r(64,Kut,3) + 640000*r(65,Kut,3) + 650000*r(66,Kut,3) + 660000*r(67,Kut,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 13
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 13
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -714,7 +714,7 @@ prod_starved(Kot,2)..  - s(Kot,2) + 10000*r(2,Kot,2) + 20000*r(3,Kot,2) + 30000*
      
       + 1000000*r(101,Kot,2) + 1010000*r(102,Kot,2) + 1020000*r(103,Kot,2) + 1030000*r(104,Kot,2) + 1040000*r(105,Kot,2) + 1050000*r(106,Kot,2) + 1060000*r(107,Kot,2) =G= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 14
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 14
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -772,7 +772,7 @@ prod_starved(Mak,2)..  - s(Mak,2) + 10000*r(2,Mak,2) + 20000*r(3,Mak,2) + 30000*
       + 450000*r(46,Mak,2) + 460000*r(47,Mak,2) + 470000*r(48,Mak,2) + 480000*r(49,Mak,2) + 490000*r(50,Mak,2) + 500000*r(51,Mak,2) + 510000*r(52,Mak,2) + 520000*r(53,Mak,2) + 530000*r(54,Mak,2) + 540000*r(55,Mak,2) + 550000*r(56,Mak,2)
      
       + 560000*r(57,Mak,2) + 570000*r(58,Mak,2) + 580000*r(59,Mak,2) + 590000*r(60,Mak,2) + 600000*r(61,Mak,2) + 610000*r(62,Mak,2) + 620000*r(63,Mak,2) + 630000*r(64,Mak,2) + 640000*r(65,Mak,2) + 650000*r(66,Mak,2) + 660000*r(67,Mak,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 15
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 15
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -827,7 +827,7 @@ prod_starved(Kuk,1)..  - s(Kuk,1) + 10000*r(2,Kuk,1) + 20000*r(3,Kuk,1) + 30000*
      
       + 1000000*r(101,Kuk,1) + 1010000*r(102,Kuk,1) + 1020000*r(103,Kuk,1) + 1030000*r(104,Kuk,1) + 1040000*r(105,Kuk,1) + 1050000*r(106,Kuk,1) + 1060000*r(107,Kuk,1) =G= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 16
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 16
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -885,7 +885,7 @@ prod_starved(Kok,1)..  - s(Kok,1) + 10000*r(2,Kok,1) + 20000*r(3,Kok,1) + 30000*
       + 450000*r(46,Kok,1) + 460000*r(47,Kok,1) + 470000*r(48,Kok,1) + 480000*r(49,Kok,1) + 490000*r(50,Kok,1) + 500000*r(51,Kok,1) + 510000*r(52,Kok,1) + 520000*r(53,Kok,1) + 530000*r(54,Kok,1) + 540000*r(55,Kok,1) + 550000*r(56,Kok,1)
      
       + 560000*r(57,Kok,1) + 570000*r(58,Kok,1) + 580000*r(59,Kok,1) + 590000*r(60,Kok,1) + 600000*r(61,Kok,1) + 610000*r(62,Kok,1) + 620000*r(63,Kok,1) + 630000*r(64,Kok,1) + 640000*r(65,Kok,1) + 650000*r(66,Kok,1) + 660000*r(67,Kok,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 17
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 17
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -940,7 +940,7 @@ prod_starved(Kok,3)..  - s(Kok,3) + 10000*r(2,Kok,3) + 20000*r(3,Kok,3) + 30000*
      
       + 1000000*r(101,Kok,3) + 1010000*r(102,Kok,3) + 1020000*r(103,Kok,3) + 1030000*r(104,Kok,3) + 1040000*r(105,Kok,3) + 1050000*r(106,Kok,3) + 1060000*r(107,Kok,3) =G= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 18
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 18
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -998,7 +998,7 @@ Sold_Prod(Mas,3)..  - y(Mas,3) + 10000*u(2,Mas,EU,3) + 10000*u(2,Mas,IE,3) + 100
       + 160000*u(17,Mas,PA,3) + 160000*u(17,Mas,KI,3) + 170000*u(18,Mas,EU,3) + 170000*u(18,Mas,IE,3) + 170000*u(18,Mas,PA,3) + 170000*u(18,Mas,KI,3) + 180000*u(19,Mas,EU,3) + 180000*u(19,Mas,IE,3) + 180000*u(19,Mas,PA,3) + 180000*u(19,Mas,KI,3)
      
       + 190000*u(20,Mas,EU,3) + 190000*u(20,Mas,IE,3) + 190000*u(20,Mas,PA,3) + 190000*u(20,Mas,KI,3) + 200000*u(21,Mas,EU,3) + 200000*u(21,Mas,IE,3) + 200000*u(21,Mas,PA,3) + 200000*u(21,Mas,KI,3) + 210000*u(22,Mas,EU,3) + 210000*u(22,Mas,IE,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 19
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 19
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1056,7 +1056,7 @@ Sold_Prod(Kos,3)..  - y(Kos,3) + 10000*u(2,Kos,EU,3) + 10000*u(2,Kos,IE,3) + 100
       + 60000*u(7,Kos,IE,3) + 60000*u(7,Kos,PA,3) + 60000*u(7,Kos,KI,3) + 70000*u(8,Kos,EU,3) + 70000*u(8,Kos,IE,3) + 70000*u(8,Kos,PA,3) + 70000*u(8,Kos,KI,3) + 80000*u(9,Kos,EU,3) + 80000*u(9,Kos,IE,3) + 80000*u(9,Kos,PA,3) + 80000*u(9,Kos,KI,3)
      
       + 90000*u(10,Kos,EU,3) + 90000*u(10,Kos,IE,3) + 90000*u(10,Kos,PA,3) + 90000*u(10,Kos,KI,3) + 100000*u(11,Kos,EU,3) + 100000*u(11,Kos,IE,3) + 100000*u(11,Kos,PA,3) + 100000*u(11,Kos,KI,3) + 110000*u(12,Kos,EU,3) + 110000*u(12,Kos,IE,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 20
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 20
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1114,7 +1114,7 @@ Sold_Prod(Kuv,3)..  - y(Kuv,3) + 10000*u(2,Kuv,EU,3) + 10000*u(2,Kuv,IE,3) + 100
       + 30000*u(4,Kuv,PA,3) + 30000*u(4,Kuv,KI,3) + 40000*u(5,Kuv,EU,3) + 40000*u(5,Kuv,IE,3) + 40000*u(5,Kuv,PA,3) + 40000*u(5,Kuv,KI,3) + 50000*u(6,Kuv,EU,3) + 50000*u(6,Kuv,IE,3) + 50000*u(6,Kuv,PA,3) + 50000*u(6,Kuv,KI,3) + 60000*u(7,Kuv,EU,3)
      
       + 60000*u(7,Kuv,IE,3) + 60000*u(7,Kuv,PA,3) + 60000*u(7,Kuv,KI,3) + 70000*u(8,Kuv,EU,3) + 70000*u(8,Kuv,IE,3) + 70000*u(8,Kuv,PA,3) + 70000*u(8,Kuv,KI,3) + 80000*u(9,Kuv,EU,3) + 80000*u(9,Kuv,IE,3) + 80000*u(9,Kuv,PA,3) + 80000*u(9,Kuv,KI,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 21
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 21
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1169,7 +1169,7 @@ Sold_Prod(Kov,2)..  - y(Kov,2) + 10000*u(2,Kov,EU,2) + 10000*u(2,Kov,IE,2) + 100
      
       + 210000*u(22,Kov,PA,2) + 210000*u(22,Kov,KI,2) + 220000*u(23,Kov,EU,2) + 220000*u(23,Kov,IE,2) + 220000*u(23,Kov,PA,2) + 220000*u(23,Kov,KI,2) =L= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 22
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 22
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1227,7 +1227,7 @@ Sold_Prod(Hsel,2)..  - y(Hsel,2) + 10000*u(2,Hsel,EU,2) + 10000*u(2,Hsel,IE,2) +
       + 150000*u(16,Hsel,KI,2) + 160000*u(17,Hsel,EU,2) + 160000*u(17,Hsel,IE,2) + 160000*u(17,Hsel,PA,2) + 160000*u(17,Hsel,KI,2) + 170000*u(18,Hsel,EU,2) + 170000*u(18,Hsel,IE,2) + 170000*u(18,Hsel,PA,2) + 170000*u(18,Hsel,KI,2) + 180000*u(19,Hsel,EU,2)
      
       + 180000*u(19,Hsel,IE,2) + 180000*u(19,Hsel,PA,2) + 180000*u(19,Hsel,KI,2) + 190000*u(20,Hsel,EU,2) + 190000*u(20,Hsel,IE,2) + 190000*u(20,Hsel,PA,2) + 190000*u(20,Hsel,KI,2) + 200000*u(21,Hsel,EU,2) + 200000*u(21,Hsel,IE,2) + 200000*u(21,Hsel,PA,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 23
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 23
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1285,7 +1285,7 @@ Sold_Prod(Lsel,2)..  - y(Lsel,2) + 10000*u(2,Lsel,EU,2) + 10000*u(2,Lsel,IE,2) +
       + 130000*u(14,Lsel,IE,2) + 130000*u(14,Lsel,PA,2) + 130000*u(14,Lsel,KI,2) + 140000*u(15,Lsel,EU,2) + 140000*u(15,Lsel,IE,2) + 140000*u(15,Lsel,PA,2) + 140000*u(15,Lsel,KI,2) + 150000*u(16,Lsel,EU,2) + 150000*u(16,Lsel,IE,2) + 150000*u(16,Lsel,PA,2)
      
       + 150000*u(16,Lsel,KI,2) + 160000*u(17,Lsel,EU,2) + 160000*u(17,Lsel,IE,2) + 160000*u(17,Lsel,PA,2) + 160000*u(17,Lsel,KI,2) + 170000*u(18,Lsel,EU,2) + 170000*u(18,Lsel,IE,2) + 170000*u(18,Lsel,PA,2) + 170000*u(18,Lsel,KI,2) + 180000*u(19,Lsel,EU,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 24
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 24
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1343,7 +1343,7 @@ Sold_Prod(Pap,2)..  - y(Pap,2) + 10000*u(2,Pap,EU,2) + 10000*u(2,Pap,IE,2) + 100
       + 110000*u(12,Pap,PA,2) + 110000*u(12,Pap,KI,2) + 120000*u(13,Pap,EU,2) + 120000*u(13,Pap,IE,2) + 120000*u(13,Pap,PA,2) + 120000*u(13,Pap,KI,2) + 130000*u(14,Pap,EU,2) + 130000*u(14,Pap,IE,2) + 130000*u(14,Pap,PA,2) + 130000*u(14,Pap,KI,2)
      
       + 140000*u(15,Pap,EU,2) + 140000*u(15,Pap,IE,2) + 140000*u(15,Pap,PA,2) + 140000*u(15,Pap,KI,2) + 150000*u(16,Pap,EU,2) + 150000*u(16,Pap,IE,2) + 150000*u(16,Pap,PA,2) + 150000*u(16,Pap,KI,2) + 160000*u(17,Pap,EU,2) + 160000*u(17,Pap,IE,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 25
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 25
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1401,7 +1401,7 @@ timber_bought(Mat,2)..  - 10000*r(2,Mat,2) - 20000*r(3,Mat,2) - 30000*r(4,Mat,2)
      
       - 120000*r(13,Mat,2) - 130000*r(14,Mat,2) - 140000*r(15,Mat,2) - 150000*r(16,Mat,2) - 160000*r(17,Mat,2) - 170000*r(18,Mat,2) - 180000*r(19,Mat,2) - 190000*r(20,Mat,2) - 200000*r(21,Mat,2) - 210000*r(22,Mat,2) - 220000*r(23,Mat,2)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 26
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 26
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1459,7 +1459,7 @@ timber_bought(Kut,1)..  - 10000*r(2,Kut,1) - 20000*r(3,Kut,1) - 30000*r(4,Kut,1)
       - 670000*r(68,Kut,1) - 680000*r(69,Kut,1) - 690000*r(70,Kut,1) - 700000*r(71,Kut,1) - 710000*r(72,Kut,1) - 720000*r(73,Kut,1) - 730000*r(74,Kut,1) - 740000*r(75,Kut,1) - 750000*r(76,Kut,1) - 760000*r(77,Kut,1) - 770000*r(78,Kut,1)
      
       - 780000*r(79,Kut,1) - 790000*r(80,Kut,1) - 800000*r(81,Kut,1) - 810000*r(82,Kut,1) - 820000*r(83,Kut,1) - 830000*r(84,Kut,1) - 840000*r(85,Kut,1) - 850000*r(86,Kut,1) - 860000*r(87,Kut,1) - 870000*r(88,Kut,1) - 880000*r(89,Kut,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 27
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 27
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1517,7 +1517,7 @@ timber_bought(Kot,1)..  - 10000*r(2,Kot,1) - 20000*r(3,Kot,1) - 30000*r(4,Kot,1)
       - 230000*r(24,Kot,1) - 240000*r(25,Kot,1) - 250000*r(26,Kot,1) - 260000*r(27,Kot,1) - 270000*r(28,Kot,1) - 280000*r(29,Kot,1) - 290000*r(30,Kot,1) - 300000*r(31,Kot,1) - 310000*r(32,Kot,1) - 320000*r(33,Kot,1) - 330000*r(34,Kot,1)
      
       - 340000*r(35,Kot,1) - 350000*r(36,Kot,1) - 360000*r(37,Kot,1) - 370000*r(38,Kot,1) - 380000*r(39,Kot,1) - 390000*r(40,Kot,1) - 400000*r(41,Kot,1) - 410000*r(42,Kot,1) - 420000*r(43,Kot,1) - 430000*r(44,Kot,1) - 440000*r(45,Kot,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 28
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 28
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1575,7 +1575,7 @@ timber_bought(Kot,3)..  - 10000*r(2,Kot,3) - 20000*r(3,Kot,3) - 30000*r(4,Kot,3)
       - 890000*r(90,Kot,3) - 900000*r(91,Kot,3) - 910000*r(92,Kot,3) - 920000*r(93,Kot,3) - 930000*r(94,Kot,3) - 940000*r(95,Kot,3) - 950000*r(96,Kot,3) - 960000*r(97,Kot,3) - 970000*r(98,Kot,3) - 980000*r(99,Kot,3) - 990000*r(100,Kot,3)
      
       - 1000000*r(101,Kot,3) - 1010000*r(102,Kot,3) - 1020000*r(103,Kot,3) - 1030000*r(104,Kot,3) - 1040000*r(105,Kot,3) - 1050000*r(106,Kot,3) - 1060000*r(107,Kot,3) + b(Kot,3) =E= 0 ; (LHS = 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 29
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 29
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1633,7 +1633,7 @@ timber_bought(Mak,3)..  - 10000*r(2,Mak,3) - 20000*r(3,Mak,3) - 30000*r(4,Mak,3)
       - 450000*r(46,Mak,3) - 460000*r(47,Mak,3) - 470000*r(48,Mak,3) - 480000*r(49,Mak,3) - 490000*r(50,Mak,3) - 500000*r(51,Mak,3) - 510000*r(52,Mak,3) - 520000*r(53,Mak,3) - 530000*r(54,Mak,3) - 540000*r(55,Mak,3) - 550000*r(56,Mak,3)
      
       - 560000*r(57,Mak,3) - 570000*r(58,Mak,3) - 580000*r(59,Mak,3) - 590000*r(60,Mak,3) - 600000*r(61,Mak,3) - 610000*r(62,Mak,3) - 620000*r(63,Mak,3) - 630000*r(64,Mak,3) - 640000*r(65,Mak,3) - 650000*r(66,Mak,3) - 660000*r(67,Mak,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 30
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 30
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1688,7 +1688,7 @@ timber_bought(Kuk,2)..  - 10000*r(2,Kuk,2) - 20000*r(3,Kuk,2) - 30000*r(4,Kuk,2)
      
       - 1000000*r(101,Kuk,2) - 1010000*r(102,Kuk,2) - 1020000*r(103,Kuk,2) - 1030000*r(104,Kuk,2) - 1040000*r(105,Kuk,2) - 1050000*r(106,Kuk,2) - 1060000*r(107,Kuk,2) + b(Kuk,2) =E= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 31
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 31
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1746,7 +1746,7 @@ timber_bought(Kok,2)..  - 10000*r(2,Kok,2) - 20000*r(3,Kok,2) - 30000*r(4,Kok,2)
       - 450000*r(46,Kok,2) - 460000*r(47,Kok,2) - 470000*r(48,Kok,2) - 480000*r(49,Kok,2) - 490000*r(50,Kok,2) - 500000*r(51,Kok,2) - 510000*r(52,Kok,2) - 520000*r(53,Kok,2) - 530000*r(54,Kok,2) - 540000*r(55,Kok,2) - 550000*r(56,Kok,2)
      
       - 560000*r(57,Kok,2) - 570000*r(58,Kok,2) - 580000*r(59,Kok,2) - 590000*r(60,Kok,2) - 600000*r(61,Kok,2) - 610000*r(62,Kok,2) - 620000*r(63,Kok,2) - 630000*r(64,Kok,2) - 640000*r(65,Kok,2) - 650000*r(66,Kok,2) - 660000*r(67,Kok,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 32
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 32
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1804,7 +1804,7 @@ Barges_buy(Mat,2)..  r(1,Mat,2) + r(2,Mat,2) + r(3,Mat,2) + r(4,Mat,2) + r(5,Mat
      
       + r(35,Mat,2) + r(36,Mat,2) + r(37,Mat,2) + r(38,Mat,2) + r(39,Mat,2) + r(40,Mat,2) + r(41,Mat,2) + r(42,Mat,2) + r(43,Mat,2) + r(44,Mat,2) + r(45,Mat,2) + r(46,Mat,2) + r(47,Mat,2) + r(48,Mat,2) + r(49,Mat,2) + r(50,Mat,2) + r(51,Mat,2)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 33
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 33
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1861,7 +1861,7 @@ Barges_buy(Kut,2)..  r(1,Kut,2) + r(2,Kut,2) + r(3,Kut,2) + r(4,Kut,2) + r(5,Kut
      
       + r(103,Kut,2) + r(104,Kut,2) + r(105,Kut,2) + r(106,Kut,2) + r(107,Kut,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 34
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 34
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1919,7 +1919,7 @@ Barges_buy(Kot,3)..  r(1,Kot,3) + r(2,Kot,3) + r(3,Kot,3) + r(4,Kot,3) + r(5,Kot
       + r(52,Kot,3) + r(53,Kot,3) + r(54,Kot,3) + r(55,Kot,3) + r(56,Kot,3) + r(57,Kot,3) + r(58,Kot,3) + r(59,Kot,3) + r(60,Kot,3) + r(61,Kot,3) + r(62,Kot,3) + r(63,Kot,3) + r(64,Kot,3) + r(65,Kot,3) + r(66,Kot,3) + r(67,Kot,3) + r(68,Kot,3)
      
       + r(69,Kot,3) + r(70,Kot,3) + r(71,Kot,3) + r(72,Kot,3) + r(73,Kot,3) + r(74,Kot,3) + r(75,Kot,3) + r(76,Kot,3) + r(77,Kot,3) + r(78,Kot,3) + r(79,Kot,3) + r(80,Kot,3) + r(81,Kot,3) + r(82,Kot,3) + r(83,Kot,3) + r(84,Kot,3) + r(85,Kot,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 35
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 35
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -1977,7 +1977,7 @@ Barges_buy(Kuk,1)..  r(1,Kuk,1) + r(2,Kuk,1) + r(3,Kuk,1) + r(4,Kuk,1) + r(5,Kuk
       + r(18,Kuk,1) + r(19,Kuk,1) + r(20,Kuk,1) + r(21,Kuk,1) + r(22,Kuk,1) + r(23,Kuk,1) + r(24,Kuk,1) + r(25,Kuk,1) + r(26,Kuk,1) + r(27,Kuk,1) + r(28,Kuk,1) + r(29,Kuk,1) + r(30,Kuk,1) + r(31,Kuk,1) + r(32,Kuk,1) + r(33,Kuk,1) + r(34,Kuk,1)
      
       + r(35,Kuk,1) + r(36,Kuk,1) + r(37,Kuk,1) + r(38,Kuk,1) + r(39,Kuk,1) + r(40,Kuk,1) + r(41,Kuk,1) + r(42,Kuk,1) + r(43,Kuk,1) + r(44,Kuk,1) + r(45,Kuk,1) + r(46,Kuk,1) + r(47,Kuk,1) + r(48,Kuk,1) + r(49,Kuk,1) + r(50,Kuk,1) + r(51,Kuk,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 36
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 36
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2034,7 +2034,7 @@ Barges_buy(Kok,1)..  r(1,Kok,1) + r(2,Kok,1) + r(3,Kok,1) + r(4,Kok,1) + r(5,Kok
      
       + r(103,Kok,1) + r(104,Kok,1) + r(105,Kok,1) + r(106,Kok,1) + r(107,Kok,1) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 37
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 37
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2092,7 +2092,7 @@ Barges_sell(Mas,IE,2)..  u(1,Mas,IE,2) + u(2,Mas,IE,2) + u(3,Mas,IE,2) + u(4,Mas
      
       + u(15,Mas,IE,2) + u(16,Mas,IE,2) + u(17,Mas,IE,2) + u(18,Mas,IE,2) + u(19,Mas,IE,2) + u(20,Mas,IE,2) + u(21,Mas,IE,2) + u(22,Mas,IE,2) + u(23,Mas,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 38
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 38
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2147,7 +2147,7 @@ Barges_sell(Kus,IE,2)..  u(1,Kus,IE,2) + u(2,Kus,IE,2) + u(3,Kus,IE,2) + u(4,Kus
      
       + u(15,Kus,IE,2) + u(16,Kus,IE,2) + u(17,Kus,IE,2) + u(18,Kus,IE,2) + u(19,Kus,IE,2) + u(20,Kus,IE,2) + u(21,Kus,IE,2) + u(22,Kus,IE,2) + u(23,Kus,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 39
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 39
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2202,7 +2202,7 @@ Barges_sell(Kos,IE,2)..  u(1,Kos,IE,2) + u(2,Kos,IE,2) + u(3,Kos,IE,2) + u(4,Kos
      
       + u(15,Kos,IE,2) + u(16,Kos,IE,2) + u(17,Kos,IE,2) + u(18,Kos,IE,2) + u(19,Kos,IE,2) + u(20,Kos,IE,2) + u(21,Kos,IE,2) + u(22,Kos,IE,2) + u(23,Kos,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 40
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 40
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2257,7 +2257,7 @@ Barges_sell(Kuv,IE,2)..  u(1,Kuv,IE,2) + u(2,Kuv,IE,2) + u(3,Kuv,IE,2) + u(4,Kuv
      
       + u(15,Kuv,IE,2) + u(16,Kuv,IE,2) + u(17,Kuv,IE,2) + u(18,Kuv,IE,2) + u(19,Kuv,IE,2) + u(20,Kuv,IE,2) + u(21,Kuv,IE,2) + u(22,Kuv,IE,2) + u(23,Kuv,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 41
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 41
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2312,7 +2312,7 @@ Barges_sell(Kov,IE,2)..  u(1,Kov,IE,2) + u(2,Kov,IE,2) + u(3,Kov,IE,2) + u(4,Kov
      
       + u(15,Kov,IE,2) + u(16,Kov,IE,2) + u(17,Kov,IE,2) + u(18,Kov,IE,2) + u(19,Kov,IE,2) + u(20,Kov,IE,2) + u(21,Kov,IE,2) + u(22,Kov,IE,2) + u(23,Kov,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 42
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 42
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2367,7 +2367,7 @@ Barges_sell(Hsel,IE,2)..  u(1,Hsel,IE,2) + u(2,Hsel,IE,2) + u(3,Hsel,IE,2) + u(4
      
       + u(14,Hsel,IE,2) + u(15,Hsel,IE,2) + u(16,Hsel,IE,2) + u(17,Hsel,IE,2) + u(18,Hsel,IE,2) + u(19,Hsel,IE,2) + u(20,Hsel,IE,2) + u(21,Hsel,IE,2) + u(22,Hsel,IE,2) + u(23,Hsel,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 43
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 43
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2422,7 +2422,7 @@ Barges_sell(Lsel,IE,2)..  u(1,Lsel,IE,2) + u(2,Lsel,IE,2) + u(3,Lsel,IE,2) + u(4
      
       + u(14,Lsel,IE,2) + u(15,Lsel,IE,2) + u(16,Lsel,IE,2) + u(17,Lsel,IE,2) + u(18,Lsel,IE,2) + u(19,Lsel,IE,2) + u(20,Lsel,IE,2) + u(21,Lsel,IE,2) + u(22,Lsel,IE,2) + u(23,Lsel,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 44
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 44
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2477,7 +2477,7 @@ Barges_sell(Pap,IE,2)..  u(1,Pap,IE,2) + u(2,Pap,IE,2) + u(3,Pap,IE,2) + u(4,Pap
      
       + u(15,Pap,IE,2) + u(16,Pap,IE,2) + u(17,Pap,IE,2) + u(18,Pap,IE,2) + u(19,Pap,IE,2) + u(20,Pap,IE,2) + u(21,Pap,IE,2) + u(22,Pap,IE,2) + u(23,Pap,IE,2) =E= 1 ; (LHS = 0, INFES = 1 ****)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 45
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 45
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2533,7 +2533,7 @@ Capacity2(SPULP,2)..  - y(Hsel,2) + Cap(SPULP,2) =G= 0 ; (LHS = 0)
      
 Capacity2(SPULP,3)..  - y(Hsel,3) + Cap(SPULP,3) =G= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 46
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 46
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2588,7 +2588,7 @@ MaxCapacity(PAPM,3)..  Cap(PAPM,3) =L= 160000 ; (LHS = 0)
 
 ---- CapStart  =E=  Make sure the starting capacity is right
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 47
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 47
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2643,7 +2643,7 @@ PAP_LSEL(2)..  - y(Lsel,2) + 0.2*y(Pap,2) =L= 0 ; (LHS = 0)
      
 PAP_LSEL(3)..  - y(Lsel,3) + 0.2*y(Pap,3) =L= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 48
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 48
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2701,7 +2701,7 @@ PULP_Bal(Hsel,3)..  - y(Hsel,3) + 0.2*y(Pap,3) + 10000*u(2,Hsel,EU,3) + 10000*u(
       + 150000*u(16,Hsel,KI,3) + 160000*u(17,Hsel,EU,3) + 160000*u(17,Hsel,IE,3) + 160000*u(17,Hsel,PA,3) + 160000*u(17,Hsel,KI,3) + 170000*u(18,Hsel,EU,3) + 170000*u(18,Hsel,IE,3) + 170000*u(18,Hsel,PA,3) + 170000*u(18,Hsel,KI,3) + 180000*u(19,Hsel,EU,3)
      
       + 180000*u(19,Hsel,IE,3) + 180000*u(19,Hsel,PA,3) + 180000*u(19,Hsel,KI,3) + 190000*u(20,Hsel,EU,3) + 190000*u(20,Hsel,IE,3) + 190000*u(20,Hsel,PA,3) + 190000*u(20,Hsel,KI,3) + 200000*u(21,Hsel,EU,3) + 200000*u(21,Hsel,IE,3) + 200000*u(21,Hsel,PA,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 49
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 49
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2759,7 +2759,7 @@ PULP_Bal(Lsel,3)..  - y(Lsel,3) + 0.2*y(Pap,3) + 10000*u(2,Lsel,EU,3) + 10000*u(
       + 130000*u(14,Lsel,IE,3) + 130000*u(14,Lsel,PA,3) + 130000*u(14,Lsel,KI,3) + 140000*u(15,Lsel,EU,3) + 140000*u(15,Lsel,IE,3) + 140000*u(15,Lsel,PA,3) + 140000*u(15,Lsel,KI,3) + 150000*u(16,Lsel,EU,3) + 150000*u(16,Lsel,IE,3) + 150000*u(16,Lsel,PA,3)
      
       + 150000*u(16,Lsel,KI,3) + 160000*u(17,Lsel,EU,3) + 160000*u(17,Lsel,IE,3) + 160000*u(17,Lsel,PA,3) + 160000*u(17,Lsel,KI,3) + 170000*u(18,Lsel,EU,3) + 170000*u(18,Lsel,IE,3) + 170000*u(18,Lsel,PA,3) + 170000*u(18,Lsel,KI,3) + 180000*u(19,Lsel,EU,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 50
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 50
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2817,7 +2817,7 @@ PROFIT(1)..  0.542*y(Mas,1) + 0.492*y(Kus,1) + 0.442*y(Kos,1) + 2.492*y(Kuv,1) +
      
       + 107420*r(42,Mak,1) + 111930*r(42,Kuk,1) + 95120*r(42,Kok,1) + 256200*r(43,Mat,1) + 151200*r(43,Kut,1) + 579600*r(43,Kot,1) + 110880*r(43,Mak,1) + 115920*r(43,Kuk,1) + 98280*r(43,Kok,1) + 266600*r(44,Mat,1) + 156950*r(44,Kut,1) + 606300*r(44,Kot,1)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 51
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 51
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2875,7 +2875,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       + 307980*r(88,Mak,1) + 357570*r(88,Kuk,1) + 281880*r(88,Kok,1) + 941600*r(89,Mat,1) + 519200*r(89,Kut,1) + 2428800*r(89,Kot,1) + 313280*r(89,Mak,1) + 364320*r(89,Kuk,1) + 286880*r(89,Kok,1) + 961200*r(90,Mat,1) + 529550*r(90,Kut,1)
      
       + 2483100*r(90,Kot,1) + 318620*r(90,Mak,1) + 371130*r(90,Kuk,1) + 291920*r(90,Kok,1) + 981000*r(91,Mat,1) + 540000*r(91,Kut,1) + 2538000*r(91,Kot,1) + 324000*r(91,Mak,1) + 378000*r(91,Kuk,1) + 297000*r(91,Kok,1) + 1001000*r(92,Mat,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 52
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 52
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2933,7 +2933,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 124800*u(7,Lsel,KI,1) - 255600*u(7,Pap,EU,1) - 246000*u(7,Pap,IE,1) - 214800*u(7,Pap,PA,1) - 234000*u(7,Pap,KI,1) - 92400*u(8,Mas,EU,1) - 42000*u(8,Mas,IE,1) - 39200*u(8,Mas,PA,1) - 31500*u(8,Mas,KI,1) - 22400*u(8,Kos,EU,1) + 2800*u(8,Kos,PA,1)
      
       + 10500*u(8,Kos,KI,1) - 288400*u(8,Kuv,EU,1) - 217000*u(8,Kuv,IE,1) - 193200*u(8,Kuv,PA,1) - 171500*u(8,Kuv,KI,1) - 281400*u(8,Kov,EU,1) - 238000*u(8,Kov,IE,1) - 214200*u(8,Kov,PA,1) - 192500*u(8,Kov,KI,1) - 151200*u(8,Hsel,EU,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 53
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 53
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -2991,7 +2991,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 601600*u(17,Kuv,EU,1) - 352000*u(17,Kuv,IE,1) - 268800*u(17,Kuv,PA,1) - 176000*u(17,Kuv,KI,1) - 585600*u(17,Kov,EU,1) - 400000*u(17,Kov,IE,1) - 316800*u(17,Kov,PA,1) - 224000*u(17,Kov,KI,1) - 316800*u(17,Hsel,EU,1) - 297600*u(17,Hsel,IE,1)
      
       - 240000*u(17,Hsel,PA,1) - 262400*u(17,Hsel,KI,1) - 323200*u(17,Lsel,EU,1) - 396800*u(17,Lsel,IE,1) - 240000*u(17,Lsel,PA,1) - 220800*u(17,Lsel,KI,1) - 617600*u(17,Pap,EU,1) - 496000*u(17,Pap,IE,1) - 380800*u(17,Pap,PA,1) - 384000*u(17,Pap,KI,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 54
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 54
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3049,7 +3049,7 @@ PROFIT(2)..  0.542*y(Mas,2) + 0.492*y(Kus,2) + 0.442*y(Kos,2) + 2.492*y(Kuv,2) +
       + 22220*r(12,Mak,2) + 20130*r(12,Kuk,2) + 18920*r(12,Kok,2) + 37200*r(13,Mat,2) + 25200*r(13,Kut,2) + 57600*r(13,Kot,2) + 24480*r(13,Mak,2) + 22320*r(13,Kuk,2) + 20880*r(13,Kok,2) + 41600*r(14,Mat,2) + 27950*r(14,Kut,2) + 66300*r(14,Kot,2)
      
       + 26780*r(14,Mak,2) + 24570*r(14,Kuk,2) + 22880*r(14,Kok,2) + 46200*r(15,Mat,2) + 30800*r(15,Kut,2) + 75600*r(15,Kot,2) + 29120*r(15,Mak,2) + 26880*r(15,Kuk,2) + 24920*r(15,Kok,2) + 51000*r(16,Mat,2) + 33750*r(16,Kut,2) + 85500*r(16,Kot,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 55
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 55
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3107,7 +3107,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       + 165920*r(62,Kok,2) + 502200*r(63,Mat,2) + 285200*r(63,Kut,2) + 1227600*r(63,Kot,2) + 188480*r(63,Mak,2) + 208320*r(63,Kuk,2) + 169880*r(63,Kok,2) + 516600*r(64,Mat,2) + 292950*r(64,Kut,2) + 1266300*r(64,Kot,2) + 192780*r(64,Mak,2)
      
       + 213570*r(64,Kuk,2) + 173880*r(64,Kok,2) + 531200*r(65,Mat,2) + 300800*r(65,Kut,2) + 1305600*r(65,Kot,2) + 197120*r(65,Mak,2) + 218880*r(65,Kuk,2) + 177920*r(65,Kok,2) + 546000*r(66,Mat,2) + 308750*r(66,Kut,2) + 1345500*r(66,Kot,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 56
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 56
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3165,7 +3165,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 37014.7783251232*u(2,Kuv,IE,2) - 34817.7339901478*u(2,Kuv,PA,2) - 33522.1674876847*u(2,Kuv,KI,2) - 42607.8431372549*u(2,Kov,EU,2) - 40019.6078431373*u(2,Kov,IE,2) - 37823.5294117647*u(2,Kov,PA,2) - 36529.4117647059*u(2,Kov,KI,2)
      
       - 22804.8780487805*u(2,Hsel,EU,2) - 24609.756097561*u(2,Hsel,IE,2) - 22512.1951219512*u(2,Hsel,PA,2) - 25414.6341463415*u(2,Hsel,KI,2) - 24708.7378640777*u(2,Lsel,EU,2) - 27805.8252427184*u(2,Lsel,IE,2) - 22514.5631067961*u(2,Lsel,PA,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 57
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 57
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3223,7 +3223,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 141699.029126214*u(8,Lsel,KI,2) - 296062.801932367*u(8,Pap,EU,2) - 281657.004830918*u(8,Pap,IE,2) - 244188.405797101*u(8,Pap,PA,2) - 264985.507246377*u(8,Pap,KI,2) - 102653.465346535*u(9,Mas,EU,2) - 40633.6633663366*u(9,Mas,IE,2)
      
       - 35960.396039604*u(9,Mas,PA,2) - 24950.495049505*u(9,Mas,KI,2) - 15724.1379310345*u(9,Kos,EU,2) + 14108.3743842365*u(9,Kos,IE,2) + 18719.2118226601*u(9,Kos,PA,2) + 29635.4679802956*u(9,Kos,KI,2) - 326778.325123153*u(9,Kuv,EU,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 58
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 58
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3281,7 +3281,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 338896.551724138*u(15,Kuv,IE,2) - 272275.862068965*u(15,Kuv,PA,2) - 200344.827586207*u(15,Kuv,KI,2) - 525137.254901961*u(15,Kov,EU,2) - 381843.137254902*u(15,Kov,IE,2) - 315411.764705882*u(15,Kov,PA,2) - 243764.705882353*u(15,Kov,KI,2)
      
       - 283756.097560976*u(15,Hsel,EU,2) - 273512.195121951*u(15,Hsel,IE,2) - 226390.243902439*u(15,Hsel,PA,2) - 249268.292682927*u(15,Hsel,KI,2) - 292912.621359223*u(15,Lsel,EU,2) - 353941.747572816*u(15,Lsel,IE,2) - 226854.368932039*u(15,Lsel,PA,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 59
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 59
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3339,7 +3339,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 228155.339805825*u(21,Lsel,KI,2) - 745410.628019324*u(21,Pap,EU,2) - 553526.570048309*u(21,Pap,IE,2) - 396231.884057971*u(21,Pap,PA,2) - 380289.855072464*u(21,Pap,KI,2) - 161346.534653465*u(22,Mas,EU,2) + 163633.663366337*u(22,Mas,IE,2)
      
       + 229960.396039604*u(22,Mas,PA,2) + 339950.495049505*u(22,Mas,KI,2) + 335275.862068966*u(22,Kos,EU,2) + 574965.51724138*u(22,Kos,IE,2) + 640862.068965517*u(22,Kos,PA,2) + 750206.896551724*u(22,Kos,KI,2) - 750206.896551724*u(22,Kuv,EU,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 60
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 60
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3397,7 +3397,7 @@ PROFIT(3)..  0.642*y(Mas,3) + 0.592*y(Kus,3) + 0.542*y(Kos,3) + 2.792*y(Kuv,3) +
       + 75020*r(32,Mak,3) + 75330*r(32,Kuk,3) + 65720*r(32,Kok,3) + 163200*r(33,Mat,3) + 99200*r(33,Kut,3) + 345600*r(33,Kot,3) + 78080*r(33,Mak,3) + 78720*r(33,Kuk,3) + 68480*r(33,Kok,3) + 171600*r(34,Mat,3) + 103950*r(34,Kut,3) + 366300*r(34,Kot,3)
      
       + 81180*r(34,Mak,3) + 82170*r(34,Kuk,3) + 71280*r(34,Kok,3) + 180200*r(35,Mat,3) + 108800*r(35,Kut,3) + 387600*r(35,Kot,3) + 84320*r(35,Mak,3) + 85680*r(35,Kuk,3) + 74120*r(35,Kok,3) + 189000*r(36,Mat,3) + 113750*r(36,Kut,3) + 409500*r(36,Kot,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 61
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 61
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3455,7 +3455,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       + 440000*r(81,Kut,3) + 2016000*r(81,Kot,3) + 272000*r(81,Mak,3) + 312000*r(81,Kuk,3) + 248000*r(81,Kok,3) + 810000*r(82,Mat,3) + 449550*r(82,Kut,3) + 2065500*r(82,Kot,3) + 277020*r(82,Mak,3) + 318330*r(82,Kuk,3) + 252720*r(82,Kok,3)
      
       + 828200*r(83,Mat,3) + 459200*r(83,Kut,3) + 2115600*r(83,Kot,3) + 282080*r(83,Mak,3) + 324720*r(83,Kuk,3) + 257480*r(83,Kok,3) + 846600*r(84,Mat,3) + 468950*r(84,Kut,3) + 2166300*r(84,Kot,3) + 287180*r(84,Mak,3) + 331170*r(84,Kuk,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 62
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 62
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3513,7 +3513,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 69061.6457724573*u(4,Lsel,KI,3) - 131639.361478681*u(4,Pap,EU,3) - 132598.403696702*u(4,Pap,IE,3) - 118918.084436043*u(4,Pap,PA,3) - 131397.605545054*u(4,Pap,KI,3) - 57726.1052837957*u(5,Mas,EU,3) - 36315.2632094893*u(5,Mas,IE,3)
      
       - 37178.3158513871*u(5,Mas,PA,3) - 36472.8948142339*u(5,Mas,KI,3) - 30257.1768303041*u(5,Kos,EU,3) - 24938.8240432915*u(5,Kos,IE,3) - 25832.7064476207*u(5,Kos,PA,3) - 25173.5300541144*u(5,Kos,KI,3) - 169787.764808658*u(5,Kuv,EU,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 63
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 63
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3571,7 +3571,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 282933.825135286*u(11,Kuv,IE,3) - 243520.590162343*u(11,Kuv,PA,3) - 204400.737702929*u(11,Kuv,KI,3) - 391553.248750481*u(11,Kov,EU,3) - 313883.121876201*u(11,Kov,IE,3) - 274659.746251442*u(11,Kov,PA,3) - 235824.682814302*u(11,Kov,KI,3)
      
       - 210963.712076145*u(11,Hsel,EU,3) - 211927.42415229*u(11,Hsel,IE,3) - 182409.280190363*u(11,Hsel,PA,3) - 202891.136228435*u(11,Hsel,KI,3) - 221722.122725987*u(11,Lsel,EU,3) - 261148.081817325*u(11,Lsel,IE,3) - 182870.204543312*u(11,Lsel,PA,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 64
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 64
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3629,7 +3629,7 @@ Equation Listing    SOLVE final Using MIP From line 437
       - 231086.813083231*u(17,Lsel,KI,3) - 624408.50428248*u(17,Pap,EU,3) - 513021.260706201*u(17,Pap,IE,3) - 401225.512847441*u(17,Pap,PA,3) - 409531.891059301*u(17,Pap,KI,3) - 158677.77668856*u(18,Mas,EU,3) + 62305.5582786001*u(18,Mas,IE,3)
      
       + 101966.66993432*u(18,Mas,PA,3) + 169958.3374179*u(18,Mas,KI,3) + 171729.743502633*u(18,Kos,EU,3) + 323042.490718047*u(18,Kos,IE,3) + 362146.739789852*u(18,Kos,PA,3) + 429303.113397559*u(18,Kos,KI,3) - 635791.501856391*u(18,Kuv,EU,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 65
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 65
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3684,7 +3684,7 @@ Equation Listing    SOLVE final Using MIP From line 437
      
       - 0.15*b(Kuk,3) - 0.15*b(Kok,3) + Pr(3) =E= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 66
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 66
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE final Using MIP From line 437
 
@@ -3721,7 +3721,7 @@ Capacity3(PAPM,2)..  - Cap(PAPM,1) + Cap(PAPM,2) =G= 0 ; (LHS = 0)
      
 Capacity3(PAPM,3)..  - Cap(PAPM,2) + Cap(PAPM,3) =G= 0 ; (LHS = 0)
      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 67
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 67
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -3779,7 +3779,7 @@ y(Kus,3)
                 (.LO, .L, .UP, .M = 0, 0, 1060000, 0)
         2       timber_used(Kut,3)
        -0.8     timber_used(Kuk,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 68
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 68
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -3837,7 +3837,7 @@ y(Kuv,3)
        -1       Sold_Prod(Kuv,3)
        -1       Capacity2(PLY,3)
         2.792   PROFIT(3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 69
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 69
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -3895,7 +3895,7 @@ y(Hsel,3)
        -1       PAP_HSEL(3)
        -1       PULP_Bal(Hsel,3)
         1.32    PROFIT(3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 70
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 70
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -3953,7 +3953,7 @@ y(Pap,2)
         1.7     PROFIT(2)
 
 y(Pap,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 71
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 71
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4011,7 +4011,7 @@ s(Kut,3)
 
 s(Kot,1)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 72
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 72
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4069,7 +4069,7 @@ s(Kuk,3)
        -1       timber_used(Kuk,3)
        -1       prod_starved(Kuk,3)
         0.15    PROFIT(3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 73
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 73
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4127,7 +4127,7 @@ r(1,Kot,1)
         1       Barges_buy(Kot,1)
 
 r(1,Kot,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 74
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 74
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4185,7 +4185,7 @@ r(2,Mat,1)
      2000       PROFIT(1)
 
 r(2,Mat,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 75
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 75
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4243,7 +4243,7 @@ r(2,Kot,2)
 r(2,Kot,3)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
     10000       prod_starved(Kot,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 76
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 76
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4301,7 +4301,7 @@ r(2,Kok,1)
     10000       prod_starved(Kok,1)
    -10000       timber_bought(Kok,1)
         1       Barges_buy(Kok,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 77
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 77
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4359,7 +4359,7 @@ r(3,Kut,2)
         1       Barges_buy(Kut,2)
      3200       PROFIT(2)
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 78
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 78
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4417,7 +4417,7 @@ r(3,Mak,3)
 
 r(3,Kuk,1)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 79
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 79
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4475,7 +4475,7 @@ r(4,Mat,2)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
     30000       prod_starved(Mat,2)
    -30000       timber_bought(Mat,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 80
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 80
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4533,7 +4533,7 @@ r(4,Kot,3)
    -30000       timber_bought(Kot,3)
         1       Barges_buy(Kot,3)
      6300       PROFIT(3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 81
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 81
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4591,7 +4591,7 @@ r(4,Kok,1)
      4680       PROFIT(1)
 
 r(4,Kok,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 82
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 82
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4649,7 +4649,7 @@ r(5,Kut,2)
 r(5,Kut,3)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
     40000       prod_starved(Kut,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 83
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 83
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4707,7 +4707,7 @@ r(5,Kuk,1)
     40000       prod_starved(Kuk,1)
    -40000       timber_bought(Kuk,1)
         1       Barges_buy(Kuk,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 84
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 84
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4765,7 +4765,7 @@ r(6,Mat,2)
         1       Barges_buy(Mat,2)
     12000       PROFIT(2)
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 85
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 85
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4823,7 +4823,7 @@ r(6,Kot,3)
 
 r(6,Mak,1)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 86
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 86
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4881,7 +4881,7 @@ u(1,Mas,KI,1)
 
 u(1,Mas,KI,2)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 87
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 87
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4939,7 +4939,7 @@ u(1,Kus,KI,2)
         1       Barges_sell(Kus,KI,2)
 
 u(1,Kus,KI,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 88
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 88
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -4997,7 +4997,7 @@ u(1,Kos,KI,3)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
         1       Barges_sell(Kos,KI,3)
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 89
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 89
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5055,7 +5055,7 @@ u(1,Kuv,KI,3)
 u(1,Kov,EU,1)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
         1       Barges_sell(Kov,EU,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 90
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 90
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5113,7 +5113,7 @@ u(1,Hsel,EU,1)
 
 u(1,Hsel,EU,2)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 91
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 91
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5171,7 +5171,7 @@ u(1,Lsel,EU,2)
         1       Barges_sell(Lsel,EU,2)
 
 u(1,Lsel,EU,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 92
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 92
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5229,7 +5229,7 @@ u(1,Pap,EU,3)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
         1       Barges_sell(Pap,EU,3)
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 93
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 93
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5287,7 +5287,7 @@ u(2,Mas,EU,2)
 u(2,Mas,EU,3)
                 (.LO, .L, .UP, .M = 0, 0, 1, 0)
     10000       Sold_Prod(Mas,3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 94
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 94
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5345,7 +5345,7 @@ b(Kot,1)
 b(Kot,2)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
         1       timber_bought(Kot,2)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 95
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 95
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5403,7 +5403,7 @@ b(Kok,3)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
         1       timber_bought(Kok,3)
        -0.15    PROFIT(3)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 96
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 96
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5461,7 +5461,7 @@ Cap(PLY,1)
                 (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
         1       Capacity2(PLY,1)
         1       MaxCapacity(PLY,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 97
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 97
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5519,7 +5519,7 @@ Cap(HPULP,1)
         1       Capacity2(HPULP,1)
         1       MaxCapacity(HPULP,1)
         1       CapStart(HPULP,1)
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 98
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 98
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE final Using MIP From line 437
 
@@ -5571,7 +5571,7 @@ Cap(PAPM,3)
         0.7     PROFIT(2)
         1       Capacity3(PAPM,3)
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:05:06 Page 99
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 13:35:28 Page 99
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE final Using MIP From line 437
 
@@ -5583,11 +5583,11 @@ BLOCKS OF VARIABLES           8     SINGLE VARIABLES        4,213
 NON ZERO ELEMENTS        14,391     DISCRETE VARIABLES      4,158
 
 
-GENERATION TIME      =        0.112 SECONDS      5 MB  24.8.1 r59919 DEX-DEG
+GENERATION TIME      =        0.071 SECONDS      5 MB  24.8.1 r59919 DEX-DEG
 
 
-EXECUTION TIME       =        0.113 SECONDS      5 MB  24.8.1 r59919 DEX-DEG
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 100
+EXECUTION TIME       =        0.072 SECONDS      5 MB  24.8.1 r59919 DEX-DEG
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 100
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5602,7 +5602,7 @@ Solution Report     SOLVE final Using MIP From line 437
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE           529183.3036
 
- RESOURCE USAGE, LIMIT          1.175       300.000
+ RESOURCE USAGE, LIMIT          0.955       300.000
  ITERATION COUNT, LIMIT      3106     999999999
 
 IBM ILOG CPLEX   24.8.1 r59919 Released Dec 22, 2016 DEG x86 64bit/Mac OS X   
@@ -5612,7 +5612,7 @@ Cplex 12.7.0.0
 Space for names approximately 0.09 Mb
 Use option 'names no' to turn use of names off
 MIP status(101): integer optimal solution
-Cplex Time: 1.10sec (det. 517.81 ticks)
+Cplex Time: 0.93sec (det. 517.81 ticks)
 Fixing integer variables, and solving final LP...
 Fixed MIP status(1): optimal
 Cplex Time: 0.00sec (det. 1.77 ticks)
@@ -5645,7 +5645,7 @@ Kut.3          .              .              .             0.1354
 Kot.1          .              .              .             0.1200      
 Kot.2          .              .              .             0.1140      
 Kot.3          .              .              .             0.1083      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 101
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 101
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5703,7 +5703,7 @@ Kos .3        -INF      3.2175740E-7          .              .
 Kuv .1        -INF             .              .              .          
 Kuv .2        -INF      -4.492758E-7          .              .          
 Kuv .3        -INF             .              .              .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 102
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 102
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5761,7 +5761,7 @@ Kut.3         1.0000         1.0000         1.0000          .
 Kot.1         1.0000         1.0000         1.0000          .          
 Kot.2         1.0000         1.0000         1.0000          .          
 Kot.3         1.0000         1.0000         1.0000          .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 103
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 103
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5819,7 +5819,7 @@ Kos .PA.2         1.0000         1.0000         1.0000          .
 Kos .PA.3         1.0000         1.0000         1.0000          .          
 Kos .KI.1         1.0000         1.0000         1.0000          .          
 Kos .KI.2         1.0000         1.0000         1.0000          .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 104
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 104
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5877,7 +5877,7 @@ Lsel.PA.3         1.0000         1.0000         1.0000          .
 Lsel.KI.1         1.0000         1.0000         1.0000          .          
 Lsel.KI.2         1.0000         1.0000         1.0000          .          
 Lsel.KI.3         1.0000         1.0000         1.0000          .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 105
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 105
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5935,7 +5935,7 @@ SPULP.3        -INF       100000.0000    200000.0000          .
 HPULP.1        -INF       150000.0000    300000.0000          .          
 HPULP.2        -INF       150000.0000    300000.0000          .          
 HPULP.3        -INF       150000.0000    300000.0000          .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 106
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 106
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -5993,7 +5993,7 @@ Hsel.2        -INF      -1.553053E-8          .              .
 Hsel.3        -INF             .              .              .          
 Lsel.1        -INF             .              .              .          
 Lsel.2        -INF      -1.083885E-6          .              .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 107
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 107
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6051,7 +6051,7 @@ Kus .3          .              .       1060000.0000        -0.6967
 Kos .1          .              .       1060000.0000        -0.5620      
 Kos .2          .         10000.0000   1060000.0000        -0.5339      
 Kos .3          .         10000.0000   1060000.0000        -0.5975      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 108
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 108
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6109,7 +6109,7 @@ Kok.3          .        380000.0000        +INF             .
 1  .Kut.1          .              .             1.0000         EPS         
 1  .Kut.2          .              .             1.0000         EPS         
 1  .Kut.3          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 109
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 109
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6167,7 +6167,7 @@ Solution Report     SOLVE final Using MIP From line 437
 3  .Kok.2          .              .             1.0000       -76.0000      
 3  .Kok.3          .              .             1.0000       -72.2000      
 4  .Mat.1          .              .             1.0000      -900.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 110
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 110
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6225,7 +6225,7 @@ Solution Report     SOLVE final Using MIP From line 437
 6  .Mak.3          .              .             1.0000      -451.2500      
 6  .Kuk.1          .              .             1.0000      -750.0000      
 6  .Kuk.2          .              .             1.0000      -712.5000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 111
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 111
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6283,7 +6283,7 @@ Solution Report     SOLVE final Using MIP From line 437
 9  .Kot.1          .              .             1.0000    -19200.0000      
 9  .Kot.2          .             1.0000         1.0000    -18240.0000      
 9  .Kot.3          .             1.0000         1.0000    -17328.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 112
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 112
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6341,7 +6341,7 @@ Solution Report     SOLVE final Using MIP From line 437
 12 .Mat.2          .              .             1.0000    -11495.0000      
 12 .Mat.3          .              .             1.0000    -10920.2500      
 12 .Kut.1          .              .             1.0000     -6050.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 113
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 113
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6399,7 +6399,7 @@ Solution Report     SOLVE final Using MIP From line 437
 14 .Kuk.3          .              .             1.0000     -4575.6750      
 14 .Kok.1          .              .             1.0000     -3380.0000      
 14 .Kok.2          .              .             1.0000     -3211.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 114
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 114
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6457,7 +6457,7 @@ Solution Report     SOLVE final Using MIP From line 437
 17 .Mak.1          .              .             1.0000     -5120.0000      
 17 .Mak.2          .              .             1.0000     -4864.0000      
 17 .Mak.3          .              .             1.0000     -4620.8000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 115
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 115
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6515,7 +6515,7 @@ Solution Report     SOLVE final Using MIP From line 437
 20 .Kut.2          .              .             1.0000    -17147.5000      
 20 .Kut.3          .              .             1.0000    -16290.1250      
 20 .Kot.1          .              .             1.0000   -108300.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 116
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 116
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6573,7 +6573,7 @@ Solution Report     SOLVE final Using MIP From line 437
 22 .Kok.3          .              .             1.0000     -7960.0500      
 23 .Mat.1          .              .             1.0000    -48400.0000      
 23 .Mat.2          .              .             1.0000    -45980.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 117
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 117
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6631,7 +6631,7 @@ Solution Report     SOLVE final Using MIP From line 437
 25 .Kuk.1          .              .             1.0000    -17280.0000      
 25 .Kuk.2          .              .             1.0000    -16416.0000      
 25 .Kuk.3          .              .             1.0000    -15595.2000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 118
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 118
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6689,7 +6689,7 @@ Solution Report     SOLVE final Using MIP From line 437
 28 .Kot.2          .              .             1.0000   -207765.0000      
 28 .Kot.3          .              .             1.0000   -197376.7500      
 28 .Mak.1          .              .             1.0000    -14580.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 119
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 119
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6747,7 +6747,7 @@ Solution Report     SOLVE final Using MIP From line 437
 31 .Mat.3          .              .             1.0000    -81225.0000      
 31 .Kut.1          .              .             1.0000    -45000.0000      
 31 .Kut.2          .              .             1.0000    -42750.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 120
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 120
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6805,7 +6805,7 @@ Solution Report     SOLVE final Using MIP From line 437
 33 .Kok.1          .              .             1.0000    -20480.0000      
 33 .Kok.2          .              .             1.0000    -19456.0000      
 33 .Kok.3          .              .             1.0000    -18483.2000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 121
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 121
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6863,7 +6863,7 @@ Solution Report     SOLVE final Using MIP From line 437
 36 .Mak.2          .              .             1.0000    -23275.0000      
 36 .Mak.3          .              .             1.0000    -22111.2500      
 36 .Kuk.1          .              .             1.0000    -36750.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 122
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 122
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6921,7 +6921,7 @@ Solution Report     SOLVE final Using MIP From line 437
 39 .Kut.3          .              .             1.0000    -65160.5000      
 39 .Kot.1          .              .             1.0000   -433200.0000      
 39 .Kot.2          .              .             1.0000   -411540.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 123
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 123
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -6979,7 +6979,7 @@ Solution Report     SOLVE final Using MIP From line 437
 42 .Mat.1          .              .             1.0000   -168100.0000      
 42 .Mat.2          .              .             1.0000   -159695.0000      
 42 .Mat.3          .              .             1.0000   -151710.2500      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 124
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 124
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7037,7 +7037,7 @@ Solution Report     SOLVE final Using MIP From line 437
 44 .Kuk.2          .              .             1.0000    -52696.5000      
 44 .Kuk.3          .              .             1.0000    -50061.6750      
 44 .Kok.1          .              .             1.0000    -36980.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 125
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 125
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7095,7 +7095,7 @@ Solution Report     SOLVE final Using MIP From line 437
 47 .Kot.3          .              .             1.0000   -572907.0000      
 47 .Mak.1          .              .             1.0000    -42320.0000      
 47 .Mak.2          .              .             1.0000    -40204.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 126
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 126
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7153,7 +7153,7 @@ Solution Report     SOLVE final Using MIP From line 437
 50 .Kut.1          .              .             1.0000   -120050.0000      
 50 .Kut.2          .              .             1.0000   -114047.5000      
 50 .Kut.3          .              .             1.0000   -108345.1250      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 127
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 127
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7211,7 +7211,7 @@ Solution Report     SOLVE final Using MIP From line 437
 52 .Kok.2          .              .             1.0000    -49419.0000      
 52 .Kok.3          .              .             1.0000    -46948.0500      
 53 .Mat.1          .              .             1.0000   -270400.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 128
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 128
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7269,7 +7269,7 @@ Solution Report     SOLVE final Using MIP From line 437
 55 .Mak.3          .              .             1.0000    -52633.8000      
 55 .Kuk.1          .              .             1.0000    -87480.0000      
 55 .Kuk.2          .              .             1.0000    -83106.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 129
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 129
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7327,7 +7327,7 @@ Solution Report     SOLVE final Using MIP From line 437
 58 .Kot.1          .              .             1.0000   -974700.0000      
 58 .Kot.2          .              .             1.0000   -925965.0000      
 58 .Kot.3          .              .             1.0000   -879666.7500      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 130
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 130
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7385,7 +7385,7 @@ Solution Report     SOLVE final Using MIP From line 437
 61 .Mat.2          .              .             1.0000   -342000.0000      
 61 .Mat.3          .              .             1.0000   -324900.0000      
 61 .Kut.1          .              .             1.0000   -180000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 131
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 131
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7443,7 +7443,7 @@ Solution Report     SOLVE final Using MIP From line 437
 63 .Kuk.3          .              .             1.0000   -104076.3000      
 63 .Kok.1          .              .             1.0000    -76880.0000      
 63 .Kok.2          .              .             1.0000    -73036.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 132
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 132
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7501,7 +7501,7 @@ Solution Report     SOLVE final Using MIP From line 437
 66 .Mak.1          .              .             1.0000    -84500.0000      
 66 .Mak.2          .              .             1.0000    -80275.0000      
 66 .Mak.3          .              .             1.0000    -76261.2500      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 133
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 133
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7559,7 +7559,7 @@ Solution Report     SOLVE final Using MIP From line 437
 69 .Kut.2          .              .             1.0000   -219640.0000      
 69 .Kut.3          .              .             1.0000   -208658.0000      
 69 .Kot.1          .              .             1.0000   -1.387200E+6      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 134
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 134
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7617,7 +7617,7 @@ Solution Report     SOLVE final Using MIP From line 437
 71 .Kok.3          .              .             1.0000    -88445.0000      
 72 .Mat.1          .              .             1.0000   -504100.0000      
 72 .Mat.2          .              .             1.0000   -478895.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 135
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 135
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7675,7 +7675,7 @@ Solution Report     SOLVE final Using MIP From line 437
 74 .Kuk.1          .              .             1.0000   -159870.0000      
 74 .Kuk.2          .              .             1.0000   -151876.5000      
 74 .Kuk.3          .              .             1.0000   -144282.6750      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 136
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 136
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7733,7 +7733,7 @@ Solution Report     SOLVE final Using MIP From line 437
 77 .Kot.2          .              .             1.0000   -1.646160E+6      
 77 .Kot.3          .              .             1.0000   -1.563852E+6      
 77 .Mak.1          .              .             1.0000   -115520.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 137
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 137
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7791,7 +7791,7 @@ Solution Report     SOLVE final Using MIP From line 437
 80 .Mat.3          .              .             1.0000   -563250.2500      
 80 .Kut.1          .              .             1.0000   -312050.0000      
 80 .Kut.2          .              .             1.0000   -296447.5000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 138
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 138
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7849,7 +7849,7 @@ Solution Report     SOLVE final Using MIP From line 437
 82 .Kok.1          .              .             1.0000   -131220.0000      
 82 .Kok.2          .              .             1.0000   -124659.0000      
 82 .Kok.3          .              .             1.0000   -118426.0500      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 139
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 139
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7907,7 +7907,7 @@ Solution Report     SOLVE final Using MIP From line 437
 85 .Mak.2          .              .             1.0000   -134064.0000      
 85 .Mak.3          .              .             1.0000   -127360.8000      
 85 .Kuk.1          .              .             1.0000   -211680.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 140
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 140
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -7965,7 +7965,7 @@ Solution Report     SOLVE final Using MIP From line 437
 88 .Kut.3          .              .             1.0000   -341551.1250      
 88 .Kot.1          .              .             1.0000   -2.270700E+6      
 88 .Kot.2          .              .             1.0000   -2.157165E+6      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 141
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 141
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8023,7 +8023,7 @@ Solution Report     SOLVE final Using MIP From line 437
 91 .Mat.1          .              .             1.0000   -810000.0000      
 91 .Mat.2          .              .             1.0000   -769500.0000      
 91 .Mat.3          .              .             1.0000   -731025.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 142
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 142
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8081,7 +8081,7 @@ Solution Report     SOLVE final Using MIP From line 437
 93 .Kuk.2          .              .             1.0000   -241224.0000      
 93 .Kuk.3          .              .             1.0000   -229162.8000      
 93 .Kok.1          .              .             1.0000   -169280.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 143
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 143
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8139,7 +8139,7 @@ Solution Report     SOLVE final Using MIP From line 437
 96 .Kot.3          .              .             1.0000   -2.443519E+6      
 96 .Mak.1          .              .             1.0000   -180500.0000      
 96 .Mak.2          .              .             1.0000   -171475.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 144
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 144
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8197,7 +8197,7 @@ Solution Report     SOLVE final Using MIP From line 437
 99 .Kut.1          .              .             1.0000   -480200.0000      
 99 .Kut.2          .              .             1.0000   -456190.0000      
 99 .Kut.3          .              .             1.0000   -433380.5000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 145
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 145
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8255,7 +8255,7 @@ Solution Report     SOLVE final Using MIP From line 437
 101.Kok.2          .              .             1.0000   -190000.0000      
 101.Kok.3          .              .             1.0000   -180500.0000      
 102.Mat.1          .              .             1.0000   -1.020100E+6      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 146
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 146
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8313,7 +8313,7 @@ Solution Report     SOLVE final Using MIP From line 437
 104.Mak.3          .              .             1.0000   -191492.4500      
 104.Kuk.1          .              .             1.0000   -318270.0000      
 104.Kuk.2          .              .             1.0000   -302356.5000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 147
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 147
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8371,7 +8371,7 @@ Solution Report     SOLVE final Using MIP From line 437
 107.Kot.1          .              .             1.0000   -3.370800E+6      
 107.Kot.2          .              .             1.0000   -3.202260E+6      
 107.Kot.3          .              .             1.0000   -3.042147E+6      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 148
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 148
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8429,7 +8429,7 @@ Solution Report     SOLVE final Using MIP From line 437
 1 .Kos .PA.3          .             1.0000         1.0000         EPS         
 1 .Kos .KI.1          .             1.0000         1.0000         EPS         
 1 .Kos .KI.2          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 149
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 149
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8487,7 +8487,7 @@ Solution Report     SOLVE final Using MIP From line 437
 1 .Lsel.KI.1          .              .             1.0000         EPS         
 1 .Lsel.KI.2          .              .             1.0000         EPS         
 1 .Lsel.KI.3          .             1.0000         1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 150
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 150
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8545,7 +8545,7 @@ Solution Report     SOLVE final Using MIP From line 437
 2 .Kos .KI.2          .             1.0000         1.0000     12860.0985      
 2 .Kos .KI.3          .             1.0000         1.0000     12249.9444      
 2 .Kuv .EU.1          .              .             1.0000     43600.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 151
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 151
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8603,7 +8603,7 @@ Solution Report     SOLVE final Using MIP From line 437
 2 .Lsel.KI.3          .              .             1.0000     21967.0150      
 2 .Pap .EU.1          .              .             1.0000     44600.0000      
 2 .Pap .EU.2          .              .             1.0000     42382.8502      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 152
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 152
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8661,7 +8661,7 @@ Solution Report     SOLVE final Using MIP From line 437
 3 .Kuv .EU.1          .              .             1.0000     86400.0000      
 3 .Kuv .EU.2          .              .             1.0000     82102.4631      
 3 .Kuv .EU.3          .              .             1.0000     78018.3644      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 153
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 153
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8719,7 +8719,7 @@ Solution Report     SOLVE final Using MIP From line 437
 3 .Pap .EU.2          .              .             1.0000     84031.4010      
 3 .Pap .EU.3          .              .             1.0000     79877.0105      
 3 .Pap .IE.1          .             1.0000         1.0000     90000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 154
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 154
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8777,7 +8777,7 @@ Solution Report     SOLVE final Using MIP From line 437
 4 .Kuv .EU.3          .              .             1.0000    115976.3200      
 4 .Kuv .IE.1          .              .             1.0000    105000.0000      
 4 .Kuv .IE.2          .              .             1.0000     99876.3547      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 155
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 155
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8835,7 +8835,7 @@ Solution Report     SOLVE final Using MIP From line 437
 4 .Pap .IE.1          .              .             1.0000    132000.0000      
 4 .Pap .IE.2          .              .             1.0000    125689.1304      
 4 .Pap .IE.3          .              .             1.0000    119670.0593      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 156
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 156
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8893,7 +8893,7 @@ Solution Report     SOLVE final Using MIP From line 437
 5 .Kuv .IE.2          .              .             1.0000    129424.6305      
 5 .Kuv .IE.3          .              .             1.0000    123163.6443      
 5 .Kuv .PA.1          .              .             1.0000    124800.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 157
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 157
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -8951,7 +8951,7 @@ Solution Report     SOLVE final Using MIP From line 437
 5 .Pap .IE.3          .             1.0000         1.0000    156190.1055      
 5 .Pap .PA.1          .              .             1.0000    152800.0000      
 5 .Pap .PA.2          .              .             1.0000    145776.8116      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 158
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 158
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9009,7 +9009,7 @@ Solution Report     SOLVE final Using MIP From line 437
 6 .Kuv .PA.1          .              .             1.0000    150000.0000      
 6 .Kuv .PA.2          .              .             1.0000    142921.1823      
 6 .Kuv .PA.3          .              .             1.0000    136169.3332      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 159
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 159
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9067,7 +9067,7 @@ Solution Report     SOLVE final Using MIP From line 437
 6 .Pap .PA.2          .              .             1.0000    176713.7681      
 6 .Pap .PA.3          .              .             1.0000    168762.6978      
 6 .Pap .KI.1          .              .             1.0000    202500.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 160
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 160
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9125,7 +9125,7 @@ Solution Report     SOLVE final Using MIP From line 437
 7 .Kuv .PA.3          .              .             1.0000    157095.8397      
 7 .Kuv .KI.1          .              .             1.0000    156000.0000      
 7 .Kuv .KI.2          .              .             1.0000    148958.1281      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 161
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 161
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9183,7 +9183,7 @@ Solution Report     SOLVE final Using MIP From line 437
 7 .Pap .KI.1          .              .             1.0000    234000.0000      
 7 .Pap .KI.2          .              .             1.0000    224034.7826      
 7 .Pap .KI.3          .              .             1.0000    214425.3560      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 162
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 162
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9241,7 +9241,7 @@ Solution Report     SOLVE final Using MIP From line 437
 8 .Kuv .KI.2          .              .             1.0000    163956.8966      
 8 .Kuv .KI.3          .              .             1.0000    156724.8662      
 8 .Kov .EU.1          .              .             1.0000    281400.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 163
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 163
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9299,7 +9299,7 @@ Solution Report     SOLVE final Using MIP From line 437
 8 .Pap .KI.3          .              .             1.0000    241316.7346      
 9 .Mas .EU.1          .              .             1.0000    102400.0000      
 9 .Mas .EU.2          .              .             1.0000     97520.7921      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 164
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 164
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9357,7 +9357,7 @@ Solution Report     SOLVE final Using MIP From line 437
 9 .Kov .EU.1          .              .             1.0000    318400.0000      
 9 .Kov .EU.2          .              .             1.0000    302956.8627      
 9 .Kov .EU.3          .              .             1.0000    288253.1565      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 165
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 165
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9415,7 +9415,7 @@ Solution Report     SOLVE final Using MIP From line 437
 10.Mas .EU.2          .              .             1.0000    106324.7525      
 10.Mas .EU.3          .              .             1.0000    101295.1632      
 10.Mas .IE.1          .              .             1.0000     36000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 166
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 166
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9473,7 +9473,7 @@ Solution Report     SOLVE final Using MIP From line 437
 10.Kov .EU.3          .              .             1.0000    321161.9637      
 10.Kov .IE.1          .              .             1.0000    288000.0000      
 10.Kov .IE.2          .              .             1.0000    275108.8235      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 167
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 167
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9531,7 +9531,7 @@ Solution Report     SOLVE final Using MIP From line 437
 11.Mas .IE.1          .              .             1.0000     30000.0000      
 11.Mas .IE.2          .              .             1.0000     29440.5941      
 11.Mas .IE.3          .              .             1.0000     28853.2815      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 168
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 168
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9589,7 +9589,7 @@ Solution Report     SOLVE final Using MIP From line 437
 11.Kov .IE.2          .              .             1.0000    296362.7451      
 11.Kov .IE.3          .              .             1.0000    283279.5175      
 11.Kov .PA.1          .              .             1.0000    270000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 169
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 169
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9647,7 +9647,7 @@ Solution Report     SOLVE final Using MIP From line 437
 12.Mas .IE.3          .              .             1.0000     22006.7207      
 12.Mas .PA.1          .              .             1.0000      8800.0000      
 12.Mas .PA.2          .              .             1.0000      9725.7426      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 170
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 170
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9705,7 +9705,7 @@ Solution Report     SOLVE final Using MIP From line 437
 12.Kov .PA.1          .              .             1.0000    283800.0000      
 12.Kov .PA.2          .              .             1.0000    272314.7059      
 12.Kov .PA.3          .              .             1.0000    261218.0594      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 171
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 171
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9763,7 +9763,7 @@ Solution Report     SOLVE final Using MIP From line 437
 13.Mas .PA.2          .              .             1.0000     -2934.6535      
 13.Mas .PA.3          .              .             1.0000     -1259.1295      
 13.Mas .KI.1          .              .             1.0000    -36000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 172
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 172
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9821,7 +9821,7 @@ Solution Report     SOLVE final Using MIP From line 437
 13.Kov .PA.3          .              .             1.0000    272473.8062      
 13.Kov .KI.1          .              .             1.0000    240000.0000      
 13.Kov .KI.2          .              .             1.0000    232023.5294      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 173
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 173
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9879,7 +9879,7 @@ Solution Report     SOLVE final Using MIP From line 437
 14.Mas .KI.1          .              .             1.0000    -58500.0000      
 14.Mas .KI.2          .              .             1.0000    -53190.5941      
 14.Mas .KI.3          .              .             1.0000    -48288.3063      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 174
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 174
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9937,7 +9937,7 @@ Solution Report     SOLVE final Using MIP From line 437
 14.Kov .KI.2          .              .             1.0000    233197.0588      
 14.Kov .KI.3          .              .             1.0000    225935.2018      
 14.Hsel.EU.1          .              .             1.0000    265200.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 175
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 175
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -9995,7 +9995,7 @@ Solution Report     SOLVE final Using MIP From line 437
 15.Mas .KI.3          .              .             1.0000    -70581.8523      
 15.Kus .EU.1          .              .             1.0000         EPS         
 15.Kus .EU.2          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 176
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 176
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10053,7 +10053,7 @@ Solution Report     SOLVE final Using MIP From line 437
 15.Hsel.EU.1          .              .             1.0000    282800.0000      
 15.Hsel.EU.2          .              .             1.0000    269568.2927      
 15.Hsel.EU.3          .              .             1.0000    256931.7103      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 177
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 177
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10111,7 +10111,7 @@ Solution Report     SOLVE final Using MIP From line 437
 16.Kus .EU.2          .              .             1.0000         EPS         
 16.Kus .EU.3          .              .             1.0000         EPS         
 16.Kus .IE.1          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 178
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 178
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10169,7 +10169,7 @@ Solution Report     SOLVE final Using MIP From line 437
 16.Hsel.EU.3          .              .             1.0000    272706.9378      
 16.Hsel.IE.1          .              .             1.0000    285000.0000      
 16.Hsel.IE.2          .              .             1.0000    272835.3659      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 179
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 179
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10227,7 +10227,7 @@ Solution Report     SOLVE final Using MIP From line 437
 17.Kus .IE.1          .              .             1.0000         EPS         
 17.Kus .IE.2          .              .             1.0000         EPS         
 17.Kus .IE.3          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 180
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 180
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10285,7 +10285,7 @@ Solution Report     SOLVE final Using MIP From line 437
 17.Hsel.IE.2          .              .             1.0000    285092.6829      
 17.Hsel.IE.3          .              .             1.0000    273037.1208      
 17.Hsel.PA.1          .              .             1.0000    240000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 181
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 181
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10343,7 +10343,7 @@ Solution Report     SOLVE final Using MIP From line 437
 18.Kus .IE.3          .              .             1.0000         EPS         
 18.Kus .PA.1          .              .             1.0000         EPS         
 18.Kus .PA.2          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 182
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 182
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10401,7 +10401,7 @@ Solution Report     SOLVE final Using MIP From line 437
 18.Hsel.PA.1          .              .             1.0000    246500.0000      
 18.Hsel.PA.2          .              .             1.0000    237523.1707      
 18.Hsel.PA.3          .              .             1.0000    228750.1948      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 183
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 183
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10459,7 +10459,7 @@ Solution Report     SOLVE final Using MIP From line 437
 19.Kus .PA.2          .              .             1.0000         EPS         
 19.Kus .PA.3          .              .             1.0000         EPS         
 19.Kus .KI.1          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 184
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 184
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10517,7 +10517,7 @@ Solution Report     SOLVE final Using MIP From line 437
 19.Hsel.PA.3          .              .             1.0000    234474.9762      
 19.Hsel.KI.1          .              .             1.0000    273600.0000      
 19.Hsel.KI.2          .              .             1.0000    264424.3902      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 185
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 185
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10575,7 +10575,7 @@ Solution Report     SOLVE final Using MIP From line 437
 20.Kus .KI.1          .              .             1.0000         EPS         
 20.Kus .KI.2          .              .             1.0000         EPS         
 20.Kus .KI.3          .              .             1.0000         EPS         
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 186
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 186
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10633,7 +10633,7 @@ Solution Report     SOLVE final Using MIP From line 437
 20.Hsel.KI.2          .              .             1.0000    268548.7805      
 20.Hsel.KI.3          .              .             1.0000    259772.8941      
 20.Lsel.EU.1          .              .             1.0000    366700.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 187
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 187
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10691,7 +10691,7 @@ Solution Report     SOLVE final Using MIP From line 437
 21.Kus .KI.3          .              .             1.0000         EPS         
 21.Kos .EU.1          .              .             1.0000   -300000.0000      
 21.Kos .EU.2          .              .             1.0000   -277137.9310      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 188
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 188
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10749,7 +10749,7 @@ Solution Report     SOLVE final Using MIP From line 437
 21.Lsel.EU.1          .              .             1.0000    380000.0000      
 21.Lsel.EU.2          .              .             1.0000    364320.3883      
 21.Lsel.EU.3          .              .             1.0000    349166.8630      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 189
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 189
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10807,7 +10807,7 @@ Solution Report     SOLVE final Using MIP From line 437
 22.Kos .EU.2          .              .             1.0000   -318512.0690      
 22.Kos .EU.3          .              .             1.0000   -294473.6237      
 22.Kos .IE.1          .              .             1.0000   -588000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 190
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 190
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10865,7 +10865,7 @@ Solution Report     SOLVE final Using MIP From line 437
 22.Lsel.EU.3          .              .             1.0000    361265.8415      
 22.Lsel.IE.1          .              .             1.0000    499800.0000      
 22.Lsel.IE.2          .              .             1.0000    477250.4854      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 191
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 191
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10923,7 +10923,7 @@ Solution Report     SOLVE final Using MIP From line 437
 23.Kos .IE.1          .              .             1.0000   -660000.0000      
 23.Kos .IE.2          .              .             1.0000   -613409.8522      
 23.Kos .IE.3          .              .             1.0000   -570019.5169      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 192
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 192
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -10981,7 +10981,7 @@ Solution Report     SOLVE final Using MIP From line 437
 23.Lsel.IE.2          .              .             1.0000    495918.4466      
 23.Lsel.IE.3          .              .             1.0000    473592.9362      
 23.Lsel.PA.1          .              .             1.0000    264000.0000      
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 193
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 193
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -11038,7 +11038,7 @@ Kok.3          .        380000.0000        +INF             .
 1        -INF       101036.0000        +INF             .          
 2        -INF       212115.7344        +INF             .          
 3        -INF       251121.7240        +INF             .          
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 194
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 194
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE final Using MIP From line 437
 
@@ -11068,7 +11068,7 @@ PAPM .3        -INF       150000.0000        +INF             .
                              0 INFEASIBLE
                              0  UNBOUNDED
                             41  PROJECTED
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 195
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 195
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -11125,7 +11125,7 @@ Hsel.IE                   1.000
 Lsel.EU       1.000
 Pap .IE       1.000
 Pap .KI       1.000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 196
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 196
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -11183,7 +11183,7 @@ Lsel.IE       1.000       1.000
 1  .Kuk       1.000
 4  .Kuk                   1.000       1.000
 9  .Kot                   1.000       1.000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 197
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 197
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -11241,7 +11241,7 @@ Mak  310000.000  330000.000  150000.000
 Kuk               30000.000   30000.000
 Kok  570000.000  590000.000  380000.000
 
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 02:05:06 Page 198
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                 01/19/17 13:35:28 Page 198
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -11258,7 +11258,7 @@ PAPM    80000.000  150000.000  150000.000
 
 
 
-EXECUTION TIME       =        0.048 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
+EXECUTION TIME       =        0.042 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
 
 
 USER: Course License Spring 2017                     A161219:0249AN-GEN

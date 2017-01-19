@@ -362,10 +362,9 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-//Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
 Capacity2(m,t) 'Make sure that the capacity does not go down'
 MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
-//CapStart(m,t)   'Make sure the starting capacity is right'
+CapStart(m,t)   'Make sure the starting capacity is right'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
@@ -416,13 +415,12 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 //=============================== CAPACITYS FOR PRODUCTION =============================
 
 
-//Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
-Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
-Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
+Capacity2(m,t).. Cap(m,t) =g= sum(j, y(j,t)*Prodinm(m,j));
+Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1);
 
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
-//CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
+CapStart(m,t).. Cap(m,"1") =E= Cap0(m);
 
 
 
