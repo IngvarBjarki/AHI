@@ -393,16 +393,13 @@ TotalSales(t) 'Total sales for each year t'
 RegionSales(t,k) 'Sales in each region k for each year t'
 
 
-BCTOProcap(s, y) 'MUNA BREYTA NAFNI@CTRL H'
-BCT1Procap(s, y) 'Muna BREYTA NAFNI'
-
 ;
 
 
 
 obj ..
 
-        Z =e= sum(t, 0.25*sum(s,power(0.95, ord(t)-1)*Pr(s,t)));
+        Z =e= sum(t, 0.25*power(0.95, ord(t)-1)*Pr(s,t));
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(s,i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s0(i,t);
