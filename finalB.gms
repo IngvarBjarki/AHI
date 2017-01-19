@@ -319,6 +319,7 @@ fxC(t) 'Fixed cost of machine m in year t'
 Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
 
+
 EXCECUTIVE-OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
 
 ATO 'Annual turnover'
@@ -326,6 +327,11 @@ DPC 'direct production costs'
 SP 'sales profit'
 FC 'fixed costs'
 PROFIT 'Net profit'
+
+TotalSell(t) 'Total sales for each year t'
+RegionSell(t,k) 'Sales in each region k for each year t'
+SALES_OVERVIEW(t,k) 'Precentage of sales in each region k for each year t'
+
 ;
 
 
@@ -374,11 +380,18 @@ PROFIT(t) 'Profit is what we gain minus what we spend'
 
 Capacity3(m,t) 'safdasd'
 
+
 Ex1(t)
 Ex2(t)
 Ex3(t)
 Ex4(t)
 Ex5(t)
+
+// ======Sales Distribution among regions in each year=====//
+TotalSales(t) 'Total sales for each year t'
+RegionSales(t,k) 'Sales in each region k for each year t'
+
+
 ;
 
 
@@ -433,6 +446,11 @@ PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t))
                     - sum(j, y(j,t)*c(j)/1000)
                     - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
+// ======Sales Distribution among regions in each year=====//
+TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+                 - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
+                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+
 
 
 // =======Overview======== //
@@ -442,10 +460,17 @@ Ex3(t)
 Ex4(t)
 Ex5(t)
 
+=======
+RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+                 - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
+                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l;
+SALES_OVERVIEW.l(t,k) = 100*RegionSell.l(t,k)/TotalSell.l(t);
+
+DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l, TotalSell.l, RegionSell.l, SALES_OVERVIEW.l;
 
 EXCECUTIVE-OVERVIEW(V,t).l
 
