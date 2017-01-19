@@ -455,10 +455,10 @@ TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*
 
 // =======Overview======== //
 Ex1(t).. EXCECUTIVE_OVERVIEW('ATO',t) =e= sum((l,k,j), q(l,j)*u(l,j,k,t));
-Ex2(t).. EXCECUTIVE_OVERVIEW('DPC',t) =e= sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t)))+ sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t))) + sum(j, y(j,t)*c(j)/1000);
-Ex3(t).. EXCECUTIVE_OVERVIEW('SP',t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
-            - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
-Ex4(t).. EXCECUTIVE_OVERVIEW('FC',t) =e=  sum(m, Cap(m,t)*FCost(m)/1000) ;
+Ex2(t).. EXCECUTIVE_OVERVIEW('DPC',t) =e= power(0.95, ord(t)-1)*(sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t)))+ sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t))) + sum(j, y(j,t)*c(j)/1000));
+Ex3(t).. EXCECUTIVE_OVERVIEW('SP',t) =e=  power(0.95, ord(t)-1)*((sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+            - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1))));
+Ex4(t).. EXCECUTIVE_OVERVIEW('FC',t) =e=  power(0.95, ord(t)-1)*sum(m, Cap(m,t)*FCost(m)/1000) ;
 Ex5(t).. EXCECUTIVE_OVERVIEW('PROFIT',t) =e= power(0.95, ord(t)-1)*Pr(t);
 
 
