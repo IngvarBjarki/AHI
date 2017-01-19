@@ -31,6 +31,16 @@ SET t 'years'
 / 1, 2, 3 /;
 
 
+    SET SAWm(products)
+        / MAS, KUS, KOS /;
+    SET PLYm(products)
+        / KUV, KOV /;
+    SET SPULPm(products)
+        /HSEL/;
+    SET HPULPm(products)
+        /LSEL/;
+    SET PAPm(Products)
+        /PAP/;
 
 SET m 'production lines'
 /   SAW, PLY, SPULP, HPULP, PAPM /;
@@ -118,6 +128,11 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
 
 
+*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
+*                     Mak    Kuk     Kok   Hsel    Lsel
+*        Hsel      4.8      0.0      0.0      0.0      0.0
+*        Lsel       0.0      0.0      4.2      0.0      0.0
+*        Pap       0.0      1.0       0.0     0.2      0.2;
 
 TABLE Prodinm(m,j) 'What products j are in what machines m'
         MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
@@ -318,17 +333,7 @@ b(i,t) 'amount of timber i bought'
 fxC(t) 'Fixed cost of machine m in year t'
 Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
-
-EXCECUTIVE-OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
-
-ATO 'Annual turnover'
-DPC 'direct production costs'
-SP 'sales profit'
-FC 'fixed costs'
-PROFIT 'Net profit'
 ;
-
-
 
 // y/table --> product made
 INTEGER VARIABLES y;
@@ -356,10 +361,10 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-//Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+
 Capacity2(m,t) 'Make sure that the capacity does not go down'
 MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
-//CapStart(m,t)   'Make sure the starting capacity is right'
+CapStart(m,t)   'Make sure the starting capacity is right'
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
@@ -374,11 +379,7 @@ PROFIT(t) 'Profit is what we gain minus what we spend'
 
 Capacity3(m,t) 'safdasd'
 
-Ex1(t)
-Ex2(t)
-Ex3(t)
-Ex4(t)
-Ex5(t)
+
 ;
 
 
@@ -402,15 +403,12 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 //=============================== CAPACITYS FOR PRODUCTION =============================
 
-
-//Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
-Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
-Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
+Capacity2(m,t).. Cap(m,t) =g= sum(j, y(j,t)*Prodinm(m,j));
+Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1);
 
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
-//CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
-
+CapStart(m,t).. Cap(m,"1") =E= Cap0(m);
 
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
@@ -423,29 +421,20 @@ PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
-
-PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
-- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
+PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j),(ord(t)-1))))   //Amount sold times sellingprice
 
                     - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
                     + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
                     + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+
                     - sum(j, y(j,t)*c(j)/1000)
-                    - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
+                    - sum(m, ( Cap(m,t+1)+ sum(j, y(j,"3")*Prodinm(m,j))$(ord(t)=3)  )   *FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
 
-
-// =======Overview======== //
-Ex1(t).. sum((l,k,j) q(l,j)*u(l,j,k,t))
-Ex2(t)
-Ex3(t)
-Ex4(t)
-Ex5(t)
 
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l;
+DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l;
 
-EXCECUTIVE-OVERVIEW(V,t).l
 
