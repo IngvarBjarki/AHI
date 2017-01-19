@@ -313,7 +313,7 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 VARIABLES
 z 'the objective'
 *h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
+y(s,j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 //s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
 s0(i,t) 'amount of timber i used to make products'
@@ -323,7 +323,7 @@ b(i,t) 'amount of timber i bought'
 
 *fxC(t) 'Fixed cost of machine m in year t'
 Pr(s,t) 'Net profit in each year t'
-Cap(m,t) 'Capacity of machine m in year t'
+Cap(s,m,t) 'Capacity of machine m in year t'
 
 
 EXCECUTIVE_OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
@@ -347,7 +347,7 @@ INTEGER VARIABLES y;
 BINARY VARIABLES u, r;
 POSITIVE VARIABLES s0, b;
 
-y.up(j,t) = 1060000;
+y.up(s,j,t) = 1060000;
 
 
 EQUATIONS
@@ -393,18 +393,22 @@ TotalSales(t) 'Total sales for each year t'
 RegionSales(t,k) 'Sales in each region k for each year t'
 
 
+BCTOProcap(s, m) 'MUNA BREYTA NAFNI@CTRL H'
+BCT1Procap(s, m) 'Muna BREYTA NAFNI'
+BTC0y(s, j, t)
+BTC1y(s, j, t)
 ;
 
 
 
 obj ..
 
-        Z =e= sum(t, 0.25*power(0.95, ord(t)-1)*Pr(s,t));
+        Z =e= sum(t, 0.25*sum(s,power(0.95, ord(t)-1)*Pr(s,t)));
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
-timber_used(s,i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s0(i,t);
+timber_used(s,i,t) ..  sum(j, y(s,j,t)*table2(j, i)) =e= s0(i,t);
 prod_starved(s,i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s0(i,t);
-Sold_Prod(s,j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+Sold_Prod(s,j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(s,j,t);
 timber_bought(s,i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
@@ -413,20 +417,21 @@ Barges_sell(s,j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
 //=============================== CAPACITYS FOR PRODUCTION =============================/
-Capacity2(s,m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
-Capacity3(s,m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
+Capacity2(s,m,t).. Cap(s,m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(s,j,t)*Prodinm(m,j));
+Capacity3(s,m,t).. Cap(s,m,t) =g=  Cap(s,m,t-1) + Cap0(m)$(ord(t)=1);
 
-MaxCapacity(s,m,t).. Cap(m,t) =l= MaxCap(m);
+MaxCapacity(s,m,t).. Cap(s,m,t) =l= MaxCap(m);
 
+BCTOProcap(s, m) ..  Cap(s,m, "1" ) =e= Cap(s++1, m,"1");
+BCT1Procap(s, m)$(ord(s) = 1 or ord(s)= 3) .. Cap(s, m, '2') =e=  Cap(s+1, m, '2');
 
+BTC0y(s, j, t) .. y(s,j,"1") =e= y(s++1,j,"1") ;
+BTC1y(s, j, t)$(ord(s) = 1 or ord(s)= 3) .. y(s,j,"2") =e= y(s++1,j,"2");
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
-PAP_HSEL(s,t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
-PAP_LSEL(s,t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
+PAP_HSEL(s,t)..  PAP_Pro*y(s,"PAP",t) =l= y(s,"HSEL",t);
+PAP_LSEL(s,t)..  PAP_Pro*y(s,"PAP",t) =l= y(s,"LSEL",t);
 PULP_Bal(s,p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
-
-// =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
@@ -435,10 +440,10 @@ nPROFIT(s,t).. Pr(s,t) =e=  RHO(s,t)*(sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,
 - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
 
                     - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
-                    + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
+                    + sum(p1, y(s,p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
                     + sum(i, (b(i,t)-s0(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
-                    - sum(j, y(j,t)*c(j)/1000)
-                    - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
+                    - sum(j, y(s,j,t)*c(j)/1000)
+                    - sum(m, Cap(s,m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
 // ======Sales Distribution among regions in each year=====//
 TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
