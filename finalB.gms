@@ -43,7 +43,7 @@ SET t 'years'
         /PAP/;
 
 SET m 'production lines'
-/   SAW, PLY, SPULP, HPULP, PAP /;
+/   SAW, PLY, SPULP, HPULP, PAPM /;
 
 ALIAS(timber, i);
 ALIAS(products, j);
@@ -84,7 +84,7 @@ CAP0(m) 'Starting capacity'
         PLY     90000
         SPULP   100000
         HPULP   150000
-        PAP     80000  /
+        PAPM    80000  /
 
 demand_growth(j) 'demand growth for product j'
 /   MAS    1.010
@@ -102,14 +102,14 @@ FCOST(m) 'Fixed cost'
         PLY     300
         SPULP   500
         HPULP   500
-        PAP     700 /
+        PAPM    700 /
 
 MaxCap(m)
    /SAW     150000
     PLY     135000
     SPULP   200000
     HPULP   300000
-    PAP     160000 /;
+    PAPM    160000 /;
 
 
 
@@ -140,7 +140,7 @@ SAW       1       1       1       0       0        0       0      0
 PLY       0       0       0       1       1        0       0      0
 SPULP     0       0       0       0       0        1       0      0
 HPULP     0       0       0       0       0        0       1      0
-PAP       0       0       0       0       0        0       0      1;
+PAPM      0       0       0       0       0        0       0      1;
 
 
 
@@ -361,7 +361,11 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
+<<<<<<< HEAD
 //Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+=======
+
+>>>>>>> b1bdbc81fe6a592c8146f26f5dd1fd13caf468c4
 Capacity2(m,t) 'Make sure that the capacity does not go down'
 MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
 //CapStart(m,t)   'Make sure the starting capacity is right'
@@ -402,6 +406,8 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 
 //=============================== CAPACITYS FOR PRODUCTION =============================
+
+
 //Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
 Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
 Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
@@ -409,6 +415,7 @@ Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
 //CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
+
 
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
@@ -421,6 +428,7 @@ PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
+
 PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
 - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), (ord(t)-1))))   //Amount sold times sellingprice
 
