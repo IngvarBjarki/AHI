@@ -320,13 +320,13 @@ Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
 
 
-EXCECUTIVE-OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
+EXCECUTIVE_OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
 
-ATO 'Annual turnover'
-DPC 'direct production costs'
-SP 'sales profit'
-FC 'fixed costs'
-PROFIT 'Net profit'
+ATO(t) 'Annual turnover'
+DPC(t) 'direct production costs'
+SP(t) 'sales profit'
+FC(t) 'fixed costs'
+PROFIT(t) 'Net profit'
 
 TotalSell(t) 'Total sales for each year t'
 RegionSell(t,k) 'Sales in each region k for each year t'
@@ -376,7 +376,7 @@ PULP_Bal(p3,t)     'Cant produce paper without pulp'
 *FixedCost(t) 'Fixed cost of machine m in year t'
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
-PROFIT(t) 'Profit is what we gain minus what we spend'
+nPROFIT(t) 'Profit is what we gain minus what we spend'
 
 Capacity3(m,t) 'safdasd'
 
@@ -437,7 +437,7 @@ PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 
-PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+nPROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
 - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
 
                     - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
@@ -454,13 +454,14 @@ TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*
 
 
 // =======Overview======== //
-Ex1(t).. sum((l,k,j) q(l,j)*u(l,j,k,t))
-Ex2(t)
-Ex3(t)
-Ex4(t)
-Ex5(t)
+Ex1(t).. ATO(t) =e= sum((l,k,j), q(l,j)*u(l,j,k,t));
+Ex2(t).. DPC(t) =e= sum((n,i), h(n,i)*r(n,i,t)) + sum(j, y(j,t)*c(j)/1000);
+Ex3(t)..  SP(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+            - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+Ex4(t)..  FC(t) =e=  sum(m, Cap(m,t)*FCost(m)/1000) ;
+Ex5(t).. PROFIT(t) =e= power(0.95, ord(t)-1)*Pr(t);
 
-=======
+
 RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
                  - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
                          * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
@@ -472,5 +473,7 @@ SALES_OVERVIEW.l(t,k) = 100*RegionSell.l(t,k)/TotalSell.l(t);
 
 DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l, TotalSell.l, RegionSell.l, SALES_OVERVIEW.l;
 
-EXCECUTIVE-OVERVIEW(V,t).l
+DISPLAY EXCECUTIVE_OVERVIEW(V,t).l;
+
+
 

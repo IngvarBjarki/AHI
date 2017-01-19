@@ -1,4 +1,4 @@
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 1
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -56,7 +56,7 @@ C o m p i l a t i o n
   52          Lsel  800
   53          Pap   1700  /
   54   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 2
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -114,7 +114,7 @@ C o m p i l a t i o n
  105   
  106   
  107   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 3
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -172,7 +172,7 @@ C o m p i l a t i o n
  158   
  159   
  160  TABLE q(l,j) 'Options of amount l to be sold of product j'
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 4
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -230,7 +230,7 @@ C o m p i l a t i o n
  211  22  210000  210000  210000  210000  210000  210000
  212  23  220000  220000  220000  220000  220000  220000
  213  24  230000  230000  230000  230000  230000  230000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 5
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -288,7 +288,7 @@ C o m p i l a t i o n
  264  75  740000  740000  740000  740000  740000  740000
  265  76  750000  750000  750000  750000  750000  750000
  266  77  760000  760000  760000  760000  760000  760000
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 6
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -346,154 +346,205 @@ C o m p i l a t i o n
  317  b(i,t) 'amount of timber i bought'
  318  fxC(t) 'Fixed cost of machine m in year t'
  319  Pr(t) 'Net profit in each year t'
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 7
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
  320  Cap(m,t) 'Capacity of machine m in year t'
  321   
- 322  *EXCECUTIVE-OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
- 323  ;
+ 322   
+ 323  EXCECUTIVE_OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
  324   
- 325  // y/table --> product made
- 326  INTEGER VARIABLES y;
- 327  BINARY VARIABLES u, r;
- 328  POSITIVE VARIABLES s, b;
- 329   
- 330  y.up(j,t) = 1060000;
- 331   
- 332   
- 333  EQUATIONS
+ 325  ATO(t) 'Annual turnover'
+ 326  DPC(t) 'direct production costs'
+ 327  SP(t) 'sales profit'
+ 328  FC(t) 'fixed costs'
+ 329  PROFIT(t) 'Net profit'
+ 330   
+ 331  TotalSell(t) 'Total sales for each year t'
+ 332  RegionSell(t,k) 'Sales in each region k for each year t'
+ 333  SALES_OVERVIEW(t,k) 'Precentage of sales in each region k for each year t'
  334   
- 335  obj  'Maximum gross profit'
+ 335  ;
  336   
  337   
  338   
- 339  //=============================================ENOUGH TIMBER
- 340  timber_used(i,t) ' amount of  timber i used to make  product j in year t'
- 341  prod_starved(i,t)  'ensure that production can not be starved in each year'
- 342  //USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
- 343  Sold_Prod(j,t)   'we cant sell more than we produce in each year'
- 344  timber_bought(i,t) 'amount of timber i bought in each year'
+ 339  // y/table --> product made
+ 340  INTEGER VARIABLES y;
+ 341  BINARY VARIABLES u, r;
+ 342  POSITIVE VARIABLES s, b;
+ 343   
+ 344  y.up(j,t) = 1060000;
  345   
- 346  //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
- 347  Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
- 348  Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
- 349   
- 350  //=====================================CAPACITYS FOR PRODUCTION
- 351  //Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
- 352  Capacity2(m,t) 'Make sure that the capacity does not go down'
- 353  MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
- 354  //CapStart(m,t)   'Make sure the starting capacity is right'
- 355   
- 356  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
- 357  PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
- 358  PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
- 359  PULP_Bal(p3,t)     'Cant produce paper without pulp'
- 360   
- 361  // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
- 362  *FixedCost(t) 'Fixed cost of machine m in year t'
+ 346   
+ 347  EQUATIONS
+ 348   
+ 349  obj  'Maximum gross profit'
+ 350   
+ 351   
+ 352   
+ 353  //=============================================ENOUGH TIMBER
+ 354  timber_used(i,t) ' amount of  timber i used to make  product j in year t'
+ 355  prod_starved(i,t)  'ensure that production can not be starved in each year'
+ 356  //USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
+ 357  Sold_Prod(j,t)   'we cant sell more than we produce in each year'
+ 358  timber_bought(i,t) 'amount of timber i bought in each year'
+ 359   
+ 360  //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
+ 361  Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
+ 362  Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
  363   
- 364  // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
- 365  PROFIT(t) 'Profit is what we gain minus what we spend'
- 366   
- 367  Capacity3(m,t) 'safdasd'
- 368   
- 369  // ====Overview====//
- 370  ExeOT 'Excecutive overview table'
- 371  ;
- 372   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 8
+ 364  //=====================================CAPACITYS FOR PRODUCTION
+ 365  //Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+ 366  Capacity2(m,t) 'Make sure that the capacity does not go down'
+ 367  MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
+ 368  //CapStart(m,t)   'Make sure the starting capacity is right'
+ 369   
+ 370  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
+ 371  PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
+ 372  PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 373   
+ 373  PULP_Bal(p3,t)     'Cant produce paper without pulp'
  374   
- 375  obj ..
- 376   
- 377          Z =e= sum(t, power(0.95, ord(t)-1)*Pr(t));
- 378   
- 379  //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
- 380  timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
- 381  prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
- 382  //Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
- 383  Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
- 384  //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
- 385  timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
- 386   
- 387  //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
- 388  Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
- 389  Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
- 390   
- 391   
- 392  //=============================== CAPACITYS FOR PRODUCTION =============================
+ 375  // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
+ 376  *FixedCost(t) 'Fixed cost of machine m in year t'
+ 377   
+ 378  // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
+ 379  nPROFIT(t) 'Profit is what we gain minus what we spend'
+ 380   
+ 381  Capacity3(m,t) 'safdasd'
+ 382   
+ 383   
+ 384  Ex1(t)
+ 385  Ex2(t)
+ 386  Ex3(t)
+ 387  Ex4(t)
+ 388  Ex5(t)
+ 389   
+ 390  // ======Sales Distribution among regions in each year=====//
+ 391  TotalSales(t) 'Total sales for each year t'
+ 392  RegionSales(t,k) 'Sales in each region k for each year t'
  393   
  394   
- 395  //Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
- 396  Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
- 397  Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
+ 395  ;
+ 396   
+ 397   
  398   
- 399   
- 400  MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
- 401  //CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
+ 399  obj ..
+ 400   
+ 401          Z =e= sum(t, power(0.95, ord(t)-1)*Pr(t));
  402   
- 403   
- 404   
- 405  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
- 406  PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
- 407  PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
- 408  PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
- 409   
- 410  // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
- 411   
- 412   
- 413   
- 414  // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
+ 403  //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
+ 404  timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
+ 405  prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
+ 406  //Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+ 407  Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
+ 408  //USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
+ 409  timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
+ 410   
+ 411  //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
+ 412  Barges_buy(i,t) ..  sum( n,r(n,i,t)) =E= 1;
+ 413  Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
+ 414   
  415   
- 416  PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
- 417  - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
+ 416  //=============================== CAPACITYS FOR PRODUCTION =============================
+ 417   
  418   
- 419                      - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
- 420                      + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
- 421                      + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
- 422                      - sum(j, y(j,t)*c(j)/1000)
- 423                      - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
- 424                      ;
- 425   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 02:47:17 Page 9
+ 419  //Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
+ 420  Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
+ 421  Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
+ 422   
+ 423   
+ 424  MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
+ 425  //CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                   01/19/17 03:10:52 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
  426   
- 427  // =======Overview======== //
- 428  *ExeOT.. EXCECUTIVE-OVERVIEW(V,t) =e=
- 429  MODEL final /all/;
- 430  Solve final using mip maxmizing Z;
-****                                   $71,256
-**** The following MIP errors were detected in model final:
-****  71 ExeOT is an undefined equation
- 431  DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l;
- 432   
+ 427   
+ 428   
+ 429  // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
+ 430  PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
+ 431  PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
+ 432  PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
  433   
-GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 02:47:17 Page 10
+ 434  // =========ADD FIXED COST FOR INCREASED CAPACITY========== //
+ 435   
+ 436   
+ 437   
+ 438  // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
+ 439   
+ 440  nPROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+ 441  - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
+ 442   
+ 443                      - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
+ 444                      + sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
+ 445                      + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+ 446                      - sum(j, y(j,t)*c(j)/1000)
+ 447                      - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
+ 448                      ;
+ 449  // ======Sales Distribution among regions in each year=====//
+ 450  TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+ 451                   - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
+ 452                           * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+ 453   
+ 454   
+ 455   
+ 456  // =======Overview======== //
+ 457  Ex1(t).. ATO(t) =e= sum((l,k,j), q(l,j)*u(l,j,k,t));
+ 458  Ex2(t).. DPC(t) =e= sum((n,i), h(n,i)*r(n,i,t)) + sum(j, y(j,t)*c(j)/1000);
+ 459  Ex3(t)..  SP(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+ 460              - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+ 461  Ex4(t)..  FC(t) =e=  sum(m, Cap(m,t)*FCost(m)/1000) ;
+ 462  Ex5(t).. PROFIT(t) =e= power(0.95, ord(t)-1)*Pr(t);
+ 463   
+ 464   
+ 465  RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+ 466                   - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
+ 467                           * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+ 468   
+ 469   
+ 470  MODEL final /all/;
+ 471  Solve final using mip maxmizing Z;
+ 472  SALES_OVERVIEW.l(t,k) = 100*RegionSell.l(t,k)/TotalSell.l(t);
+ 473   
+ 474  DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l, TotalSell.l, RegionSell.l, SALES_OVERVIEW.l;
+ 475   
+ 476  DISPLAY EXCECUTIVE_OVERVIEW(V,t).l;
+****                            $143,141,409
+ 477   
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 03:10:52 Page 10
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 478   
+ 479   
+GAMS 24.8.1  r59919 Released Dec 22, 2016 DEX-DEG x86 64bit/Mac OS X                                                                                                                                                                  01/19/17 03:10:52 Page 11
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Error Messages
 
 
- 71  The symbol shown has been declared as an equation, but no
-        Symbolic equation (..) was found. hint - look for commas in the
-        Documentation text for the equations. use quotes around the
-        Text or eliminate the commas.
-256  Error(s) in analyzing solve statement. More detail appears
-     Below the solve statement above
+141  Symbol declared but no values have been assigned. Check for missing
+        data definition, assignment, data loading or implicit assignment
+        via a solve statement.
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+143  A suffix is missing
+409  Unrecognizable item - skip to find a new statement
+       looking for a ';' or a key word to get started again
 
-**** 2 ERROR(S)   0 WARNING(S)
+**** 3 ERROR(S)   0 WARNING(S)
 
 
-COMPILATION TIME     =        0.015 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
+COMPILATION TIME     =        0.004 SECONDS      3 MB  24.8.1 r59919 DEX-DEG
 
 
 USER: Course License Spring 2017                     A161219:0249AN-GEN
