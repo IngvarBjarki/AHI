@@ -403,7 +403,7 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 
 //=============================== CAPACITYS FOR PRODUCTION =============================
 //Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
-Capacity2(m,t).. Cap(m,t) =g= sum(j, y(j,t)*Prodinm(m,j));
+Capacity2(m,t).. Cap(m,t-1) =g= sum(j, y(j,t)*Prodinm(m,j));
 Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1);
 
 
@@ -428,7 +428,7 @@ PROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t))
                     + sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
 
                     - sum(j, y(j,t)*c(j)/1000)
-                    - sum(m, Cap(m,t+1)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
+                    - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
 
 
