@@ -158,30 +158,30 @@ TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
 
 
 TABLE q(l,j) 'Options of amount l to be sold of product j'
-   MAS     KOS     KUV     KOV    HSEL   LSEL   PAP
-1  0       0       0       0      0      0      0
-2  10000   10000   10000   10000  10000  10000  10000
-3  20000   20000   20000   20000  20000  20000  20000
-4  30000   30000   30000   30000  30000  30000  30000
-5  40000   40000   40000   40000  40000  40000  40000
-6  50000   50000   50000   50000  50000  50000  50000
-7  60000   60000   60000   60000  60000  60000  60000
-8  70000   70000   70000   70000  70000  70000  70000
-9  80000   80000   80000   80000  80000  80000  80000
-10 90000   90000   90000   90000  90000  90000  90000
-11 100000  100000  100000  100000 100000 100000 100000
-12 110000  110000  110000  110000 110000 110000 110000
-13 120000  120000  120000  120000 120000 120000 120000
-14 130000  130000  130000  130000 130000 130000 130000
-15 140000  140000  140000  140000 140000 140000 140000
-16 150000  150000  150000  150000 150000 150000 150000
-17 160000  160000  160000  160000 160000 160000 160000
-18 170000  170000  170000  170000 170000 170000 170000
-19 180000  180000  180000  180000 180000 180000 180000
-20 190000  190000  190000  190000 190000 190000 190000
-21 200000  200000  200000  200000 200000 200000 200000
-22 210000  210000  210000  210000 210000 210000 210000
-23 220000  220000  220000  220000 220000 220000 220000 ;
+     MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+1     0       0       0       0       0       0       0       0
+2   10000   10000   10000   10000   10000   10000   10000   10000
+3   20000   20000   20000   20000   20000   20000   20000   20000
+4   30000   30000   30000   30000   30000   30000   30000   30000
+5   40000   40000   40000   40000   40000   40000   40000   40000
+6   50000   50000   50000   50000   50000   50000   50000   50000
+7   60000   60000   60000   60000   60000   60000   60000   60000
+8   70000   70000   70000   70000   70000   70000   70000   70000
+9   80000   80000   80000   80000   80000   80000   80000   80000
+10  90000   90000   90000   90000   90000   90000   90000   90000
+11  100000  100000  100000  100000  100000  100000  100000  100000
+12  110000  110000  110000  110000  110000  110000  110000  110000
+13  120000  120000  120000  120000  120000  120000  120000  120000
+14  130000  130000  130000  130000  130000  130000  130000  130000
+15  140000  140000  140000  140000  140000  140000  140000  140000
+16  150000  150000  150000  150000  150000  150000  150000  150000
+17  160000  160000  160000  160000  160000  160000  160000  160000
+18  170000  170000  170000  170000  170000  170000  170000  170000
+19  180000  180000  180000  180000  180000  180000  180000  180000
+20  190000  190000  190000  190000  190000  190000  190000  190000
+21  200000  200000  200000  200000  200000  200000  200000  200000
+22  210000  210000  210000  210000  210000  210000  210000  210000
+23  220000  220000  220000  220000  220000  220000  220000  220000 ;
 
 
 
@@ -315,18 +315,13 @@ s(i,t) 'amount of timber i used to make products'
 r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 b(i,t) 'amount of timber i bought'
-fxC(t) 'Fixed cost of machine m in year t'
+
+*fxC(t) 'Fixed cost of machine m in year t'
 Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
 
 
 EXCECUTIVE_OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
-
-ATO(t) 'Annual turnover'
-DPC(t) 'direct production costs'
-SP(t) 'sales profit'
-FC(t) 'fixed costs'
-PROFIT(t) 'Net profit'
 
 TotalSell(t) 'Total sales for each year t'
 RegionSell(t,k) 'Sales in each region k for each year t'
@@ -422,7 +417,7 @@ Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
 
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
-//CapStart(m,t).. Cap(m,"1") =e= Cap0(m);
+//CapStart(m,t).. Cap(m,"1") =e= Cap0(m);       
 
 
 
@@ -446,7 +441,7 @@ nPROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)
                     - sum(j, y(j,t)*c(j)/1000)
                     - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
-// ======Sales Distribution among regions in each year=====//
+// ======Sales Distribution among regions in each year===== //
 TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
                  - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
                          * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
@@ -455,9 +450,9 @@ TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*
 
 // =======Overview======== //
 Ex1(t).. EXCECUTIVE_OVERVIEW('ATO',t) =e= sum((l,k,j), q(l,j)*u(l,j,k,t));
-Ex2(t).. EXCECUTIVE_OVERVIEW('DPC',t) =e= power(0.95, ord(t)-1)*(sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t)))+ sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t))) + sum(j, y(j,t)*c(j)/1000));
+Ex2(t).. EXCECUTIVE_OVERVIEW('DPC',t) =e= power(0.95, ord(t)-1)*(sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t)))+ sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t))) + sum(j, y(j,t)*c(j)/1000)-sum(p1, y(p1,t)*fuel_amount*(-fuel_price/1000)));
 Ex3(t).. EXCECUTIVE_OVERVIEW('SP',t) =e=  power(0.95, ord(t)-1)*((sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
-            - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1))));
+            - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))+ sum(i, (b(i,t)-s(i,t))*ALPHA(i)/1000));
 Ex4(t).. EXCECUTIVE_OVERVIEW('FC',t) =e=  power(0.95, ord(t)-1)*sum(m, Cap(m,t)*FCost(m)/1000) ;
 Ex5(t).. EXCECUTIVE_OVERVIEW('PROFIT',t) =e= power(0.95, ord(t)-1)*Pr(t);
 
@@ -468,7 +463,7 @@ RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,
 
 
 MODEL final /all/;
-Solve final using mip maxmizing Z;
+Solve final using mip maximizing Z;
 SALES_OVERVIEW.l(t,k) = 100*RegionSell.l(t,k)/TotalSell.l(t);
 
 DISPLAY z.l, u.l, r.l, y.l, s.l, b.l, Cap.l, pr.l, TotalSell.l, RegionSell.l, SALES_OVERVIEW.l;

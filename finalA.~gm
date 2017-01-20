@@ -71,13 +71,7 @@ TABLE table2(j,i)'Cubic-meters of material i used in cubic-meter of product j'
         KOV     0.0     0.0     2.8     0.0     0.0     -1.6
         HSEL    0.0     0.0     0.0     4.8     0.0     0.0
         LSEL    0.0     0.0     0.0     0.0     0.0     4.2
-        PAP     0.0     0.0     0.0     0.0     1.0     0.0      ;
-
-*TABLE table3(p2, p3) 'timber p3 needed for production of product p2'
-*                     Mak    Kuk     Kok   Hsel    Lsel
-*        Hsel      4.8      0.0      0.0      0.0      0.0
-*        Lsel       0.0      0.0      4.2      0.0      0.0
-*        Pap       0.0      1.0       0.0     0.2      0.2;
+        PAP     0.0     0.0     0.0     0.0     1.0     0.0   ;
 
 
 
@@ -109,30 +103,30 @@ TABLE DELTA(j,k) 'Delta coefficient for selling product j in region k'
 
 
 TABLE q(l,j) 'Options of amount l to be sold of product j'
-   MAS     KOS     KUV     KOV    HSEL   LSEL   PAP
-1  0       0       0       0      0      0      0
-2  10000   10000   10000   10000  10000  10000  10000
-3  20000   20000   20000   20000  20000  20000  20000
-4  30000   30000   30000   30000  30000  30000  30000
-5  40000   40000   40000   40000  40000  40000  40000
-6  50000   50000   50000   50000  50000  50000  50000
-7  60000   60000   60000   60000  60000  60000  60000
-8  70000   70000   70000   70000  70000  70000  70000
-9  80000   80000   80000   80000  80000  80000  80000
-10 90000   90000   90000   90000  90000  90000  90000
-11 100000  100000  100000  100000 100000 100000 100000
-12 110000  110000  110000  110000 110000 110000 110000
-13 120000  120000  120000  120000 120000 120000 120000
-14 130000  130000  130000  130000 130000 130000 130000
-15 140000  140000  140000  140000 140000 140000 140000
-16 150000  150000  150000  150000 150000 150000 150000
-17 160000  160000  160000  160000 160000 160000 160000
-18 170000  170000  170000  170000 170000 170000 170000
-19 180000  180000  180000  180000 180000 180000 180000
-20 190000  190000  190000  190000 190000 190000 190000
-21 200000  200000  200000  200000 200000 200000 200000
-22 210000  210000  210000  210000 210000 210000 210000
-23 220000  220000  220000  220000 220000 220000 220000 ;
+     MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+1     0       0       0       0       0       0       0       0
+2   10000   10000   10000   10000   10000   10000   10000   10000
+3   20000   20000   20000   20000   20000   20000   20000   20000
+4   30000   30000   30000   30000   30000   30000   30000   30000
+5   40000   40000   40000   40000   40000   40000   40000   40000
+6   50000   50000   50000   50000   50000   50000   50000   50000
+7   60000   60000   60000   60000   60000   60000   60000   60000
+8   70000   70000   70000   70000   70000   70000   70000   70000
+9   80000   80000   80000   80000   80000   80000   80000   80000
+10  90000   90000   90000   90000   90000   90000   90000   90000
+11  100000  100000  100000  100000  100000  100000  100000  100000
+12  110000  110000  110000  110000  110000  110000  110000  110000
+13  120000  120000  120000  120000  120000  120000  120000  120000
+14  130000  130000  130000  130000  130000  130000  130000  130000
+15  140000  140000  140000  140000  140000  140000  140000  140000
+16  150000  150000  150000  150000  150000  150000  150000  150000
+17  160000  160000  160000  160000  160000  160000  160000  160000
+18  170000  170000  170000  170000  170000  170000  170000  170000
+19  180000  180000  180000  180000  180000  180000  180000  180000
+20  190000  190000  190000  190000  190000  190000  190000  190000
+21  200000  200000  200000  200000  200000  200000  200000  200000
+22  210000  210000  210000  210000  210000  210000  210000  210000
+23  220000  220000  220000  220000  220000  220000  220000  220000 ;
 
 
 
@@ -268,10 +262,7 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 
 VARIABLES
 z 'the objective'
-*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
-*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+y(j) 'Cubic meters produced of product j'
 s(i) 'amount of timber i used to make products'
 r(n, i) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k) '1 if we use n boats for product j shiping to region k, 0 otherwise'
@@ -294,13 +285,12 @@ obj  'Maximum gross profit'
 //=============================================ENOUGH TIMBER
 timber_used(i) ' amount of  timber i used to make  product j'
 prod_starved(i)  'ensure that production can not be starved'
-//USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(j)   'we cant sell more than we produce'
 timber_bought(i) 'amount of timber i bought'
 
 //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
 Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
-Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
+Barges_sell(j, k)'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
 SawmillCap 'Maximum capacity of the saw mill'
@@ -330,19 +320,18 @@ obj ..
 
 
 
-//==========================ENSURE WE HAVE ENOUGH TIMBER==================================
+//==========================ENSURE WE HAVE ENOUGH TIMBER========================
 timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
 prod_starved(i) .. sum(n, r(n, i)*h(n, i)) =g= s(i);
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
-//USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i) .. b(i) =e= sum(n, r(n, i)*h(n, i));
 
-//=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
+//=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i =========
 Barges_buy(i) ..  sum( n,r(n,i)) =E= 1;
 Barges_sell(j, k) .. sum(l, u(l, j, k)) =E= 1;
 
 
-//===============================CAPACITYS FOR PRODUCTION =============================
+//===============================CAPACITYS FOR PRODUCTION ======================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
 PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;

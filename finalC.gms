@@ -311,31 +311,16 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 
 VARIABLES
 z 'the objective'
-*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(s,j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
-*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
+
+y(s,j,t) 'Cubic meters produced of product j'
 s0(s,i,t) 'amount of timber i used to make products'
 r(s,n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
 u(s,l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 b(s,i,t) 'amount of timber i bought'
 
-*fxC(t) 'Fixed cost of machine m in year t'
+
 Pr(s,t) 'Net profit in each year t'
 Cap(s,m,t) 'Capacity of machine m in year t'
-
-
-EXCECUTIVE_OVERVIEW(V,t) 'Overview over profit calculation parameters v in each year t'
-
-ATO(t) 'Annual turnover'
-DPC(t) 'direct production costs'
-SP(t) 'sales profit'
-FC(t) 'fixed costs'
-PROFIT(t) 'Net profit'
-
-TotalSell(t) 'Total sales for each year t'
-RegionSell(t,k) 'Sales in each region k for each year t'
-SALES_OVERVIEW(t,k) 'Precentage of sales in each region k for each year t'
 
 ;
 
@@ -358,7 +343,6 @@ obj  'Maximum gross profit'
 //=============================================ENOUGH TIMBER
 timber_used(s,i,t) ' amount of  timber i used to make  product j in year t'
 prod_starved(s,i,t)  'ensure that production can not be starved in each year'
-//USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(s,j,t)   'we cant sell more than we produce in each year'
 timber_bought(s,i,t) 'amount of timber i bought in each year'
 
@@ -367,18 +351,16 @@ Barges_buy(s,i,t)  'ensure we only pick one value n for barges for each timber i
 Barges_sell(s,j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-//Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+
 Capacity2(s,m,t) 'Make sure that the capacity does not go down'
 MaxCapacity(s,m,t) 'Make sure we dont go over the maximum capacity'
-//CapStart(m,t)   'Make sure the starting capacity is right'
+
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(s,t)     'Proportion needed of HSEL for PAP'
 PAP_LSEL(s,t)     'Proportion needed of LSEL for PAP'
 PULP_Bal(s,p3,t)     'Cant produce paper without pulp'
 
-// =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-*FixedCost(t) 'Fixed cost of machine m in year t'
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 nPROFIT(s,t) 'Profit is what we gain minus what we spend'
@@ -444,24 +426,10 @@ nPROFIT(s,t).. Pr(s,t) =e=  RHO(s,t)*(sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,
                     - sum(j, y(s,j,t)*c(j)/1000)
                     - sum(m, Cap(s,m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
-// ======Sales Distribution among regions in each year=====//
-TotalSales(s,t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(s,l,j,k,t)))
-                 - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
-                         * u(s,l,j,k,t))/power(demand_growth(j), ord(t)-1)));
-
-
-
-
-
-
-RegionSales(s,t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(s,l,j,k,t)))
-                 - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
-                         * u(s,l,j,k,t))/power(demand_growth(j), ord(t)-1)));
 
 
 MODEL final /all/;
 Solve final using mip maxmizing Z;
-SALES_OVERVIEW.l(t,k) = 100*RegionSell.l(t,k)/TotalSell.l(t);
 
-DISPLAY z.l, u.l, r.l, y.l, s0.l, b.l, Cap.l, pr.l, TotalSell.l, RegionSell.l, SALES_OVERVIEW.l;
+DISPLAY z.l, u.l, r.l, y.l, s0.l, b.l, Cap.l, pr.l;
 

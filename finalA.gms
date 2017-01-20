@@ -285,13 +285,12 @@ obj  'Maximum gross profit'
 //=============================================ENOUGH TIMBER
 timber_used(i) ' amount of  timber i used to make  product j'
 prod_starved(i)  'ensure that production can not be starved'
-//USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(j)   'we cant sell more than we produce'
 timber_bought(i) 'amount of timber i bought'
 
 //============================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i
 Barges_buy(i)  'ensure we only pick one value n for barges for each timber i'
-Barges_sell(j, k)  'ensure we only pick one value  n for barges for each product to each city'
+Barges_sell(j, k)'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
 SawmillCap 'Maximum capacity of the saw mill'
@@ -321,19 +320,18 @@ obj ..
 
 
 
-//==========================ENSURE WE HAVE ENOUGH TIMBER==================================
+//==========================ENSURE WE HAVE ENOUGH TIMBER========================
 timber_used(i) ..  sum(j, y(j)*table2(j, i)) =e= s(i);
 prod_starved(i) .. sum(n, r(n, i)*h(n, i)) =g= s(i);
 Sold_Prod(j) .. sum((l,k), q(l,j)*u(l,j,k)) =l= y(j);
-//USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i) .. b(i) =e= sum(n, r(n, i)*h(n, i));
 
-//=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
+//=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i =========
 Barges_buy(i) ..  sum( n,r(n,i)) =E= 1;
 Barges_sell(j, k) .. sum(l, u(l, j, k)) =E= 1;
 
 
-//===============================CAPACITYS FOR PRODUCTION =============================
+//===============================CAPACITYS FOR PRODUCTION ======================
 SawmillCap ..  y("Mas") + y("Kus") + y("Kos")  =l= saw_mill;
 PlywoodCap ..    y("Kuv") + y("Kov")  =l= plywood_mill;
 HSELCap ..   y("Hsel") =l= Hsel_line;
