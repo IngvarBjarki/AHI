@@ -2,8 +2,8 @@
 *
 $eolcom //
 option iterlim=999999999;     // avoid limit on iterations
-option reslim=300;            // timelimit for solver in sec.
-option optcr=0.0;             // gap tolerance
+option reslim=1300;            // timelimit for solver in sec.
+option optcr=0.03;             // gap tolerance
 option solprint=ON;           // include solution print in .lst file
 option limrow=100;            // limit number of rows in .lst file
 option limcol=100;            // limit number of columns in .lst file
@@ -394,8 +394,8 @@ RegionSales(s,t,k) 'Sales in each region k for each year t'
 
 BCTOProcap(s, m) 'MUNA BREYTA NAFNI@CTRL H'
 BCT1Procap(s, m) 'Muna BREYTA NAFNI'
-BTC0y(s, j, t)
-BTC1y(s, j, t)
+BTC0y(s, j)
+BTC1y(s, j)
 ;
 
 
@@ -424,8 +424,8 @@ MaxCapacity(s,m,t).. Cap(s,m,t) =l= MaxCap(m);
 BCTOProcap(s, m) ..  Cap(s,m, "1" ) =e= Cap(s++1, m,"1");
 BCT1Procap(s, m)$(ord(s) = 1 or ord(s)= 3) .. Cap(s, m, '2') =e=  Cap(s+1, m, '2');
 
-BTC0y(s, j, t) .. y(s,j,"1") =e= y(s++1,j,"1") ;
-BTC1y(s, j, t)$(ord(s) = 1 or ord(s)= 3) .. y(s,j,"2") =e= y(s+1,j,"2");
+BTC0y(s, j) .. y(s,j,"1") =e= y(s++1,j,"1") ;
+BTC1y(s, j)$(ord(s) = 1 or ord(s)= 3) .. y(s,j,"2") =e= y(s+1,j,"2");
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL(s,t)..  PAP_Pro*y(s,"PAP",t) =l= y(s,"HSEL",t);
