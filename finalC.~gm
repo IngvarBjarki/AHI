@@ -159,34 +159,33 @@ TABLE RHO(s,t) 'Price coefficients of scenario s in year t'
          s2  1.00 1.05 0.95
          s3  1.00 0.95 1.05
          s4  1.00 0.95 0.93 ;
-
-
-
 TABLE q(l,j) 'Options of amount l to be sold of product j'
-   MAS     KOS     KUV     KOV    HSEL   LSEL   PAP
-1  0       0       0       0      0      0      0
-2  10000   10000   10000   10000  10000  10000  10000
-3  20000   20000   20000   20000  20000  20000  20000
-4  30000   30000   30000   30000  30000  30000  30000
-5  40000   40000   40000   40000  40000  40000  40000
-6  50000   50000   50000   50000  50000  50000  50000
-7  60000   60000   60000   60000  60000  60000  60000
-8  70000   70000   70000   70000  70000  70000  70000
-9  80000   80000   80000   80000  80000  80000  80000
-10 90000   90000   90000   90000  90000  90000  90000
-11 100000  100000  100000  100000 100000 100000 100000
-12 110000  110000  110000  110000 110000 110000 110000
-13 120000  120000  120000  120000 120000 120000 120000
-14 130000  130000  130000  130000 130000 130000 130000
-15 140000  140000  140000  140000 140000 140000 140000
-16 150000  150000  150000  150000 150000 150000 150000
-17 160000  160000  160000  160000 160000 160000 160000
-18 170000  170000  170000  170000 170000 170000 170000
-19 180000  180000  180000  180000 180000 180000 180000
-20 190000  190000  190000  190000 190000 190000 190000
-21 200000  200000  200000  200000 200000 200000 200000
-22 210000  210000  210000  210000 210000 210000 210000
-23 220000  220000  220000  220000 220000 220000 220000 ;
+      MAS     KUS     KOS     KUV     KOV     HSEL    LSEL    PAP
+ 1     0       0       0       0       0       0       0       0
+ 2   10000   10000   10000   10000   10000   10000   10000   10000
+ 3   20000   20000   20000   20000   20000   20000   20000   20000
+ 4   30000   30000   30000   30000   30000   30000   30000   30000
+ 5   40000   40000   40000   40000   40000   40000   40000   40000
+ 6   50000   50000   50000   50000   50000   50000   50000   50000
+ 7   60000   60000   60000   60000   60000   60000   60000   60000
+ 8   70000   70000   70000   70000   70000   70000   70000   70000
+ 9   80000   80000   80000   80000   80000   80000   80000   80000
+ 10  90000   90000   90000   90000   90000   90000   90000   90000
+ 11  100000  100000  100000  100000  100000  100000  100000  100000
+ 12  110000  110000  110000  110000  110000  110000  110000  110000
+ 13  120000  120000  120000  120000  120000  120000  120000  120000
+ 14  130000  130000  130000  130000  130000  130000  130000  130000
+ 15  140000  140000  140000  140000  140000  140000  140000  140000
+ 16  150000  150000  150000  150000  150000  150000  150000  150000
+ 17  160000  160000  160000  160000  160000  160000  160000  160000
+ 18  170000  170000  170000  170000  170000  170000  170000  170000
+ 19  180000  180000  180000  180000  180000  180000  180000  180000
+ 20  190000  190000  190000  190000  190000  190000  190000  190000
+ 21  200000  200000  200000  200000  200000  200000  200000  200000
+ 22  210000  210000  210000  210000  210000  210000  210000  210000
+ 23  220000  220000  220000  220000  220000  220000  220000  220000 ;
+
+
 
 
 
@@ -316,10 +315,10 @@ z 'the objective'
 y(s,j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
 *q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
 //s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
-s0(i,t) 'amount of timber i used to make products'
-r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
-u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
-b(i,t) 'amount of timber i bought'
+s0(s,i,t) 'amount of timber i used to make products'
+r(s,n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
+u(s,l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
+b(s,i,t) 'amount of timber i bought'
 
 *fxC(t) 'Fixed cost of machine m in year t'
 Pr(s,t) 'Net profit in each year t'
@@ -389,8 +388,8 @@ Capacity3(s,m,t) 'safdasd'
 
 
 // ======Sales Distribution among regions in each year=====//
-TotalSales(t) 'Total sales for each year t'
-RegionSales(t,k) 'Sales in each region k for each year t'
+TotalSales(s,t) 'Total sales for each year t'
+RegionSales(s,t,k) 'Sales in each region k for each year t'
 
 
 BCTOProcap(s, m) 'MUNA BREYTA NAFNI@CTRL H'
@@ -406,14 +405,14 @@ obj ..
         Z =e= sum(t, 0.25*sum(s,power(0.95, ord(t)-1)*Pr(s,t)));
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
-timber_used(s,i,t) ..  sum(j, y(s,j,t)*table2(j, i)) =e= s0(i,t);
-prod_starved(s,i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s0(i,t);
-Sold_Prod(s,j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(s,j,t);
-timber_bought(s,i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
+timber_used(s,i,t) ..  sum(j, y(s,j,t)*table2(j, i)) =e= s0(s,i,t);
+prod_starved(s,i,t) .. sum(n, r(n, i,t)*h(s,n, i)) =g= s0(s,i,t);
+Sold_Prod(s,j,t) .. sum((l,k), q(l,j)*u(s,l,j,k,t)) =l= y(s,j,t);
+timber_bought(s,i,t) .. b(s,i,t) =e= sum(n, r(s,n, i,t)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
-Barges_buy(s,i,t) ..  sum( n,r(n,i,t)) =E= 1;
-Barges_sell(s,j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
+Barges_buy(s,i,t) ..  sum( n,r(s,n,i,t)) =E= 1;
+Barges_sell(s,j, k,t) .. sum(l, u(s,l, j, k,t)) =E= 1;
 
 
 //=============================== CAPACITYS FOR PRODUCTION =============================/
@@ -426,38 +425,38 @@ BCTOProcap(s, m) ..  Cap(s,m, "1" ) =e= Cap(s++1, m,"1");
 BCT1Procap(s, m)$(ord(s) = 1 or ord(s)= 3) .. Cap(s, m, '2') =e=  Cap(s+1, m, '2');
 
 BTC0y(s, j, t) .. y(s,j,"1") =e= y(s++1,j,"1") ;
-BTC1y(s, j, t)$(ord(s) = 1 or ord(s)= 3) .. y(s,j,"2") =e= y(s++1,j,"2");
+BTC1y(s, j, t)$(ord(s) = 1 or ord(s)= 3) .. y(s,j,"2") =e= y(s+1,j,"2");
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP ===========
 PAP_HSEL(s,t)..  PAP_Pro*y(s,"PAP",t) =l= y(s,"HSEL",t);
 PAP_LSEL(s,t)..  PAP_Pro*y(s,"PAP",t) =l= y(s,"LSEL",t);
-PULP_Bal(s,p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
+PULP_Bal(s,p3,t) .. sum((l,k), u(s,l,p3,k,t)*q(l,p3)) + PAP_Pro*y(s,"PAP",t) =l= y(s,P3,t);
 
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 
-nPROFIT(s,t).. Pr(s,t) =e=  RHO(s,t)*(sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
-- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
+nPROFIT(s,t).. Pr(s,t) =e=  RHO(s,t)*(sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(s,l,j,k,t)))
+- sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j) * u(s,l,j,k,t))/power(demand_growth(j), ord(t)-1)))   //Amount sold times sellingprice
 
-                    - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(n,i,t)))                    //Amount bought times buying price
+                    - sum(i, ALPHA(i)/1000 * sum(n, h(n,i)*r(s,n,i,t))) - sum(i, BETA(i)/(1000*1000) * sum(n, h(n,i)*h(n,i) * r(s,n,i,t)))                    //Amount bought times buying price
                     + sum(p1, y(s,p1,t)*fuel_amount*(-fuel_price/1000))                                                               //Amount of fuel produced times selling price of fuel
-                    + sum(i, (b(i,t)-s0(i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
+                    + sum(i, (b(s,i,t)-s0(s,i,t))*ALPHA(i)/1000)                                                                                        //Amount of extra material times its selling price
                     - sum(j, y(s,j,t)*c(j)/1000)
                     - sum(m, Cap(s,m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
 // ======Sales Distribution among regions in each year=====//
-TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+TotalSales(s,t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(s,l,j,k,t)))
                  - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
-                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+                         * u(s,l,j,k,t))/power(demand_growth(j), ord(t)-1)));
 
 
 
 
 
 
-RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+RegionSales(s,t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(s,l,j,k,t)))
                  - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
-                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+                         * u(s,l,j,k,t))/power(demand_growth(j), ord(t)-1)));
 
 
 MODEL final /all/;
