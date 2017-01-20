@@ -307,16 +307,15 @@ SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
 
 VARIABLES
 z 'the objective'
-*h(i) 'Cubic meters of timber i' // getum breytt í parameter og margfaldað með r(i,n) fyrir balance
-y(j,t) 'Cubic meters produced of product j'//total timber i for used in product j -- make constraint to find outu how many products..
-*q(j, k) 'Cubic meters of product j sold to destination k' // getum breytt í parameter og margfaldað með u
-//s(i)'Cubic meters of timber i in stock' // should be integer since all member of the constraint are integer
-s(i,t) 'amount of timber i used to make products'
+
+y(j,t) 'Cubic meters produced of product j in year t'
+
+s(i,t) 'amount of timber i used to make products in year t'
 r(n, i,t) '1 if we buy n boats of timber i, 0 otherwise'
 u(l,j,k,t) '1 if we use n boats for product j shiping to region k, 0 otherwise'
 b(i,t) 'amount of timber i bought'
 
-*fxC(t) 'Fixed cost of machine m in year t'
+
 Pr(t) 'Net profit in each year t'
 Cap(m,t) 'Capacity of machine m in year t'
 
@@ -348,7 +347,6 @@ obj  'Maximum gross profit'
 //=============================================ENOUGH TIMBER
 timber_used(i,t) ' amount of  timber i used to make  product j in year t'
 prod_starved(i,t)  'ensure that production can not be starved in each year'
-//USAGE(i)     'We have to buy material (or produce as byproducts) to be able to produce products'
 Sold_Prod(j,t)   'we cant sell more than we produce in each year'
 timber_bought(i,t) 'amount of timber i bought in each year'
 
@@ -357,18 +355,17 @@ Barges_buy(i,t)  'ensure we only pick one value n for barges for each timber i'
 Barges_sell(j, k,t)  'ensure we only pick one value  n for barges for each product to each city'
 
 //=====================================CAPACITYS FOR PRODUCTION
-//Capacity1(m,t) 'Capacity goes up if we produce over the capacity'
+
 Capacity2(m,t) 'Make sure that the capacity does not go down'
 MaxCapacity(m,t) 'Make sure we dont go over the maximum capacity'
-//CapStart(m,t)   'Make sure the starting capacity is right'
+
 
 // =====================  PROPORTION OF HSEL AND LSEL NEEDED FOR PAP
 PAP_HSEL(t)     'Proportion needed of HSEL for PAP'
 PAP_LSEL(t)     'Proportion needed of LSEL for PAP'
 PULP_Bal(p3,t)     'Cant produce paper without pulp'
 
-// =========ADD FIXED COST FOR INCREASED CAPACITY========== //
-*FixedCost(t) 'Fixed cost of machine m in year t'
+
 
 // =====PROFIT(OLD OBJECTIVE FUNCTION)=======//
 nPROFIT(t) 'Profit is what we gain minus what we spend'
@@ -398,9 +395,7 @@ obj ..
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(i,t) ..  sum(j, y(j,t)*table2(j, i)) =e= s(i,t);
 prod_starved(i,t) .. sum(n, r(n, i,t)*h(n, i)) =g= s(i,t);
-//Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
 Sold_Prod(j,t) .. sum((l,k), q(l,j)*u(l,j,k,t)) =l= y(j,t);
-//USAGE(i) .. sum(j, y(j) * table2(j,i)) =l= sum(n, h(n,i) * r(n,i));
 timber_bought(i,t) .. b(i,t) =e= sum(n, r(n, i,t)*h(n, i));
 
 //=================== ONLY BUY ONE NUMBER OF BARGERS FOR EACH TIMBER i ========================
@@ -411,13 +406,13 @@ Barges_sell(j, k,t) .. sum(l, u(l, j, k,t)) =E= 1;
 //=============================== CAPACITYS FOR PRODUCTION =============================
 
 
-//Capacity1(m,t).. Cap(m,t) =g= Cap(m,t-1)+(sum(j, y(j,t)*Prodinm(m,j))-Cap(m,t-1));
+
 Capacity2(m,t).. Cap(m,t-1) + Cap0(m)$(ord(t)=1) =g= sum(j, y(j,t)*Prodinm(m,j));
 Capacity3(m,t).. Cap(m,t) =g=  Cap(m,t-1) + Cap0(m)$(ord(t)=1);
 
 
 MaxCapacity(m,t).. Cap(m,t) =l= MaxCap(m);
-//CapStart(m,t).. Cap(m,"1") =e= Cap0(m);       
+
 
 
 
@@ -426,7 +421,6 @@ PAP_HSEL(t)..  PAP_Pro*y("PAP",t) =l= y("HSEL",t);
 PAP_LSEL(t)..  PAP_Pro*y("PAP",t) =l= y("LSEL",t);
 PULP_Bal(p3,t) .. sum((l,k), u(l,p3,k,t)*q(l,p3)) + PAP_Pro*y("PAP",t) =l= y(P3,t);
 
-// =========ADD FIXED COST FOR INCREASED CAPACITY========== //
 
 
 
@@ -441,12 +435,15 @@ nPROFIT(t).. Pr(t) =e=  (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)
                     - sum(j, y(j,t)*c(j)/1000)
                     - sum(m, Cap(m,t)*FCost(m)/1000)                                                                                      //Amount of produced products times the production cost
                     ;
+
 // ======Sales Distribution among regions in each year===== //
 TotalSales(t)..  TotalSell(t) =E= (sum((k,j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
                  - sum((k,j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
                          * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
 
-
+RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
+                 - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
+                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
 
 // =======Overview======== //
 Ex1(t).. EXCECUTIVE_OVERVIEW('ATO',t) =e= sum((l,k,j), q(l,j)*u(l,j,k,t));
@@ -457,9 +454,7 @@ Ex4(t).. EXCECUTIVE_OVERVIEW('FC',t) =e=  power(0.95, ord(t)-1)*sum(m, Cap(m,t)*
 Ex5(t).. EXCECUTIVE_OVERVIEW('PROFIT',t) =e= power(0.95, ord(t)-1)*Pr(t);
 
 
-RegionSales(t,k).. RegionSell(t,k) =E= (sum((j), (GAMMA(j,k)/1000) * sum(l, q(l,j)*u(l,j,k,t)))
-                 - sum((j), (DELTA(j,k)/(1000*1000)) * sum(l, q(l,j)*q(l,j)
-                         * u(l,j,k,t))/power(demand_growth(j), ord(t)-1)));
+
 
 
 MODEL final /all/;

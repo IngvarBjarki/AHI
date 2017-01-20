@@ -307,6 +307,8 @@ SCALAR PAP_Pro  'Proportion of HSEL and LSEL needed for PAP'
          /0.2/;
 SCALAR fuel_amount 'the amount of fuel we gain by production timbers in p1'
          /-0.2/
+SCALAR SPRO 'all scenarios are equally likely'
+         /0.25/
 
 
 VARIABLES
@@ -384,7 +386,7 @@ BTC1y(s, j)
 
 obj ..
 
-        Z =e= sum(t, 0.25*sum(s,power(0.95, ord(t)-1)*Pr(s,t)));
+        Z =e= sum(t, SPRO*sum(s,power(0.95, ord(t)-1)*Pr(s,t)));
 
 //==========================ENSURE WE HAVE ENOUGH TIMBER==================================
 timber_used(s,i,t) ..  sum(j, y(s,j,t)*table2(j, i)) =e= s0(s,i,t);
